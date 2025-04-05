@@ -73,7 +73,7 @@ func check_movement_direction(delta):
 		if len(results) > 0:
 			moving = false
 
-			destruction_progress += delta
+			destruction_progress += delta * 4
 
 			if destruction_progress >= 1:
 				destruction_progress = 0
@@ -94,7 +94,7 @@ func check_movement_direction(delta):
 			moving_to_tile.emit(target_pos)
 
 func move(delta):
-	movement_progress += delta
+	movement_progress += delta * 4
 
 	movement_progress = clampf(movement_progress, 0, 1)
 

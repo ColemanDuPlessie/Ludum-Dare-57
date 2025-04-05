@@ -3,12 +3,14 @@ extends Node2D
 signal spawned_drill(player)
 
 @export var world: Node2D
+@export var pathfinding: Node
 
 var state = "building"
 var current_player: CharacterBody2D = null
 
 var player_drill_scene: PackedScene = ResourceLoader.load("res://scenes/player_drill.tscn")
 var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
+var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemy.tscn")
 
 func _ready():
 	var new_player: CharacterBody2D = player_drill_scene.instantiate()
@@ -36,6 +38,24 @@ func begin_combat():
 
 	current_player.queue_free()
 	current_player = new_player
+
+	pathfinding.calc_pathing()
+
+	if len(pathfinding.spawn_locations) > 0:
+		var spawn_location = pathfinding.get_enemy_spawn_location()
+
+		var world_spawn_location = Vector2(spawn_location.x - Static.GAME_WIDTH / 2.0, spawn_location.y) * 16 + Vector2.ONE * 8
+		
+		print(spawn_location)
+
+		print(current_player.global_position)
+		print(floor(current_player.global_position / 16))
+		
+		var enemy: Node2D = enemy_scene.instantiate()
+		enemy.pathfinding = pathfinding
+		enemy.global_position = world_spawn_location
+
+		world.add_child(enemy) 
 
 func begin_building():
 	print("Starting building!")

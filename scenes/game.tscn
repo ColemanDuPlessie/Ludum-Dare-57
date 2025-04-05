@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk03q52ki3drb"]
+[gd_scene load_steps=7 format=3 uid="uid://b2ux1117tt2kk"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
@@ -26,9 +26,10 @@ tile_set = ExtResource("1_iywne")
 collision_enabled = false
 script = ExtResource("3_u5sy4")
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("world")]
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("world", "pathfinding")]
 script = ExtResource("4_gee14")
 world = NodePath("../World")
+pathfinding = NodePath("../EnemyFloodfillCalc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
