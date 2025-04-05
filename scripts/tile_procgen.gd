@@ -3,6 +3,8 @@ extends TileMapLayer
 const GAME_WIDTH = 18
 const HEIGHT_OFFSET = 3
 
+const CORRECTION_VECTOR = Vector2(GAME_WIDTH/2, HEIGHT_OFFSET) # Add this vector to a tile's coordinates to get its 0-indexed coordinates.
+
 const DIRT_TILE = Vector2i(1, 1)
 const GOLD_TILE = Vector2i(2, 0)
 const GEMS_TILE = Vector2i(3, 1)
@@ -13,11 +15,14 @@ var rng = RandomNumberGenerator.new();
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
-	for i in range(20): # Generate a little bit of the map ahead of time.
+	for i in range(3): # Generate a little bit of the map ahead of time.
 		generate_new()
 	pass # Replace with function body.
 
-var max_generated_depth = 0
+var max_generated_depth = 7 # TODO temp RESET THIS TO 0
+
+func get_cell_corrected_idx(loc: Vector2) -> Vector2i:
+	return get_cell_atlas_coords(loc - CORRECTION_VECTOR)
 
 func get_cell(x: int, y: int) -> Vector2i:
 	return get_cell_atlas_coords(Vector2i(x, y))
