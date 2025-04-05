@@ -99,10 +99,11 @@ script = ExtResource("4_gee14")
 world = NodePath("../World")
 pathfinding = NodePath("../EnemyFloodfillCalc")
 
-[node name="ClickManager" type="Node2D" parent="." node_paths=PackedStringArray("tower_menu", "fog_of_war")]
+[node name="ClickManager" type="Node2D" parent="." node_paths=PackedStringArray("tower_menu", "fog_of_war", "tiles")]
 script = ExtResource("12_dinhu")
 tower_menu = NodePath("../ContextMenu")
 fog_of_war = NodePath("../World/FogOfWar")
+tiles = NodePath("../World/WallsResources")
 
 [node name="ContextMenu" parent="." instance=ExtResource("13_kvuet")]
 
