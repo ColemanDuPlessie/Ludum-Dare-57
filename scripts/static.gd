@@ -16,6 +16,8 @@ const FUEL_COSTS = {
 	BEDROCK : 999999999,
 }
 
+var all_tower_locations = {} # An dictionary of the form Vector2:tower.
+
 var current_gold = 0
 var current_gems = 0
 

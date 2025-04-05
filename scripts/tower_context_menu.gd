@@ -51,6 +51,7 @@ func build_arrow_tower() -> void:
 	var tower: Node2D = archer_scene.instantiate()
 	add_sibling(tower)
 	tower.global_position = global_position
+	Static.all_tower_locations[global_position] = tower
 
 func _on_arrow_tower_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if appearing or disappearing:
