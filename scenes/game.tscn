@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bk03q52ki3drb"]
+[gd_scene load_steps=16 format=3 uid="uid://bk03q52ki3drb"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="8_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="9_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bpq7qbxrdhe41" path="res://scenes/shop.tscn" id="10_kvuet"]
+[ext_resource type="Script" uid="uid://c8nse2trtiv55" path="res://scripts/click_manager.gd" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dps6kivipvu1h" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
 font = ExtResource("7_vtaks")
@@ -82,13 +84,11 @@ position = Vector2(16, 36)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("9_dinhu")
 
-[node name="Shop" parent="Camera2D/UIOverlay" node_paths=PackedStringArray("currencies", "player_drill") instance=ExtResource("10_kvuet")]
+[node name="Shop" parent="Camera2D/UIOverlay" instance=ExtResource("10_kvuet")]
 offset_left = 364.0
 offset_top = -106.0
 offset_right = 364.0
 offset_bottom = -106.0
-currencies = NodePath("")
-player_drill = NodePath("")
 
 [node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
 script = ExtResource("6_p57ef")
@@ -99,5 +99,12 @@ script = ExtResource("4_gee14")
 world = NodePath("../World")
 pathfinding = NodePath("../EnemyFloodfillCalc")
 
+[node name="ClickManager" type="Node2D" parent="." node_paths=PackedStringArray("tower_menu")]
+script = ExtResource("12_dinhu")
+tower_menu = NodePath("../ContextMenu")
+
+[node name="ContextMenu" parent="." instance=ExtResource("13_kvuet")]
+
 [connection signal="spawned_drill" from="GameManager" to="World/WallsResources" method="_on_drill_spawned"]
 [connection signal="spawned_drill" from="GameManager" to="World/FogOfWar" method="_on_drill_spawned"]
+[connection signal="spawned_drill" from="GameManager" to="Camera2D/UIOverlay/Shop" method="_on_drill_spawned"]

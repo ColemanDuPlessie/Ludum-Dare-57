@@ -24,13 +24,17 @@ var gems_counter
 var UI
 var shop
 
+var in_shop = false
+
 func show_shop():
 	if !shop.is_inside_tree():
 		UI.add_child(shop)
+		in_shop = true
 
 func hide_shop():
 	if shop.is_inside_tree():
 		UI.remove_child(shop)
+		in_shop = false
 
 func _change_gold(new:int) -> void:
 	current_gold += new
