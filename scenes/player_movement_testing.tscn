@@ -21,7 +21,6 @@ FOG_OF_WAR = NodePath("../FogOfWar")
 BACKGROUND = NodePath("../Background")
 
 [node name="FogOfWar" type="TileMapLayer" parent="World"]
-position = Vector2(0, 1)
 tile_set = ExtResource("2_3buf4")
 collision_enabled = false
 script = ExtResource("4_6ev3v")
