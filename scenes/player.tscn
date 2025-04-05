@@ -1,17 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtq5luge7156h"]
+[gd_scene load_steps=8 format=3 uid="uid://dtq5luge7156h"]
 
 [ext_resource type="Script" uid="uid://c5ifnuyv6gh7b" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c1gxm83es5hgy" path="res://art/player_0.tres" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dtak1easrt8wu" path="res://art/player_fall.tres" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://1h436fdl28l" path="res://art/player_1.tres" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://dunajkxq2bq1r" path="res://art/player_jump.tres" id="3_qlg0r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qlg0r")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_qhqgy")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qlg0r")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -33,10 +51,9 @@ size = Vector2(12, 10)
 script = ExtResource("1_g2els")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_3vyb7")
 animation = &"idle"
-frame_progress = 0.0844081
-offset = Vector2(0.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0724s")

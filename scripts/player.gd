@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed: float = 30
+var speed: float = 60
 var rise_gravity: float = 400
 var fall_gravity: float = 600
 var jump: float = 120
@@ -30,7 +30,12 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	if movement != 0:
+	if !is_on_floor():
+		if y_velocity < 0:
+			sprite.play("jump")
+		else:
+			sprite.play("fall")
+	elif movement != 0:
 		sprite.play("run")
 	else:
 		sprite.play("idle")
