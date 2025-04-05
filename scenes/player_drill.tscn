@@ -1,23 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqddiwdc6knkx"]
 
 [ext_resource type="Script" uid="uid://vfex0pr16mcx" path="res://scripts/player_drill.gd" id="1_o55oq"]
-[ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="2_yolj5"]
+[ext_resource type="Texture2D" uid="uid://bxj83m6cgoi3r" path="res://art/drill.tres" id="2_a21nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8hpy"]
-size = Vector2(10, 10)
+size = Vector2(16, 10)
 
 [node name="PlayerDrill" type="CharacterBody2D"]
 script = ExtResource("1_o55oq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.078808, 0.078808)
-texture = ExtResource("2_yolj5")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(6, 0)
-rotation = 1.5708
-scale = Vector2(0.124411, 0.0335105)
-texture = ExtResource("2_yolj5")
+texture = ExtResource("2_a21nq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c8hpy")
