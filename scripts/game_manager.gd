@@ -13,7 +13,7 @@ var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
 var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemy.tscn")
 
 func _ready():
-	Static.increment_gold(3)
+	Static.increment_gold(15)
 	Static.increment_gems(1)
 	
 	var new_player: CharacterBody2D = player_drill_scene.instantiate()

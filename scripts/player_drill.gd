@@ -72,6 +72,9 @@ func check_movement_direction(delta):
 
 		if len(results) > 0:
 			moving = false
+			
+			if len(results) > 1:
+				return # We are trying to drill through a building :(
 
 			destruction_progress += delta * 4
 

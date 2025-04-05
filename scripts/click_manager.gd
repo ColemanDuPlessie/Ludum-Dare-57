@@ -13,6 +13,7 @@ func check_for_opening_tower_menu(mouse_pos: Vector2) -> void:
 	if tower_menu.size == 0: # The menu is closed
 		if fog_of_war.check_duplo_revealed(snap): # The place we want to build is not obscured by fog
 			if tiles.check_duplo_exists(snap): # The place we want to build is currently ground tiles
+				# TODO check it's not already part of a tower
 				tower_menu.open_at(snap)
 	elif abs(tower_menu.global_position[0] - mouse_pos[0]) > 32 or abs(tower_menu.global_position[1] - mouse_pos[1]) > 32:
 		tower_menu.disappear()

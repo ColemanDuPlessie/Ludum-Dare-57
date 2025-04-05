@@ -2,6 +2,8 @@ extends Node2D
 
 const APPEAR_DISAPPEAR_TIME = 0.3
 
+var archer_scene: PackedScene = ResourceLoader.load("res://scenes/archer_tower.tscn")
+
 @export var tower_highlight: AnimatedSprite2D
 
 var appearing = false
@@ -46,6 +48,9 @@ func disappear() -> void:
 
 func build_arrow_tower() -> void:
 	print("BUILDING TOWER...")
+	var tower: Node2D = archer_scene.instantiate()
+	add_sibling(tower)
+	tower.global_position = global_position
 
 func _on_arrow_tower_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if appearing or disappearing:

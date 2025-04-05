@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clg5a6pqt2ago"]
+
+[ext_resource type="Texture2D" uid="uid://k25lixhces4b" path="res://art/bad_placeholder_art/Basic_(Archer)_Turret_Placeholder.png" id="1_ggefl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb3hj"]
+size = Vector2(32, 32)
+
+[node name="Archer" type="StaticBody2D"]
+
+[node name="ArcherGraphicsTODO" type="Sprite2D" parent="."]
+texture = ExtResource("1_ggefl")
+
+[node name="TowerShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sb3hj")
