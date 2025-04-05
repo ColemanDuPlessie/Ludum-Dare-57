@@ -2,28 +2,63 @@ extends CharacterBody2D
 
 var moving = false
 var movement_progress = 0
-var movement_direction = Vector2(0, 0)
+var movement_direction = Vector2.ZERO
+var last_position = Vector2.ZERO
+
+func _ready():
+	last_position = global_position
 
 func _physics_process(delta):
-	if
+	if !moving:
+		check_movement_direction()
+	
+	if moving:
+		move(delta)
 
 func check_movement_direction():
 	if Input.is_action_pressed("right"):
 		movement_direction = Vector2.RIGHT
 		moving = true
-		movement_progress = 0
 	
 	if Input.is_action_pressed("left"):
 		movement_direction = Vector2.LEFT
 		moving = true
-		movement_progress = 0
 	
 	if Input.is_action_pressed("up"):
 		movement_direction = Vector2.UP
 		moving = true
-		movement_progress = 0
 
 	if Input.is_action_pressed("down"):
 		movement_direction = Vector2.DOWN
 		moving = true
+
+	if moving:
+		look_at(global_position + movement_direction)
+
+	if moving:
+		var params = PhysicsShapeQueryParameters2D.new()
+
+		var shape = RectangleShape2D.new()
+		shape.size = Vector2(8, 8)
+		params.shape = shape
+
+		params.transform.origin = global_position + movement_direction * 16
+		params.collide_with_bodies = true
+		params.collision_mask = 1
+
+		var results = get_world_2d().direct_space_state.intersect_shape(params)
+
+		if len(results) > 0:
+			moving = false
+
+func move(delta):
+	movement_progress += delta
+
+	movement_progress = clampf(movement_progress, 0, 1)
+
+	global_position = last_position + movement_direction * 16 * movement_progress
+
+	if movement_progress == 1:
+		last_position = global_position
+		moving = false
 		movement_progress = 0
