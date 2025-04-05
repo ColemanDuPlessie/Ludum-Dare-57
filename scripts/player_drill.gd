@@ -32,9 +32,26 @@ func check_movement_direction():
 		movement_direction = Vector2.DOWN
 		moving = true
 
-func move(delta):
-	look_at(global_position + movement_direction)
+	if moving:
+		look_at(global_position + movement_direction)
 
+	if moving:
+		var params = PhysicsShapeQueryParameters2D.new()
+
+		var shape = RectangleShape2D.new()
+		shape.size = Vector2(8, 8)
+		params.shape = shape
+
+		params.transform.origin = global_position + movement_direction * 16
+		params.collide_with_bodies = true
+		params.collision_mask = 1
+
+		var results = get_world_2d().direct_space_state.intersect_shape(params)
+
+		if len(results) > 0:
+			moving = false
+
+func move(delta):
 	movement_progress += delta
 
 	movement_progress = clampf(movement_progress, 0, 1)
