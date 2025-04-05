@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://ds3387fh4y7fs"
+path="res://.godot/imported/CONCHARS.png-f4f1d95e190d594b6ac5439e05a286d9.fontdata"
+
+[deps]
+
+source_file="res://art/CONCHARS.png"
+dest_files=["res://.godot/imported/CONCHARS.png-f4f1d95e190d594b6ac5439e05a286d9.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 64)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=false
+scaling_mode=2

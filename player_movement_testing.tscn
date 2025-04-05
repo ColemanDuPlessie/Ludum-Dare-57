@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://cqk0civmv4b71"]
+[gd_scene load_steps=5 format=4 uid="uid://o1jddd0c5pyg"]
 
 [ext_resource type="Script" uid="uid://vfex0pr16mcx" path="res://scripts/player_drill.gd" id="1_c8hpy"]
 [ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="1_iautf"]
