@@ -1,6 +1,6 @@
 extends Node
 
-const GAME_WIDTH = 4
+const GAME_WIDTH = 10 * 2
 
 const DIRT_TILE = Vector2i(16, 1)
 const GOLD_TILE = Vector2i(17, 1)
