@@ -30,6 +30,21 @@ func _input(event: InputEvent) -> void:
 		else:
 			begin_building()
 
+func spawn_enemy(scene: PackedScene) -> void:
+	var spawn_location = pathfinding.get_enemy_spawn_location()
+
+	var world_spawn_location = Vector2(spawn_location.x - Static.GAME_WIDTH / 2.0, spawn_location.y) * 16 + Vector2.ONE * 8
+		
+	print("Spawned at: ", spawn_location)
+	
+	var enemy: Node2D = enemy_scene.instantiate()
+	enemy.pathfinding = pathfinding
+	enemy.global_position = world_spawn_location
+	
+	world.add_child(enemy)
+	
+	Static.all_enemies.append(enemy)
+
 func begin_combat():
 	print("Starting combat!")
 
@@ -45,17 +60,7 @@ func begin_combat():
 	pathfinding.calc_pathing()
 
 	if len(pathfinding.spawn_locations) > 0:
-		var spawn_location = pathfinding.get_enemy_spawn_location()
-
-		var world_spawn_location = Vector2(spawn_location.x - Static.GAME_WIDTH / 2.0, spawn_location.y) * 16 + Vector2.ONE * 8
-		
-		print("Spawned at: ", spawn_location)
-		
-		var enemy: Node2D = enemy_scene.instantiate()
-		enemy.pathfinding = pathfinding
-		enemy.global_position = world_spawn_location
-
-		world.add_child(enemy) 
+		spawn_enemy(enemy_scene)
 
 func begin_building():
 	print("Starting building!")

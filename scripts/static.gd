@@ -17,6 +17,7 @@ const FUEL_COSTS = {
 }
 
 var all_tower_locations = {} # An dictionary of the form Vector2:tower.
+var all_enemies = [] # A list of all active enemies TODO garbage collect dead enemies
 
 var current_gold = 0
 var current_gems = 0
