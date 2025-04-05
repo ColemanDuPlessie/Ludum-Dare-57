@@ -40,10 +40,11 @@ func destroy_tile(x: int, y:int) -> Vector2i:
 # Call if the player is nearing the end of the screen
 func generate_new() -> void: # TODO this is the barest of placeholders, there are so many fun things we could do here
 	max_generated_depth += 1
-	for x_pos in range(-Static.GAME_WIDTH/2 - 20, Static.GAME_WIDTH/2 + 20 + 1):
+
+	for x_pos in range(-Static.GAME_WIDTH / 2 - 20, Static.GAME_WIDTH / 2 + 20):
 		var tile_pos = Vector2i(x_pos, max_generated_depth)
 
-		if x_pos <= -Static.GAME_WIDTH / 2 - 1 || x_pos >= Static.GAME_WIDTH / 2 + 1:
+		if x_pos <= -Static.GAME_WIDTH / 2 - 1 || x_pos >= Static.GAME_WIDTH / 2 :
 			set_cell(tile_pos, 0, Static.BEDROCK)
 		elif max_generated_depth <= 0:
 			pass
@@ -54,8 +55,7 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 		else:
 			set_cell(tile_pos, 0, Static.DIRT_TILE)
 		
-		if x_pos > -Static.GAME_WIDTH / 2 - 1 && x_pos < Static.GAME_WIDTH / 2 + 1 && max_generated_depth > 2:
+		if x_pos > -Static.GAME_WIDTH / 2 - 1 && x_pos < Static.GAME_WIDTH / 2 && max_generated_depth > 2:
 			FOG_OF_WAR.set_cell(tile_pos, 0, FOG_TILE)
 
-		# if x_pos > -Static.GAME_WIDTH / 2 - 1 && x_pos < Static.GAME_WIDTH / 2 + 1 && max_generated_depth > 0:
 		BACKGROUND.set_cell(tile_pos, 0, BACKGROUND_TILE)
