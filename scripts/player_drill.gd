@@ -10,6 +10,11 @@ var destruction_progress = 0
 func _ready():
 	last_position = global_position
 
+	# Just for debug purposes right now
+	var game_manager = get_parent().get_parent().get_node("GameManager")
+	if game_manager.current_player == null:
+		game_manager.current_player = self
+
 func _physics_process(delta):
 	if !moving:
 		check_movement_direction(delta)
@@ -72,7 +77,7 @@ func check_movement_direction(delta):
 				destruction_progress = 0
 
 				var tile_procgen = results[0].collider
-				
+
 				var location = floor(global_position / 16 + movement_direction)
 
 				tile_procgen.destroy_tile(location.x, location.y)
