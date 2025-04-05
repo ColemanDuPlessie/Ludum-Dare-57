@@ -88,7 +88,10 @@ func move(delta):
 
 	movement_progress = clampf(movement_progress, 0, 1)
 
-	global_position = last_position + movement_direction * 16 * movement_progress
+	var movement_dist = movement_direction * 16 * movement_progress
+	movement_dist = Vector2(int(movement_dist[0]), int(movement_dist[1]))
+
+	global_position = last_position + movement_dist
 
 	if movement_progress == 1:
 		last_position = global_position
