@@ -5,32 +5,47 @@ var movement_progress = 0
 var movement_direction = Vector2.ZERO
 var last_position = Vector2.ZERO
 
+var destruction_progress = 0
+
 func _ready():
 	last_position = global_position
 
 func _physics_process(delta):
 	if !moving:
-		check_movement_direction()
+		check_movement_direction(delta)
 	
 	if moving:
 		move(delta)
 
-func check_movement_direction():
+func check_movement_direction(delta):
 	if Input.is_action_pressed("right"):
+		if movement_direction != Vector2.RIGHT:
+			destruction_progress = 0
+
 		movement_direction = Vector2.RIGHT
 		moving = true
-	
-	if Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("left"):
+		if movement_direction != Vector2.LEFT:
+			destruction_progress = 0
+
 		movement_direction = Vector2.LEFT
 		moving = true
-	
-	if Input.is_action_pressed("up"):
+	elif Input.is_action_pressed("up"):
+		if movement_direction != Vector2.UP:
+			destruction_progress = 0
+
 		movement_direction = Vector2.UP
 		moving = true
+	elif Input.is_action_pressed("down"):
+		if movement_direction != Vector2.DOWN:
+			destruction_progress = 0
 
-	if Input.is_action_pressed("down"):
 		movement_direction = Vector2.DOWN
 		moving = true
+	else:
+		destruction_progress = 0
+
+		movement_direction = Vector2.ZERO
 
 	if moving:
 		look_at(global_position + movement_direction)
@@ -50,6 +65,12 @@ func check_movement_direction():
 
 		if len(results) > 0:
 			moving = false
+
+			destruction_progress += delta
+
+			if destruction_progress >= 1:
+				destruction_progress = 0
+
 
 func move(delta):
 	movement_progress += delta
