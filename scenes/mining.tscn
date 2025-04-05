@@ -1,16 +1,22 @@
-[gd_scene load_steps=9 format=4 uid="uid://dmj7onsbuh3kj"]
+[gd_scene load_steps=12 format=4 uid="uid://dmj7onsbuh3kj"]
 
 [ext_resource type="TileSet" uid="uid://b6snu3ceuickf" path="res://art/bad_placeholder_art/Super_Basic_Tileset.tres" id="1_7blh2"]
 [ext_resource type="Script" uid="uid://do52b6t0uecpq" path="res://scripts/gameplay_vars.gd" id="1_cexea"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_bd6dg"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="3_k6jil"]
 [ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="3_rxyb6"]
-[ext_resource type="TileSet" uid="uid://cbgg2xvv4lcwg" path="res://art/tileset.tres" id="3_wkp28"]
+[ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="3_wkp28"]
 [ext_resource type="Script" uid="uid://cyj2swagf6rdk" path="res://scripts/calc_enemy_paths.gd" id="4_6lh35"]
+[ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="7_g4nnd"]
+[ext_resource type="PackedScene" uid="uid://ohqdcn8ooec2" path="res://scenes/enemy.tscn" id="9_7c77r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k6jil"]
 font = ExtResource("3_k6jil")
 font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c77r"]
+atlas = ExtResource("7_g4nnd")
+region = Rect2(0, 112, 16, 16)
 
 [node name="Gameplay" type="Node2D"]
 texture_filter = 1
@@ -50,9 +56,8 @@ vertical_alignment = 1
 
 [node name="GoldNuggetTODO" type="Sprite2D" parent="UIOverlay"]
 texture_filter = 1
-position = Vector2(-132, -68)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("3_rxyb6")
+position = Vector2(-132, -69)
+texture = SubResource("AtlasTexture_7c77r")
 
 [node name="GemCounter" type="Label" parent="UIOverlay"]
 texture_filter = 1
@@ -68,6 +73,10 @@ vertical_alignment = 1
 
 [node name="GemNuggetTODO" type="Sprite2D" parent="UIOverlay"]
 texture_filter = 1
-position = Vector2(-132, -48)
+position = Vector2(-132, -49)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_rxyb6")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("pathfinding") instance=ExtResource("9_7c77r")]
+position = Vector2(-56, 24)
+pathfinding = NodePath("../EnemyFloodfillCalc")

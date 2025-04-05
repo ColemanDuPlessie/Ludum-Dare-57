@@ -16,6 +16,21 @@ func _ready():
 	pathing_map = [initial_pathing_map.duplicate(),]
 	calc_pathing()
 
+# Returns the unit vector (in DIRECTIONS) that results in the enemy moving towards the surface.
+func move_enemy(loc: Vector2) -> Vector2:
+	if loc[0] < 0 or loc[1] < 0 or loc[0] > map.max_generated_depth or loc[1] > map.GAME_WIDTH or pathing_map[loc[1]][loc[0]] == null:
+		return Vector2(0, 0) # The enemy is not currently in an open tunnel space...
+	else:
+		var best = null
+		var best_score = null
+		for dir in DIRECTIONS:
+			var new = loc + dir
+			var score = pathing_map[new[1]][new[0]]
+			if score != null and (best_score == null or score < best_score):
+				best_score = score
+				best = dir
+		return best
+
 func calc_pathing() -> void:
 	pathing_map = [initial_pathing_map.duplicate(),]
 	for i in range(1, map.max_generated_depth):
