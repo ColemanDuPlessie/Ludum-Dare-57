@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=4 uid="uid://cqk0civmv4b71"]
+[gd_scene load_steps=4 format=3 uid="uid://cqk0civmv4b71"]
 
 [ext_resource type="PackedScene" uid="uid://cqddiwdc6knkx" path="res://scenes/player_drill.tscn" id="2_0724s"]
+[ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="3_3buf4"]
 [ext_resource type="TileSet" uid="uid://b6snu3ceuickf" path="res://art/bad_placeholder_art/Super_Basic_Tileset.tres" id="3_c8hpy"]
 
 [node name="PlayerMovementTesting" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD8////AAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD8//z/AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAADAPz/AAAAAAAAAAD7//z/AAAAAAAAAAD6//3/AAAAAAAAAAD6//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6//z/AAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAEAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP3/AAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAKAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAAIAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAP//AAAAAAAAAAA=")
-tile_set = ExtResource("3_c8hpy")
-
 [node name="PlayerDrill" parent="." instance=ExtResource("2_0724s")]
-position = Vector2(-24, -8)
+position = Vector2(-8, -40)
+
+[node name="WallsResources" type="TileMapLayer" parent="."]
+tile_set = ExtResource("3_c8hpy")
+script = ExtResource("3_3buf4")

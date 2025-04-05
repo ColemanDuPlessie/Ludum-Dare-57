@@ -71,6 +71,12 @@ func check_movement_direction(delta):
 			if destruction_progress >= 1:
 				destruction_progress = 0
 
+				var tile_procgen = results[0].collider
+				
+				var location = floor(global_position / 16 + movement_direction)
+
+				tile_procgen.destroy_tile(location.x, location.y)
+
 
 func move(delta):
 	movement_progress += delta

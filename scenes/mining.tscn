@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://dmj7onsbuh3kj"]
 
 [ext_resource type="TileSet" uid="uid://b6snu3ceuickf" path="res://art/bad_placeholder_art/Super_Basic_Tileset.tres" id="1_7blh2"]
-[ext_resource type="Script" uid="uid://do52b6t0uecpq" path="res://scripts/gameplay_vars.gd" id="1_cexea"]
+[ext_resource type="Script" path="res://scripts/gameplay_vars.gd" id="1_cexea"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_bd6dg"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="3_k6jil"]
 [ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="3_rxyb6"]
