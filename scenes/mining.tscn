@@ -97,11 +97,23 @@ offset_bottom = -106.0
 currencies = NodePath("../..")
 player_drill = NodePath("../../PlayerDrill")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("pathfinding") instance=ExtResource("9_7c77r")]
-position = Vector2(-56, 24)
-pathfinding = NodePath("../EnemyFloodfillCalc")
-
 [node name="PlayerDrill" parent="." node_paths=PackedStringArray("FOG_OF_WAR", "MAIN") instance=ExtResource("10_pk1v7")]
 position = Vector2(-8, -40)
 FOG_OF_WAR = NodePath("../FogOfWar")
 MAIN = NodePath("..")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("pathfinding") instance=ExtResource("9_7c77r")]
+position = Vector2(-56, 24)
+pathfinding = NodePath("../EnemyFloodfillCalc")
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("pathfinding") instance=ExtResource("9_7c77r")]
+position = Vector2(-56, 24)
+pathfinding = NodePath("../EnemyFloodfillCalc")
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("pathfinding") instance=ExtResource("9_7c77r")]
+position = Vector2(-56, 24)
+pathfinding = NodePath("../EnemyFloodfillCalc")
+
+[node name="Enemy4" parent="." node_paths=PackedStringArray("pathfinding") instance=ExtResource("9_7c77r")]
+position = Vector2(-56, 24)
+pathfinding = NodePath("../EnemyFloodfillCalc")
