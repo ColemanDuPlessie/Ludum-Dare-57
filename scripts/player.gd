@@ -7,6 +7,8 @@ var jump: float = 120
 
 var y_velocity = 0
 
+@onready var sprite: AnimatedSprite2D = get_node("Sprite")
+
 func _physics_process(delta: float) -> void:
 	var movement = Input.get_axis("left", "right")
 
@@ -27,3 +29,13 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(movement * speed, y_velocity)
 
 	move_and_slide()
+
+	if movement != 0:
+		sprite.play("run")
+	else:
+		sprite.play("idle")
+
+	if movement < 0:
+		sprite.flip_h = true
+	elif movement > 0:
+		sprite.flip_h = false
