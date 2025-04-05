@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dps6kivipvu1h"]
+
+[ext_resource type="Script" uid="uid://88cm2vnieiss" path="res://scripts/tower_context_menu.gd" id="1_hkrlw"]
+[ext_resource type="Texture2D" uid="uid://ct2bqitajgi50" path="res://art/Tower_Context_Menu.png" id="1_sdhg0"]
+[ext_resource type="Texture2D" uid="uid://3uggvaebhhde" path="res://art/ArcherTower.png" id="2_1g10d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sdhg0"]
+radius = 12.0
+
+[node name="ContextMenu" type="Node2D"]
+script = ExtResource("1_hkrlw")
+
+[node name="MenuRing" type="Sprite2D" parent="."]
+texture = ExtResource("1_sdhg0")
+
+[node name="ArrowTower" type="Area2D" parent="."]
+
+[node name="ClickyCircle" type="CollisionShape2D" parent="ArrowTower"]
+position = Vector2(-20, -20)
+shape = SubResource("CircleShape2D_sdhg0")
+
+[node name="ArrowBuyIcon" type="Sprite2D" parent="ArrowTower"]
+position = Vector2(-20, -20)
+texture = ExtResource("2_1g10d")
+
+[connection signal="input_event" from="ArrowTower" to="." method="_on_arrow_tower_input_event"]

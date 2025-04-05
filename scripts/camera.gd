@@ -5,6 +5,6 @@ extends Camera2D
 
 
 func _process(delta: float) -> void:
-    var player = game_manager.current_player
+	var player = game_manager.current_player
 
-    global_position = player.global_position
+	global_position = player.global_position
