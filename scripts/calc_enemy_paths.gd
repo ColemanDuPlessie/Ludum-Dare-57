@@ -53,4 +53,3 @@ func calc_pathing() -> void:
 					processing_queue.append(new_loc)
 					pathing_map[new_loc[0]][new_loc[1]] = pathing_map[currently_processing[0]][currently_processing[1]]+1
 		processing_queue_pointer += 1
-	print(pathing_map) # TODO this is for debugging

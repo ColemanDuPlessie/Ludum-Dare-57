@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxj83m6cgoi3r" path="res://art/drill.tres" id="2_a21nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8hpy"]
-size = Vector2(16, 10)
+size = Vector2(16, 16)
 
 [node name="PlayerDrill" type="CharacterBody2D"]
 script = ExtResource("1_o55oq")

@@ -1,5 +1,10 @@
 extends TileMapLayer
 
+@export var FOG_OF_WAR: TileMapLayer
+const FOG_TILE = Vector2i(17, 6)
+@export var BACKGROUND: TileMapLayer
+const BACKGROUND_TILE = Vector2i(16, 5)
+
 const GAME_WIDTH = 18
 const HEIGHT_OFFSET = 3
 
@@ -8,7 +13,12 @@ const CORRECTION_VECTOR = Vector2(GAME_WIDTH/2, HEIGHT_OFFSET) # Add this vector
 const DIRT_TILE = Vector2i(16, 1)
 const GOLD_TILE = Vector2i(17, 1)
 const GEMS_TILE = Vector2i(16, 2)
-const OBSIDIAN_TILE = Vector2i(16, 5)
+const OBSIDIAN_TILE = Vector2i(16, 3)
+
+const FUEL_COSTS = {DIRT_TILE : 1,
+					GOLD_TILE : 1,
+					GEMS_TILE : 2,
+					OBSIDIAN_TILE : 10}
 
 var rng = RandomNumberGenerator.new();
 
@@ -48,3 +58,6 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 			set_cell(tile_pos, 0, GEMS_TILE)
 		else:
 			set_cell(tile_pos, 0, DIRT_TILE)
+		
+		FOG_OF_WAR.set_cell(tile_pos, 0, FOG_TILE)
+		BACKGROUND.set_cell(tile_pos, 0, BACKGROUND_TILE)

@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+@export var FOG_OF_WAR: TileMapLayer
+
+var fuel_remaining = 50 # TODO add a fuel meter to the UIOverlay
+var MAX_FUEL = 50
+
 var moving = false
 var movement_progress = 0
 var movement_direction = Vector2.ZERO
@@ -11,9 +16,10 @@ func _ready():
 	last_position = global_position
 
 	# Just for debug purposes right now
-	var game_manager = get_parent().get_parent().get_node("GameManager")
-	if game_manager.current_player == null:
-		game_manager.current_player = self
+	# TODO commented out to work on mining. Add it back in if you need.
+	# var game_manager = get_parent().get_parent().get_node("GameManager")
+	# if game_manager.current_player == null:
+	# 	game_manager.current_player = self
 
 func _physics_process(delta):
 	if !moving:
@@ -79,9 +85,19 @@ func check_movement_direction(delta):
 				var tile_procgen = results[0].collider
 
 				var location = floor(global_position / 16 + movement_direction)
+				var destroyed = tile_procgen.get_cell(location.x, location.y)
+				var fuel_cost = tile_procgen.FUEL_COSTS[destroyed]
+				
+				if fuel_cost <= fuel_remaining:
+					fuel_remaining -= fuel_cost
+					tile_procgen.destroy_tile(location.x, location.y)
+		
+		if moving == true:
+			var target_pos = _global_to_grid_coords()+movement_direction
+			FOG_OF_WAR.reveal_from(target_pos)
 
-				tile_procgen.destroy_tile(location.x, location.y)
-
+func _global_to_grid_coords():
+	return Vector2(int((global_position[0]-8)/16)+9, int((global_position[1]-8)/16)+3)
 
 func move(delta):
 	movement_progress += delta
