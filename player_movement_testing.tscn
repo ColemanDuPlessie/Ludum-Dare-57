@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://cqk0civmv4b71"]
+[gd_scene load_steps=5 format=4 uid="uid://nwv12e1aftmv"]
 
 [ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="1_iautf"]
-[ext_resource type="Script" uid="uid://c5ifnuyv6gh7b" path="res://scripts/player.gd" id="2_c8hpy"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_c8hpy"]
 [ext_resource type="TileSet" uid="uid://b6snu3ceuickf" path="res://art/bad_placeholder_art/Super_Basic_Tileset.tres" id="3_c8hpy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0724s"]

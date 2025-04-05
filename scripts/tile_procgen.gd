@@ -17,12 +17,19 @@ func _ready() -> void:
 		generate_new()
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 var max_generated_depth = 0
+
+func get_cell(x: int, y: int) -> Vector2i:
+	return get_cell_atlas_coords(Vector2i(x, y))
+
+func destroy_tile(x: int, y:int) -> Vector2i:
+	var destroyed = get_cell(x, y)
+	if destroyed == GOLD_TILE:
+		get_parent().increment_gold(1)
+	elif destroyed == GEMS_TILE:
+		get_parent().increment_gems(1)
+	erase_cell(Vector2i(x, y))
+	return destroyed
 
 # Call if the player is nearing the end of the screen
 func generate_new() -> void: # TODO this is the barest of placeholders, there are so many fun things we could do here
