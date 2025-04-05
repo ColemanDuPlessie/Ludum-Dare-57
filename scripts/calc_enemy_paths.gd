@@ -9,7 +9,7 @@ var null_map
 
 const SPAWN_SOFTMAX_STRENGTH = 2.0
 const MIN_SPAWN_CHANCE = 0.01 # If there is less than this chance of enemies spawning in a tile, they won't spawn there at all.
-const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
+const DIRECTIONS: Array[Vector2] = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 
 var rng = RandomNumberGenerator.new();
 
@@ -20,6 +20,7 @@ func _ready():
 		initial_pathing_map.append(0)
 		null_map.append(null)
 	pathing_map = [initial_pathing_map.duplicate(),]
+
 	calc_pathing()
 
 func get_enemy_spawn_location() -> Vector2:
@@ -52,36 +53,54 @@ func sum(arr:Array):
 		result+=i
 	return result
 
+func get_cell_corrected_idx(x: int, y: int):
+	return Vector2(x - floor(Static.GAME_WIDTH / 2.0), y)
+
 func calc_pathing() -> void:
 	pathing_map = [initial_pathing_map.duplicate(),]
+
 	spawn_locations = {}
-	for i in range(1, map.max_generated_depth):
+
+	for i in range(0, map.max_generated_depth):
 		pathing_map.append(null_map.duplicate())
-	var processing_queue = []
+
+	var processing_queue: Array[Vector2] = []
 	var processing_queue_pointer = 0
+	
 	for i in range(Static.GAME_WIDTH):
 		processing_queue.append(Vector2(0, i))
+
 	while processing_queue_pointer < len(processing_queue):
-		var currently_processing = processing_queue[processing_queue_pointer]
+		var currently_processing: Vector2 = processing_queue[processing_queue_pointer]
+
 		for dir in DIRECTIONS:
-			var new_loc = currently_processing + dir
+			var new_loc: Vector2 = currently_processing + dir
+
 			if new_loc[0] < 0 or new_loc[1] < 0 or new_loc[1] >= Static.GAME_WIDTH or new_loc[0] > map.max_generated_depth:
 				continue
-			elif new_loc in processing_queue:
+
+			if new_loc in processing_queue:
 				continue
-			else:
-				var tile_type = map.get_cell_corrected_idx(Vector2(new_loc[1], new_loc[0]))
-				if tile_type != map.DIRT_TILE and tile_type != map.GOLD_TILE and tile_type != map.GEMS_TILE and tile_type != map.OBSIDIAN_TILE: # If there is no tile...
-					processing_queue.append(new_loc)
-					pathing_map[new_loc[0]][new_loc[1]] = pathing_map[currently_processing[0]][currently_processing[1]]+1
-				elif dir == Vector2.DOWN: # If this is a floor tile...
-					spawn_locations[Vector2(currently_processing[1], currently_processing[0])] = SPAWN_SOFTMAX_STRENGTH ** currently_processing[0]
+
+			var correct_idx = get_cell_corrected_idx(new_loc[1], new_loc[0])
+			var tile_type = map.get_cell(correct_idx.x, correct_idx.y)
+			
+			if tile_type == null: # If there is no tile...
+				processing_queue.append(new_loc)
+				
+				pathing_map[new_loc[0]][new_loc[1]] = pathing_map[currently_processing[0]][currently_processing[1]]+1
+			elif dir == Vector2.DOWN: # If this is a floor tile...
+				spawn_locations[Vector2(currently_processing[1], currently_processing[0])] = SPAWN_SOFTMAX_STRENGTH ** currently_processing[0]
+
 		processing_queue_pointer += 1
 	
 	var spawn_locations_removed = true
+
 	while spawn_locations_removed:
 		spawn_locations_removed = false
+
 		spawn_weighting = sum(spawn_locations.values())
+
 		for loc in spawn_locations.keys():
 			if spawn_locations[loc] < spawn_weighting * MIN_SPAWN_CHANCE:
 				spawn_locations.erase(loc)
