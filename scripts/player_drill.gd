@@ -82,7 +82,7 @@ func check_movement_direction(delta):
 
 				var location = floor(global_position / 16 + movement_direction)
 				var destroyed = tile_procgen.get_cell(location.x, location.y)
-				var fuel_cost = tile_procgen.FUEL_COSTS[destroyed]
+				var fuel_cost = Static.FUEL_COSTS[destroyed]
 				
 				if fuel_cost <= fuel_remaining:
 					fuel_remaining -= fuel_cost

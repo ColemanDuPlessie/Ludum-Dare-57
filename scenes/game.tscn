@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2ux1117tt2kk"]
+[gd_scene load_steps=7 format=3 uid="uid://b2ux1117tt2kk"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
 [ext_resource type="Script" uid="uid://njroyot21xv6" path="res://scripts/fog_of_war.gd" id="3_u5sy4"]
 [ext_resource type="Script" uid="uid://dd2soerf0pqs3" path="res://scripts/game_manager.gd" id="4_gee14"]
 [ext_resource type="Script" uid="uid://8odk8g0qlhui" path="res://scripts/camera.gd" id="5_0tnpc"]
+[ext_resource type="Script" uid="uid://cyj2swagf6rdk" path="res://scripts/calc_enemy_paths.gd" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 
@@ -32,6 +33,10 @@ world = NodePath("../World")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
 script = ExtResource("5_0tnpc")
+
+[node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
+script = ExtResource("6_p57ef")
+map = NodePath("../World/WallsResources")
 
 [connection signal="spawned_drill" from="GameManager" to="World/WallsResources" method="_on_drill_spawned"]
 [connection signal="spawned_drill" from="GameManager" to="World/FogOfWar" method="_on_drill_spawned"]
