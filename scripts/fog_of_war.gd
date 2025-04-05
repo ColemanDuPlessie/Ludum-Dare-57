@@ -17,6 +17,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _on_drill_spawned(player):
+	player.moving_to_tile.connect(_on_player_moving_to_tile)
+	
+func _on_player_moving_to_tile(location):
+	reveal_from(location)
+
 func get_cell_corrected_idx(loc: Vector2) -> Vector2i:
 	return get_cell_atlas_coords(loc - CORRECTION_VECTOR)
 

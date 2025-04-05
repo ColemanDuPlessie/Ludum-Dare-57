@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var FOG_OF_WAR: TileMapLayer
+signal moving_to_tile(location)
+
 @export var MAIN: Node2D # TODO is this idiomatic???
 
 var fuel_remaining = 50 # TODO add a fuel meter to the UIOverlay
@@ -15,12 +16,6 @@ var destruction_progress = 0
 
 func _ready():
 	last_position = global_position
-
-	# Just for debug purposes right now
-	# TODO commented out to work on mining. Add it back in if you need.
-	# var game_manager = get_parent().get_parent().get_node("GameManager")
-	# if game_manager.current_player == null:
-	# 	game_manager.current_player = self
 
 func _physics_process(delta):
 	if !moving:
@@ -94,11 +89,9 @@ func check_movement_direction(delta):
 					tile_procgen.destroy_tile(location.x, location.y)
 		
 		if moving == true:
-			var target_pos = _global_to_grid_coords()+movement_direction
-			FOG_OF_WAR.reveal_from(target_pos)
-
-func _global_to_grid_coords():
-	return Vector2(int((global_position[0]-8)/16)+9, int((global_position[1]-8)/16)+3)
+			var target_pos = global_position + movement_direction
+			
+			moving_to_tile.emit(target_pos)
 
 func move(delta):
 	movement_progress += delta
@@ -111,10 +104,10 @@ func move(delta):
 	global_position = last_position + movement_dist
 
 	if movement_progress == 1:
-		if _global_to_grid_coords()[1] <= 0:
-			MAIN.show_shop()
-		else:
-			MAIN.hide_shop()
+		# if global_position.y <= 0:
+			# MAIN.show_shop()
+		# else:
+			# MAIN.hide_shop()
 		last_position = global_position
 		moving = false
 		movement_progress = 0
