@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var FOG_OF_WAR: TileMapLayer
+@export var MAIN: Node2D # TODO is this idiomatic???
 
 var fuel_remaining = 50 # TODO add a fuel meter to the UIOverlay
 var MAX_FUEL = 50
@@ -110,6 +111,10 @@ func move(delta):
 	global_position = last_position + movement_dist
 
 	if movement_progress == 1:
+		if _global_to_grid_coords()[1] <= 0:
+			MAIN.show_shop()
+		else:
+			MAIN.hide_shop()
 		last_position = global_position
 		moving = false
 		movement_progress = 0

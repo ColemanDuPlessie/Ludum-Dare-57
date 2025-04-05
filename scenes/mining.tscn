@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dmj7onsbuh3kj"]
+[gd_scene load_steps=14 format=4 uid="uid://dmj7onsbuh3kj"]
 
 [ext_resource type="Script" uid="uid://do52b6t0uecpq" path="res://scripts/gameplay_vars.gd" id="1_cexea"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_bd6dg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="7_g4nnd"]
 [ext_resource type="PackedScene" uid="uid://ohqdcn8ooec2" path="res://scenes/enemy.tscn" id="9_7c77r"]
 [ext_resource type="PackedScene" uid="uid://cqddiwdc6knkx" path="res://scenes/player_drill.tscn" id="10_pk1v7"]
+[ext_resource type="PackedScene" uid="uid://bpq7qbxrdhe41" path="res://scenes/shop.tscn" id="11_sffdr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k6jil"]
 font = ExtResource("3_k6jil")
@@ -88,10 +89,19 @@ position = Vector2(-132, -49)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_rxyb6")
 
+[node name="Shop" parent="UIOverlay" node_paths=PackedStringArray("currencies", "player_drill") instance=ExtResource("11_sffdr")]
+offset_left = 364.0
+offset_top = -106.0
+offset_right = 364.0
+offset_bottom = -106.0
+currencies = NodePath("../..")
+player_drill = NodePath("../../PlayerDrill")
+
 [node name="Enemy" parent="." node_paths=PackedStringArray("pathfinding") instance=ExtResource("9_7c77r")]
 position = Vector2(-56, 24)
 pathfinding = NodePath("../EnemyFloodfillCalc")
 
-[node name="PlayerDrill" parent="." node_paths=PackedStringArray("FOG_OF_WAR") instance=ExtResource("10_pk1v7")]
+[node name="PlayerDrill" parent="." node_paths=PackedStringArray("FOG_OF_WAR", "MAIN") instance=ExtResource("10_pk1v7")]
 position = Vector2(-8, -40)
 FOG_OF_WAR = NodePath("../FogOfWar")
+MAIN = NodePath("..")

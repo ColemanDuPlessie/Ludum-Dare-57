@@ -4,6 +4,16 @@ var current_gold = 0
 var current_gems = 0
 @onready var gold_counter = get_node("UIOverlay/GoldCounter")
 @onready var gems_counter = get_node("UIOverlay/GemCounter")
+@onready var UI = get_node("UIOverlay")
+@onready var shop = get_node("UIOverlay/Shop")
+
+func show_shop():
+	if !shop.is_inside_tree():
+		UI.add_child(shop)
+
+func hide_shop():
+	if shop.is_inside_tree():
+		UI.remove_child(shop)
 
 func _change_gold(new:int) -> void:
 	current_gold += new
@@ -45,7 +55,7 @@ func spend_gold_and_gems(gold_amt: int, gems_amt: int) -> bool:
 func _ready() -> void:
 	increment_gold(5) # TODO this is temporary
 	increment_gems(2)
-	pass # Replace with function body.
+	hide_shop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
