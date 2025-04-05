@@ -2,7 +2,7 @@ extends StaticBody2D
 
 const MOVE_SPEED = 1.5 # In tiles/second
 
-@export var pathfinding: Node
+var pathfinding: Node
 
 var moving = false
 var movement_progress = 0
@@ -18,8 +18,6 @@ func _set_grid_coords(loc: Vector2):
 	global_position = Vector2((loc[0]-9)*16+8, (loc[1]-3)*16+8)
 
 func _ready():
-	_set_grid_coords(pathfinding.get_enemy_spawn_location())
-	# _global_to_grid_coords()
 	last_position = global_position
 
 func _physics_process(delta):

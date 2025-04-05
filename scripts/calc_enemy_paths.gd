@@ -21,8 +21,6 @@ func _ready():
 		null_map.append(null)
 	pathing_map = [initial_pathing_map.duplicate(),]
 
-	calc_pathing()
-
 func get_enemy_spawn_location() -> Vector2:
 	var rand = rng.randf_range(0, spawn_weighting)
 	var current = 0.0
@@ -75,7 +73,7 @@ func calc_pathing() -> void:
 
 		for dir in DIRECTIONS:
 			var new_loc: Vector2 = currently_processing + dir
-
+			
 			if new_loc[0] < 0 or new_loc[1] < 0 or new_loc[1] >= Static.GAME_WIDTH or new_loc[0] > map.max_generated_depth:
 				continue
 
@@ -85,7 +83,7 @@ func calc_pathing() -> void:
 			var correct_idx = get_cell_corrected_idx(new_loc[1], new_loc[0])
 			var tile_type = map.get_cell(correct_idx.x, correct_idx.y)
 			
-			if tile_type == null: # If there is no tile...
+			if tile_type == Vector2i(-1, -1): # If there is no tile...
 				processing_queue.append(new_loc)
 				
 				pathing_map[new_loc[0]][new_loc[1]] = pathing_map[currently_processing[0]][currently_processing[1]]+1

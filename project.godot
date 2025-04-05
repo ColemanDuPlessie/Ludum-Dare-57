@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ludum Dare 57"
-run/main_scene="uid://dmj7onsbuh3kj"
+run/main_scene="uid://b2ux1117tt2kk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,10 @@ Static="*res://scripts/static.gd"
 window/stretch/mode="viewport"
 window/stretch/scale=4.0
 window/stretch/scale_mode="integer"
+
+[dotnet]
+
+project/assembly_name="Ludum Dare 57"
 
 [input]
 
