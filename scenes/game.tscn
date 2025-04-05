@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ux1117tt2kk"]
+
+[ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
+[ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
+[ext_resource type="Script" uid="uid://njroyot21xv6" path="res://scripts/fog_of_war.gd" id="3_u5sy4"]
+[ext_resource type="Script" uid="uid://dd2soerf0pqs3" path="res://scripts/game_manager.gd" id="4_gee14"]
+[ext_resource type="Script" uid="uid://8odk8g0qlhui" path="res://scripts/camera.gd" id="5_0tnpc"]
+
+[node name="Game" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Background" type="TileMapLayer" parent="World"]
+tile_set = ExtResource("1_iywne")
+collision_enabled = false
+
+[node name="WallsResources" type="TileMapLayer" parent="World" node_paths=PackedStringArray("FOG_OF_WAR", "BACKGROUND")]
+tile_set = ExtResource("1_iywne")
+script = ExtResource("2_p57ef")
+FOG_OF_WAR = NodePath("../FogOfWar")
+BACKGROUND = NodePath("../Background")
+
+[node name="FogOfWar" type="TileMapLayer" parent="World"]
+tile_set = ExtResource("1_iywne")
+collision_enabled = false
+script = ExtResource("3_u5sy4")
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("world")]
+script = ExtResource("4_gee14")
+world = NodePath("../World")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_priority = 1
+script = ExtResource("5_0tnpc")
+
+[connection signal="spawned_drill" from="GameManager" to="World/FogOfWar" method="_on_drill_spawned"]

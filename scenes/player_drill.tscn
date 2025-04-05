@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://bxj83m6cgoi3r" path="res://art/drill.tres" id="2_a21nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8hpy"]
-size = Vector2(16, 16)
+size = Vector2(14, 16)
 
 [node name="PlayerDrill" type="CharacterBody2D"]
 script = ExtResource("1_o55oq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
 texture = ExtResource("2_a21nq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_c8hpy")
