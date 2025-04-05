@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Ludum Dare 57"
+config/name="Ludem Dare 57"
 run/main_scene="uid://dmj7onsbuh3kj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
