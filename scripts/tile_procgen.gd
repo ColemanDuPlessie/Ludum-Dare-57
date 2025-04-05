@@ -42,8 +42,6 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 	for x_pos in range(-GAME_WIDTH/2, GAME_WIDTH/2):
 		var tile_pos = Vector2i(x_pos, max_generated_depth-HEIGHT_OFFSET)
 
-		print(tile_pos)
-
 		if rng.randi_range(1, 20) == 1:
 			set_cell(tile_pos, 0, GOLD_TILE)
 		elif rng.randi_range(1, 40) == 1:
