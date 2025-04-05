@@ -5,10 +5,10 @@ const HEIGHT_OFFSET = 3
 
 const CORRECTION_VECTOR = Vector2(GAME_WIDTH/2, HEIGHT_OFFSET) # Add this vector to a tile's coordinates to get its 0-indexed coordinates.
 
-const DIRT_TILE = Vector2i(1, 1)
-const GOLD_TILE = Vector2i(2, 0)
-const GEMS_TILE = Vector2i(3, 1)
-const OBSIDIAN_TILE = Vector2i(0, 1)
+const DIRT_TILE = Vector2i(16, 1)
+const GOLD_TILE = Vector2i(17, 1)
+const GEMS_TILE = Vector2i(16, 2)
+const OBSIDIAN_TILE = Vector2i(16, 5)
 
 var rng = RandomNumberGenerator.new();
 
@@ -41,6 +41,9 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 	max_generated_depth += 1
 	for x_pos in range(-GAME_WIDTH/2, GAME_WIDTH/2):
 		var tile_pos = Vector2i(x_pos, max_generated_depth-HEIGHT_OFFSET)
+
+		print(tile_pos)
+
 		if rng.randi_range(1, 20) == 1:
 			set_cell(tile_pos, 0, GOLD_TILE)
 		elif rng.randi_range(1, 40) == 1:
