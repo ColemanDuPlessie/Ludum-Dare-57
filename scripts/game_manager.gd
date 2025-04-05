@@ -46,11 +46,7 @@ func begin_combat():
 
 		var world_spawn_location = Vector2(spawn_location.x - Static.GAME_WIDTH / 2.0, spawn_location.y) * 16 + Vector2.ONE * 8
 		
-		print(spawn_location)
-		print(world_spawn_location)
-
-		print(current_player.global_position)
-		print(floor(current_player.global_position / 16))
+		print("Spawned at: ", spawn_location)
 		
 		var enemy: Node2D = enemy_scene.instantiate()
 		enemy.pathfinding = pathfinding

@@ -32,13 +32,15 @@ func get_enemy_spawn_location() -> Vector2:
 
 # Returns the unit vector (in DIRECTIONS) that results in the enemy moving towards the surface.
 func move_enemy(loc: Vector2) -> Vector2:
-	if loc[0] < 0 or loc[1] < 0 or loc[1] > map.max_generated_depth or loc[0] > Static.GAME_WIDTH or pathing_map[loc[1]][loc[0]] == null:
+	var lookup_idx = get_lookup_corrected_idx(loc.x, loc.y)
+
+	if lookup_idx[0] < 0 or lookup_idx[1] < 0 or lookup_idx[1] > map.max_generated_depth or lookup_idx[0] > Static.GAME_WIDTH or pathing_map[lookup_idx[1]][lookup_idx[0]] == null:
 		return Vector2(0, 0) # The enemy is not currently in an open tunnel space...
 	else:
 		var best = null
 		var best_score = null
 		for dir in DIRECTIONS:
-			var new = loc + dir
+			var new = lookup_idx + dir
 			var score = pathing_map[new[1]][new[0]]
 			if score != null and (best_score == null or score < best_score):
 				best_score = score
@@ -53,6 +55,9 @@ func sum(arr:Array):
 
 func get_cell_corrected_idx(x: int, y: int):
 	return Vector2(x - floor(Static.GAME_WIDTH / 2.0), y)
+
+func get_lookup_corrected_idx(x: float, y: float):
+	return Vector2(floor(x / 16) + floor(Static.GAME_WIDTH / 2.0), floor(y / 16))
 
 func calc_pathing() -> void:
 	pathing_map = [initial_pathing_map.duplicate(),]
