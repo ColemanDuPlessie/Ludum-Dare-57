@@ -1,9 +1,9 @@
 extends TileMapLayer
 
 @export var FOG_OF_WAR: TileMapLayer
-const FOG_TILE = Vector2i(17, 6)
+const FOG_TILE = Vector2i(19, 1)
 @export var BACKGROUND: TileMapLayer
-const BACKGROUND_TILE = Vector2i(16, 5)
+const BACKGROUND_TILE = Vector2i(19, 3)
 
 const GAME_WIDTH = 18
 const HEIGHT_OFFSET = 3
