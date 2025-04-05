@@ -89,7 +89,7 @@ func check_movement_direction(delta):
 					tile_procgen.destroy_tile(location.x, location.y)
 		
 		if moving == true:
-			var target_pos = global_position + movement_direction
+			var target_pos = global_position + movement_direction * 16
 			
 			moving_to_tile.emit(target_pos)
 
