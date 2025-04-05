@@ -14,11 +14,15 @@ const DIRT_TILE = Vector2i(16, 1)
 const GOLD_TILE = Vector2i(17, 1)
 const GEMS_TILE = Vector2i(16, 2)
 const OBSIDIAN_TILE = Vector2i(16, 3)
+const BEDROCK = Vector2i(16, 5)
 
-const FUEL_COSTS = {DIRT_TILE : 1,
-					GOLD_TILE : 1,
-					GEMS_TILE : 2,
-					OBSIDIAN_TILE : 10}
+const FUEL_COSTS = {
+	DIRT_TILE : 1,
+	GOLD_TILE : 1,
+	GEMS_TILE : 2,
+	OBSIDIAN_TILE : 10,
+	BEDROCK : 999999999,
+}
 
 var rng = RandomNumberGenerator.new();
 
@@ -49,15 +53,18 @@ func destroy_tile(x: int, y:int) -> Vector2i:
 # Call if the player is nearing the end of the screen
 func generate_new() -> void: # TODO this is the barest of placeholders, there are so many fun things we could do here
 	max_generated_depth += 1
-	for x_pos in range(-GAME_WIDTH/2, GAME_WIDTH/2):
+	for x_pos in range(-GAME_WIDTH/2 - 20, GAME_WIDTH/2 + 20 + 1):
 		var tile_pos = Vector2i(x_pos, max_generated_depth-HEIGHT_OFFSET)
 
-		if rng.randi_range(1, 20) == 1:
+		if x_pos <= -GAME_WIDTH / 2 - 1 || x_pos >= GAME_WIDTH / 2 + 1:
+			set_cell(tile_pos, 0, BEDROCK)
+		elif rng.randi_range(1, 20) == 1:
 			set_cell(tile_pos, 0, GOLD_TILE)
 		elif rng.randi_range(1, 40) == 1:
 			set_cell(tile_pos, 0, GEMS_TILE)
 		else:
 			set_cell(tile_pos, 0, DIRT_TILE)
 		
-		FOG_OF_WAR.set_cell(tile_pos, 0, FOG_TILE)
-		BACKGROUND.set_cell(tile_pos, 0, BACKGROUND_TILE)
+		if x_pos > -GAME_WIDTH / 2 - 1 && x_pos < GAME_WIDTH / 2 + 1:
+			FOG_OF_WAR.set_cell(tile_pos, 0, FOG_TILE)
+			BACKGROUND.set_cell(tile_pos, 0, BACKGROUND_TILE)

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed: float = 30
+var speed: float = 60
 var rise_gravity: float = 400
 var fall_gravity: float = 600
 var jump: float = 120
