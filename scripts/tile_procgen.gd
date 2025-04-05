@@ -5,6 +5,7 @@ const FOG_TILE = Vector2i(19, 1)
 @export var BACKGROUND: TileMapLayer
 const BACKGROUND_TILE = Vector2i(19, 3)
 
+const DUPLO_LOC_DELTAS = [Vector2(0, 0), Vector2(-1, 0), Vector2(0, -1), Vector2(-1, -1)]
 
 var rng = RandomNumberGenerator.new()
 var max_generated_depth = -10
@@ -24,6 +25,13 @@ func _on_player_moving_to_tile(location):
 	
 	if tile_location.y > max_generated_depth - 8:
 		generate_new()
+
+func check_duplo_exists(loc: Vector2) -> bool:
+	var true_loc = floor(loc/16)
+	for delta in DUPLO_LOC_DELTAS:
+		if get_cell_atlas_coords(true_loc+delta) == Vector2i(-1, -1):
+			return false
+	return true
 
 func get_cell(x: int, y: int) -> Vector2i:
 	return get_cell_atlas_coords(Vector2i(x, y))
@@ -50,7 +58,7 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 			pass
 		elif rng.randi_range(1, 20) == 1:
 			set_cell(tile_pos, 0, Static.GOLD_TILE)
-		elif rng.randi_range(1, 40) == 1:
+		elif rng.randi_range(1, 30) == 1:
 			set_cell(tile_pos, 0, Static.GEMS_TILE)
 		else:
 			set_cell(tile_pos, 0, Static.DIRT_TILE)

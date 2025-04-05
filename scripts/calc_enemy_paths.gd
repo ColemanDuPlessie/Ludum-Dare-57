@@ -11,6 +11,8 @@ const SPAWN_SOFTMAX_STRENGTH = 2.0
 const MIN_SPAWN_CHANCE = 0.01 # If there is less than this chance of enemies spawning in a tile, they won't spawn there at all.
 const DIRECTIONS: Array[Vector2] = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 
+const DOWN = Vector2.RIGHT # This terrible, horrible line of code is a result of pathing_map being in the form (Y, X). DO NOT CHANGE!
+
 var rng = RandomNumberGenerator.new();
 
 func _ready():
@@ -92,7 +94,7 @@ func calc_pathing() -> void:
 				processing_queue.append(new_loc)
 				
 				pathing_map[new_loc[0]][new_loc[1]] = pathing_map[currently_processing[0]][currently_processing[1]]+1
-			elif dir == Vector2.DOWN: # If this is a floor tile...
+			elif dir == DOWN: # If this is a floor tile... DO NOT CHANGE TO VECTOR2.DOWN!
 				spawn_locations[Vector2(currently_processing[1], currently_processing[0])] = SPAWN_SOFTMAX_STRENGTH ** currently_processing[0]
 
 		processing_queue_pointer += 1
