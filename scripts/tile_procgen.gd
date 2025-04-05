@@ -36,10 +36,7 @@ func _on_drill_spawned(player):
 	
 func _on_player_moving_to_tile(location):
 	var tile_location = floor((location - Vector2.ONE * 8) / 16)
-
-	print(tile_location.y)
-	print(max_generated_depth)
-
+	
 	if tile_location.y > max_generated_depth - 8:
 		generate_new()
 
