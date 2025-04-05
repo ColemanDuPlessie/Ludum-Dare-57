@@ -13,12 +13,17 @@ var grid_aligned_position = Vector2.ZERO
 func _global_to_grid_coords():
 	grid_aligned_position = Vector2(int((global_position[0]-8)/16)+9, int((global_position[1]-8)/16)+3)
 
+func _set_grid_coords(loc: Vector2):
+	grid_aligned_position = loc
+	global_position = Vector2((loc[0]-9)*16+8, (loc[1]-3)*16+8)
+
 func _ready():
-	_global_to_grid_coords()
+	_set_grid_coords(pathfinding.get_enemy_spawn_location())
+	# _global_to_grid_coords()
 	last_position = global_position
 
 func _physics_process(delta):
-	if !moving:
+	if !moving: # TODO also add a state for "digging out of the ground for a second"
 		get_movement_direction(delta)
 	
 	if moving:
@@ -27,7 +32,6 @@ func _physics_process(delta):
 func get_movement_direction(delta):
 	movement_direction = pathfinding.move_enemy(grid_aligned_position)
 	moving = true
-	# TODO maybe add back in look_at(global_position + movement_direction)
 
 
 func move(delta):

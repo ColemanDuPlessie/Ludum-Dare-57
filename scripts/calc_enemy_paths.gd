@@ -2,10 +2,17 @@ extends Node
 
 @export var map: TileMapLayer
 var pathing_map # COORDS ARE (Y, X), NOT (X, Y), because width is fixed but height varies!
+var spawn_locations # This is a dictionary between tiles (in (X, Y) coords) and spawn probabilities (which sum to spawn_weighting!)
+var spawn_weighting
 var initial_pathing_map
 var null_map
 
+const SPAWN_SOFTMAX_STRENGTH = 2.0
+const MIN_SPAWN_CHANCE = 0.01 # If there is less than this chance of enemies spawning in a tile, they won't spawn there at all.
 const DIRECTIONS = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]
+const DOWN = Vector2(1, 0)
+
+var rng = RandomNumberGenerator.new();
 
 func _ready():
 	initial_pathing_map = []
@@ -16,9 +23,18 @@ func _ready():
 	pathing_map = [initial_pathing_map.duplicate(),]
 	calc_pathing()
 
+func get_enemy_spawn_location() -> Vector2:
+	var rand = rng.randf_range(0, spawn_weighting)
+	var current = 0.0
+	for loc in spawn_locations.keys():
+		current += spawn_locations[loc]
+		if current > rand:
+			return loc
+	return Vector2(-1, -1) # THIS SHOULD NEVER OCCUR
+
 # Returns the unit vector (in DIRECTIONS) that results in the enemy moving towards the surface.
 func move_enemy(loc: Vector2) -> Vector2:
-	if loc[0] < 0 or loc[1] < 0 or loc[0] > map.max_generated_depth or loc[1] > map.GAME_WIDTH or pathing_map[loc[1]][loc[0]] == null:
+	if loc[0] < 0 or loc[1] < 0 or loc[1] > map.max_generated_depth or loc[0] > map.GAME_WIDTH or pathing_map[loc[1]][loc[0]] == null:
 		return Vector2(0, 0) # The enemy is not currently in an open tunnel space...
 	else:
 		var best = null
@@ -31,8 +47,15 @@ func move_enemy(loc: Vector2) -> Vector2:
 				best = dir
 		return best
 
+func sum(arr:Array):
+	var result = 0
+	for i in arr:
+		result+=i
+	return result
+
 func calc_pathing() -> void:
 	pathing_map = [initial_pathing_map.duplicate(),]
+	spawn_locations = {}
 	for i in range(1, map.max_generated_depth):
 		pathing_map.append(null_map.duplicate())
 	var processing_queue = []
@@ -52,4 +75,15 @@ func calc_pathing() -> void:
 				if tile_type != map.DIRT_TILE and tile_type != map.GOLD_TILE and tile_type != map.GEMS_TILE and tile_type != map.OBSIDIAN_TILE: # If there is no tile...
 					processing_queue.append(new_loc)
 					pathing_map[new_loc[0]][new_loc[1]] = pathing_map[currently_processing[0]][currently_processing[1]]+1
+				elif dir == DOWN: # If this is a floor tile...
+					spawn_locations[Vector2(currently_processing[1], currently_processing[0])] = SPAWN_SOFTMAX_STRENGTH ** currently_processing[0]
 		processing_queue_pointer += 1
+	
+	var spawn_locations_removed = true
+	while spawn_locations_removed:
+		spawn_locations_removed = false
+		spawn_weighting = sum(spawn_locations.values())
+		for loc in spawn_locations.keys():
+			if spawn_locations[loc] < spawn_weighting * MIN_SPAWN_CHANCE:
+				spawn_locations.erase(loc)
+				spawn_locations_removed = true
