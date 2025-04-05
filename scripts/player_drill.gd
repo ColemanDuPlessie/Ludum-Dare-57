@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal moving_to_tile(location)
 
-@export var MAIN: Node2D # TODO is this idiomatic???
+var MOVE_SPEED = 4 # TODO we can upgrade this too!
 
 var fuel_remaining = 50 # TODO add a fuel meter to the UIOverlay
 var MAX_FUEL = 50
@@ -94,7 +94,7 @@ func check_movement_direction(delta):
 			moving_to_tile.emit(target_pos)
 
 func move(delta):
-	movement_progress += delta * 4
+	movement_progress += delta * MOVE_SPEED
 
 	movement_progress = clampf(movement_progress, 0, 1)
 
@@ -104,10 +104,10 @@ func move(delta):
 	global_position = last_position + movement_dist
 
 	if movement_progress == 1:
-		# if global_position.y <= 0:
-			# MAIN.show_shop()
-		# else:
-			# MAIN.hide_shop()
+		if global_position.y <= 16:
+			Static.show_shop()
+		else:
+			Static.hide_shop()
 		last_position = global_position
 		moving = false
 		movement_progress = 0

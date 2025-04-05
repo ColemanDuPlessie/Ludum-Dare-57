@@ -31,9 +31,9 @@ func get_cell(x: int, y: int) -> Vector2i:
 func destroy_tile(x: int, y:int) -> Vector2i:
 	var destroyed = get_cell(x, y)
 	if destroyed == Static.GOLD_TILE:
-		get_parent().increment_gold(1)
+		Static.increment_gold(1)
 	elif destroyed == Static.GEMS_TILE:
-		get_parent().increment_gems(1)
+		Static.increment_gems(1)
 	erase_cell(Vector2i(x, y))
 	return destroyed
 

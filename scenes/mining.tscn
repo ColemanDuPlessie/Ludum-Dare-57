@@ -100,6 +100,5 @@ player_drill = NodePath("../../PlayerDrill")
 [node name="Enemy" parent="." instance=ExtResource("9_7c77r")]
 position = Vector2(-56, 24)
 
-[node name="PlayerDrill" parent="." node_paths=PackedStringArray("MAIN") instance=ExtResource("10_pk1v7")]
+[node name="PlayerDrill" parent="." instance=ExtResource("10_pk1v7")]
 position = Vector2(-8, -40)
-MAIN = NodePath("..")
