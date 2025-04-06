@@ -14,6 +14,9 @@ const WEAPON_UPGRADE_COSTS = [5, 10, 15]
 const MAX_RADAR_LEVEL = 4
 const RADAR_UPGRADE_COSTS = [3, 7, 12, 18]
 
+const MAX_DRILL_LEVEL = 4
+const DRILL_UPGRADE_COSTS = [4, 5, 9, 11]
+
 func _ready():
 	Static.shop = self
 	
@@ -38,9 +41,17 @@ func _on_weapon_upgrade_pressed() -> void:
 		# TODO change button graphics...
 
 func _on_radar_upgrade_pressed() -> void:
+	print("RADAR UP")
 	if Static.PLAYER_RADAR_LEVEL >= MAX_RADAR_LEVEL:
 		return
 	if Static.spend_gems(RADAR_UPGRADE_COSTS[Static.PLAYER_RADAR_LEVEL]):
 		Static.PLAYER_RADAR_LEVEL += 1
 		player_drill.update_radar_power()
+		# TODO change button graphics...
+
+func _on_drill_upgrade_pressed() -> void: # TODO implement!
+	if Static.PLAYER_DRILL_LEVEL >= MAX_DRILL_LEVEL:
+		return
+	if Static.spend_gems(DRILL_UPGRADE_COSTS[Static.PLAYER_DRILL_LEVEL]):
+		Static.PLAYER_DRILL_LEVEL += 1
 		# TODO change button graphics...

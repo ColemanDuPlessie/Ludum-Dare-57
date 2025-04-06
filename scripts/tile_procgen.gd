@@ -68,11 +68,11 @@ func destroy_tile(x: int, y:int) -> Vector2i:
 	elif destroyed == Static.HELL_STONE_GOLD:
 		$stone.play()
 		$gold.play()
-		Static.increment_gold(3)
+		Static.increment_gold(4)
 	elif destroyed == Static.HELL_STONE_GEMS:
 		$stone.play()
 		$gem.play()
-		Static.increment_gems(3)
+		Static.increment_gems(4)
 	elif destroyed == Static.HELL_STONE:
 		$stone.play()
 	erase_cell(Vector2i(x, y))
@@ -110,21 +110,21 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 			if type == "DIRT":
 				if rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.GOLD_TILE)
-				elif rng.randi_range(1, 30) == 1:
+				elif rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.GEMS_TILE)
 				else:
 					set_cell(tile_pos, 0, Static.DIRT_TILE)
 			elif type == "STONE":
 				if rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.STONE_GOLD)
-				elif rng.randi_range(1, 30) == 1:
+				elif rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.STONE_GEMS)
 				else:
 					set_cell(tile_pos, 0, Static.STONE)
 			else:
-				if rng.randi_range(1, 20) == 1:
+				if rng.randi_range(1, 25) == 1:
 					set_cell(tile_pos, 0, Static.HELL_STONE_GOLD)
-				elif rng.randi_range(1, 30) == 1:
+				elif rng.randi_range(1, 25) == 1:
 					set_cell(tile_pos, 0, Static.HELL_STONE_GEMS)
 				else:
 					set_cell(tile_pos, 0, Static.HELL_STONE)

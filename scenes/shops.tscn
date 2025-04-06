@@ -71,6 +71,7 @@ patch_margin_right = 3
 patch_margin_bottom = 4
 
 [node name="Radar" type="Button" parent="Researcher/UIOrigin/UI"]
+z_index = 700
 layout_mode = 0
 offset_left = 6.0
 offset_top = 3.0
@@ -99,6 +100,42 @@ label_settings = SubResource("LabelSettings_62jwy")
 horizontal_alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="Researcher/UIOrigin/UI/Radar"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 1.0
+offset_right = 75.0
+offset_bottom = 10.0
+texture = ExtResource("5_ehphy")
+
+[node name="Drill" type="Button" parent="Researcher/UIOrigin/UI"]
+z_index = 700
+offset_left = 6.0
+offset_top = 14.0
+offset_right = 82.0
+offset_bottom = 24.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ehphy")
+flat = true
+
+[node name="Label" type="Label" parent="Researcher/UIOrigin/UI/Drill"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "DRILL"
+label_settings = SubResource("LabelSettings_62jwy")
+
+[node name="Price" type="Label" parent="Researcher/UIOrigin/UI/Drill"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 9.0
+text = "10"
+label_settings = SubResource("LabelSettings_62jwy")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Researcher/UIOrigin/UI/Drill"]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 1.0
@@ -152,6 +189,7 @@ patch_margin_right = 5
 patch_margin_bottom = 4
 
 [node name="FuelTank" type="Button" parent="Mechanic/UIOrigin/UI"]
+z_index = 700
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
@@ -188,6 +226,7 @@ offset_bottom = 9.0
 texture = ExtResource("5_uc15s")
 
 [node name="Weapon" type="Button" parent="Mechanic/UIOrigin/UI"]
+z_index = 700
 layout_mode = 0
 offset_left = 3.0
 offset_top = 14.0
@@ -226,6 +265,7 @@ texture = ExtResource("5_ehphy")
 [connection signal="body_entered" from="Researcher/Area" to="Researcher" method="_player_entered_area"]
 [connection signal="body_exited" from="Researcher/Area" to="Researcher" method="_player_exited_area"]
 [connection signal="button_down" from="Researcher/UIOrigin/UI/Radar" to="." method="_on_radar_upgrade_pressed"]
+[connection signal="button_down" from="Researcher/UIOrigin/UI/Drill" to="." method="_on_drill_upgrade_pressed"]
 [connection signal="body_entered" from="Mechanic/Area" to="Mechanic" method="_player_entered_area"]
 [connection signal="body_exited" from="Mechanic/Area" to="Mechanic" method="_player_exited_area"]
 [connection signal="button_down" from="Mechanic/UIOrigin/UI/FuelTank" to="." method="_on_fuel_upgrade_pressed"]
