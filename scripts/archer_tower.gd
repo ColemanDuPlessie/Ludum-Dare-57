@@ -21,7 +21,7 @@ func _ready() -> void:
 func shoot(tgt: Vector2) -> void:
 	var unit_vec = (tgt-global_position) / euclidean_dist_to(tgt)
 	turret.global_position = global_position + unit_vec * TURRET_PIXEL_OFFSET
-	turret.global_rotation = 0 # TODO
+	turret.global_rotation = get_angle_to(tgt)
 	pass # TODO
 
 func find_target(): # Returns Vector2 or null
