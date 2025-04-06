@@ -50,6 +50,8 @@ func open_at(loc: Vector2) -> void:
 		upgrade_button.scale = Vector2(1, 1)
 		if TOWER_UPGRADE_COSTS[linked_tower.TYPE][linked_tower.level] == 3:
 			get_node("UpgradeTower/UpgradeIcon").play("3")
+		elif TOWER_UPGRADE_COSTS[linked_tower.TYPE][linked_tower.level] == 6:
+			get_node("UpgradeTower/UpgradeIcon").play("6")
 		
 	appear()
 

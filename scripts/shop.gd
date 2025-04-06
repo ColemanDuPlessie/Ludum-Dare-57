@@ -40,7 +40,7 @@ func _on_fuel_upgrade_pressed() -> void:
 			coin.visible = false
 			fuel_label.text = "FUELTANK MAX"
 		else:
-			fuel_price.text = str(WEAPON_UPGRADE_COSTS[current_fuel_level-1])
+			fuel_price.text = str(FUEL_UPGRADE_COSTS[current_fuel_level-1])
 			fuel_label.text = "FUELTANK " + str(current_fuel_level)
 
 func _on_weapon_upgrade_pressed() -> void:
