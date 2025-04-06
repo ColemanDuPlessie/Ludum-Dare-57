@@ -73,5 +73,8 @@ func _process(delta: float) -> void:
 		shoot(target)
 		time_remaining_before_attack = ATTACK_DELAY[level]
 
+
+
 func destroy() -> void:
 	queue_free()
+	Static.all_tower_locations.erase(global_position)

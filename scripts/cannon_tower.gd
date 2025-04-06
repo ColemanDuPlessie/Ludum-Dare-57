@@ -64,3 +64,4 @@ func _process(delta: float) -> void:
 
 func destroy() -> void:
 	queue_free()
+	Static.all_tower_locations.erase(global_position)
