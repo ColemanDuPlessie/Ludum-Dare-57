@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bk03q52ki3drb"]
+[gd_scene load_steps=29 format=3 uid="uid://bk03q52ki3drb"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://bja8soerass2i" path="res://scenes/camp.tscn" id="2_5newe"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="15_5newe"]
 [ext_resource type="Script" uid="uid://paht1rfv3cmy" path="res://scripts/resource_ui.gd" id="15_37s47"]
 [ext_resource type="Texture2D" uid="uid://bluer54g68kfd" path="res://art/heart.tres" id="16_37s47"]
+[ext_resource type="Script" uid="uid://cnvrvkw6stjqw" path="res://scripts/round_anouncement.gd" id="18_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://cu4c0o3skged" path="res://scenes/tower_upgrade_menu.tscn" id="22_37s47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_264po"]
@@ -35,6 +36,10 @@ font_size = 8
 font = ExtResource("7_vtaks")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
+font = ExtResource("7_vtaks")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_37s47"]
 font = ExtResource("7_vtaks")
 font_size = 8
 
@@ -182,6 +187,36 @@ texture = ExtResource("16_37s47")
 
 [node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
 scale = Vector2(1, 0.989618)
+
+[node name="RoundAnouncement" type="Control" parent="Camera2D/UIOverlay"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -16.0
+offset_right = 127.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("18_bt5mj")
+
+[node name="Label" type="Label" parent="Camera2D/UIOverlay/RoundAnouncement"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -16.0
+offset_right = 127.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "ROUND 2"
+label_settings = SubResource("LabelSettings_37s47")
+horizontal_alignment = 1
 
 [node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
 script = ExtResource("6_p57ef")
