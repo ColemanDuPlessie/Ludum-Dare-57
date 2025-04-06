@@ -19,7 +19,7 @@ func _ready():
 	initial_pathing_map = []
 	null_map = []
 	for i in range(Static.GAME_WIDTH):
-		initial_pathing_map.append(0)
+		initial_pathing_map.append(abs(i - Static.GAME_WIDTH / 2.0))
 		null_map.append(null)
 	pathing_map = [initial_pathing_map.duplicate(),]
 

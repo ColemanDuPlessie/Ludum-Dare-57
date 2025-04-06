@@ -53,7 +53,7 @@ func _physics_process(true_delta):
 
 	repathfind_timer -= delta
 
-	if global_position.y <= 8:
+	if global_position.y <= 8 && global_position.x >= -24 && global_position.x <= 24:
 			Static.game_manager.take_damage()
 			
 			destroy()
