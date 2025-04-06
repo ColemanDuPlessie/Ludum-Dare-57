@@ -66,16 +66,22 @@ func start_game():
 
 func end_game():
 	current_player.queue_free()
-	print("Game over!")
 	
 	for i in Static.all_enemies.duplicate():
 		i.destroy()
+
 	Static.all_enemies = []
+
 	for i in Static.all_tower_locations.values():
 		i.destroy()
+
 	Static.all_tower_locations = {}
 
-	start_game()
+	Static.game_in_progress = false
+
+	start_menu.fade_in()
+	drill_menu.disable()
+	resource_menu.disable()
 
 func spawn_enemy(scene: PackedScene) -> void:
 	var spawn_location = pathfinding.get_enemy_spawn_location()
