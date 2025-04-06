@@ -1,20 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://clg5a6pqt2ago"]
+[gd_scene load_steps=9 format=3 uid="uid://clg5a6pqt2ago"]
 
 [ext_resource type="Script" uid="uid://k6xjouou03h5" path="res://scripts/archer_tower.gd" id="1_sb3hj"]
 [ext_resource type="Texture2D" uid="uid://d1ijh6o7fa55h" path="res://art/archer_tower_base.tres" id="2_o73lx"]
-[ext_resource type="Texture2D" uid="uid://efr6x457wogt" path="res://art/archer_tower_launcher.tres" id="3_t805i"]
+[ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="3_o73lx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sb3hj"]
 size = Vector2(32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t805i"]
+atlas = ExtResource("3_o73lx")
+region = Rect2(200, 88, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdgbl"]
+atlas = ExtResource("3_o73lx")
+region = Rect2(200, 120, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o73lx"]
+atlas = ExtResource("3_o73lx")
+region = Rect2(200, 88, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbh8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t805i")
+}],
+"loop": true,
+"name": &"Ready",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdgbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o73lx")
+}],
+"loop": true,
+"name": &"Reloading",
+"speed": 4.0
+}]
+
 [node name="Archer" type="StaticBody2D"]
 script = ExtResource("1_sb3hj")
 
-[node name="ArcherGraphicsTODO" type="Sprite2D" parent="."]
+[node name="ArcherSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_o73lx")
 
 [node name="TowerShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sb3hj")
 
-[node name="ArcherTurretTODO" type="Sprite2D" parent="."]
-texture = ExtResource("3_t805i")
+[node name="ArcherTurretSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 0)
+sprite_frames = SubResource("SpriteFrames_kbh8i")
+animation = &"Reloading"
