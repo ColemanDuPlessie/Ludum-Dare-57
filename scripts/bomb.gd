@@ -5,7 +5,7 @@ const DMG = 8
 const FLIGHT_TIME = 0.4
 const PIXEL_HEIGHT_PEAK = 40
 const PIXEL_AOE_RADIUS = 12
-const GRAPHICS_LINGER_DURATION = 0.2
+const GRAPHICS_LINGER_DURATION = 0.35
 
 var time_remaining
 
