@@ -70,7 +70,7 @@ func destroy() -> void:
 
 func take_damage(dmg: int) -> void:
 		hp -= dmg
-		 # TODO health indicator goes here!
+
 		if hp <= 0:
 			destroy()
 
