@@ -7,7 +7,6 @@
 size = Vector2(14, 16)
 
 [node name="PlayerDrill" type="CharacterBody2D"]
-collision_layer = 2049
 script = ExtResource("1_o55oq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
