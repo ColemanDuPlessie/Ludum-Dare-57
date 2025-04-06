@@ -1,12 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://dtq5luge7156h"]
 
 [ext_resource type="Script" uid="uid://c5ifnuyv6gh7b" path="res://scripts/player.gd" id="1_g2els"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://c1gxm83es5hgy" path="res://art/player_0.tres" id="2_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://dtak1easrt8wu" path="res://art/player_fall.tres" id="2_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://1h436fdl28l" path="res://art/player_1.tres" id="3_dqkch"]
-[ext_resource type="Texture2D" uid="uid://dunajkxq2bq1r" path="res://art/player_jump.tres" id="3_qlg0r"]
-=======
 [ext_resource type="Texture2D" uid="uid://dwn33k5nlxdn8" path="res://art/head.png" id="2_qhqgy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3vyb7"]
@@ -60,7 +54,6 @@ region = Rect2(51, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
 atlas = SubResource("CompressedTexture2D_dqkch")
 region = Rect2(68, 0, 16, 16)
->>>>>>> Stashed changes
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{

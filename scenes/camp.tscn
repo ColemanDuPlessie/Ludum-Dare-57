@@ -124,6 +124,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_pl11u")
 flat = true
 
 [node name="Hover" type="ColorRect" parent="UIOrigin/UI/StartRound"]
+layout_mode = 0
 offset_left = -3.0
 offset_right = 99.0
 offset_bottom = 10.0
