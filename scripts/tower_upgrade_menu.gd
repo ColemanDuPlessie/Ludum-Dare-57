@@ -68,7 +68,7 @@ func _on_close_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 
 
 func _on_upgrade_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if appearing or disappearing:
+	if (appearing or disappearing) and size < 0.95:
 		return
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed('mouse_click'):
@@ -77,6 +77,8 @@ func _on_upgrade_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			disappear()
 
 func _on_sell_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if (appearing or disappearing) and size < 0.95:
+		return
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed('mouse_click'):
 			linked_tower.destroy()

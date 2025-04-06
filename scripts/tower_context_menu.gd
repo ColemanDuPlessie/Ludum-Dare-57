@@ -58,7 +58,7 @@ func build_arrow_tower() -> void:
 	Static.all_tower_locations[global_position] = tower
 
 func _on_arrow_tower_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if appearing or disappearing:
+	if (appearing or disappearing) and size < 0.95:
 		return
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed('mouse_click'):
@@ -74,7 +74,7 @@ func build_cannon_tower() -> void:
 	Static.all_tower_locations[global_position] = tower
 
 func _on_cannon_tower_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if appearing or disappearing:
+	if (appearing or disappearing) and size < 0.95:
 		return
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed('mouse_click'):
