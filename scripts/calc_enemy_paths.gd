@@ -18,7 +18,7 @@ var rng = RandomNumberGenerator.new();
 func _ready():
 	initial_pathing_map = []
 	null_map = []
-	for i in range(Static.GAME_WIDTH+1):
+	for i in range(Static.GAME_WIDTH):
 		initial_pathing_map.append(0)
 		null_map.append(null)
 	pathing_map = [initial_pathing_map.duplicate(),]
@@ -36,7 +36,7 @@ func get_enemy_spawn_location() -> Vector2:
 func move_enemy(loc: Vector2) -> Vector2i:
 	var lookup_idx = get_lookup_corrected_idx(loc.x, loc.y)
 
-	if lookup_idx[0] < 0 or lookup_idx[1] < 0 or lookup_idx[1] > map.max_generated_depth or lookup_idx[0] > Static.GAME_WIDTH or pathing_map[lookup_idx[1]][lookup_idx[0]] == null:
+	if lookup_idx[0] < 0 or lookup_idx[1] < 0 or lookup_idx[1] >= map.max_generated_depth or lookup_idx[0] >= Static.GAME_WIDTH or pathing_map[lookup_idx[1]][lookup_idx[0]] == null:
 		return Vector2(0, 0) # The enemy is not currently in an open tunnel space...
 	else:
 		var best = null
