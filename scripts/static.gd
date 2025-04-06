@@ -51,6 +51,8 @@ var health = 3
 var game_manager = null
 var game_in_progress = false
 
+var camera = null
+
 func _change_gold(new:int) -> void:
 	current_gold += new
 	gold_counter.text = str(current_gold)
