@@ -76,8 +76,25 @@ region = Rect2(0, 112, 16, 16)
 [node name="World" type="Node2D" parent="."]
 
 [node name="Background" type="TileMapLayer" parent="World"]
+z_index = -100
 tile_set = ExtResource("1_iywne")
 collision_enabled = false
+
+[node name="Camp" type="Node2D" parent="World"]
+z_index = -10
+position = Vector2(0, 16)
+
+[node name="Tent" type="Sprite2D" parent="World/Camp"]
+position = Vector2(28, -12)
+texture = ExtResource("8_kvpfn")
+region_enabled = true
+region_rect = Rect2(48, 120, 56, 24)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Camp"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_pl11u")
+autoplay = "default"
+frame_progress = 0.243928
 
 [node name="WallsResources" type="TileMapLayer" parent="World" node_paths=PackedStringArray("FOG_OF_WAR", "BACKGROUND")]
 tile_set = ExtResource("1_iywne")
@@ -101,15 +118,6 @@ stream = ExtResource("6_1kice")
 tile_set = ExtResource("1_iywne")
 collision_enabled = false
 script = ExtResource("3_u5sy4")
-
-[node name="Camp" type="Node2D" parent="World"]
-position = Vector2(0, 16)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Camp"]
-position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_pl11u")
-autoplay = "default"
-frame_progress = 0.0283015
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
