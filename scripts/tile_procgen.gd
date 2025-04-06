@@ -66,12 +66,28 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 			set_cell(tile_pos, 0, Static.BEDROCK)
 		elif max_generated_depth <= 0:
 			pass
-		elif rng.randi_range(1, 20) == 1:
-			set_cell(tile_pos, 0, Static.GOLD_TILE)
-		elif rng.randi_range(1, 30) == 1:
-			set_cell(tile_pos, 0, Static.GEMS_TILE)
 		else:
-			set_cell(tile_pos, 0, Static.DIRT_TILE)
+			if max_generated_depth < 12:
+				if rng.randi_range(1, 20) == 1:
+					set_cell(tile_pos, 0, Static.GOLD_TILE)
+				elif rng.randi_range(1, 30) == 1:
+					set_cell(tile_pos, 0, Static.GEMS_TILE)
+				else:
+					set_cell(tile_pos, 0, Static.DIRT_TILE)
+			elif max_generated_depth < 20:
+				if rng.randi_range(1, 20) == 1:
+					set_cell(tile_pos, 0, Static.STONE_GOLD)
+				elif rng.randi_range(1, 30) == 1:
+					set_cell(tile_pos, 0, Static.STONE_GEMS)
+				else:
+					set_cell(tile_pos, 0, Static.STONE)
+			else:
+				if rng.randi_range(1, 20) == 1:
+					set_cell(tile_pos, 0, Static.HELL_STONE_GOLD)
+				elif rng.randi_range(1, 30) == 1:
+					set_cell(tile_pos, 0, Static.HELL_STONE_GEMS)
+				else:
+					set_cell(tile_pos, 0, Static.HELL_STONE)
 		
 		if x_pos > -Static.GAME_WIDTH / 2 - 1 && x_pos < Static.GAME_WIDTH / 2 && max_generated_depth > 2:
 			FOG_OF_WAR.set_cell(tile_pos, 0, FOG_TILE)

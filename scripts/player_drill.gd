@@ -75,16 +75,17 @@ func check_movement_direction(delta):
 			if len(results) > 1 or not is_instance_of(results[0].collider, TileMapLayer):
 				return # We are trying to drill through a building :(
 
-			destruction_progress += delta * 4
+			var tile_procgen = results[0].collider
+			var location = floor(global_position / 16 + movement_direction)
+
+			var tile = tile_procgen.get_cell(location.x, location.y)
+
+			destruction_progress += delta * 2 / Static.FUEL_COSTS[tile]
 
 			if destruction_progress >= 1:
 				destruction_progress = 0
 
-				var tile_procgen = results[0].collider
-
-				var location = floor(global_position / 16 + movement_direction)
-				var destroyed = tile_procgen.get_cell(location.x, location.y)
-				var fuel_cost = Static.FUEL_COSTS[destroyed]
+				var fuel_cost = Static.FUEL_COSTS[tile]
 				
 				if fuel_cost <= fuel_remaining:
 					fuel_remaining -= fuel_cost

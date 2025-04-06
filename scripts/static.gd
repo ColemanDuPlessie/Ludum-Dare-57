@@ -5,15 +5,25 @@ const GAME_WIDTH = 10 * 2
 const DIRT_TILE = Vector2i(16, 1)
 const GOLD_TILE = Vector2i(17, 1)
 const GEMS_TILE = Vector2i(16, 2)
-const OBSIDIAN_TILE = Vector2i(16, 3)
 const BEDROCK = Vector2i(16, 5)
+const STONE = Vector2i(16, 3)
+const STONE_GOLD = Vector2i(17, 3)
+const STONE_GEMS = Vector2i(16, 4)
+const HELL_STONE = Vector2i(16, 7)
+const HELL_STONE_GOLD = Vector2i(17, 7)
+const HELL_STONE_GEMS = Vector2i(16, 8)
 
 const FUEL_COSTS = {
 	DIRT_TILE : 1,
 	GOLD_TILE : 1,
 	GEMS_TILE : 2,
-	OBSIDIAN_TILE : 10,
 	BEDROCK : 999999999,
+	STONE : 4,
+	STONE_GOLD : 4,
+	STONE_GEMS : 6,
+	HELL_STONE : 10,
+	HELL_STONE_GOLD : 10,
+	HELL_STONE_GEMS : 15,
 }
 
 var all_tower_locations = {} # An dictionary of the form Vector2:tower.
