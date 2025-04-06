@@ -113,10 +113,11 @@ offset_bottom = -106.0
 script = ExtResource("6_p57ef")
 map = NodePath("../World/WallsResources")
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("world", "pathfinding")]
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("world", "pathfinding", "walls")]
 script = ExtResource("4_gee14")
 world = NodePath("../World")
 pathfinding = NodePath("../EnemyFloodfillCalc")
+walls = NodePath("../World/WallsResources")
 
 [node name="ClickManager" type="Node2D" parent="." node_paths=PackedStringArray("tower_menu", "fog_of_war", "tiles")]
 script = ExtResource("12_dinhu")

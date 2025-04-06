@@ -13,9 +13,6 @@ var max_generated_depth = -10
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
-	
-	while max_generated_depth < 7:
-		generate_new()
 
 func _on_drill_spawned(player):
 	player.moving_to_tile.connect(_on_player_moving_to_tile)
@@ -24,6 +21,13 @@ func _on_player_moving_to_tile(location):
 	var tile_location = floor((location - Vector2.ONE * 8) / 16)
 	
 	if tile_location.y > max_generated_depth - 8:
+		generate_new()
+
+func generate_start():
+	rng = RandomNumberGenerator.new()
+	max_generated_depth = -10
+
+	while max_generated_depth < 7:
 		generate_new()
 
 func check_duplo_exists(loc: Vector2) -> bool:
