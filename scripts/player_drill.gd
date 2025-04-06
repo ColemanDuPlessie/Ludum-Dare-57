@@ -71,9 +71,8 @@ func check_movement_direction(delta):
 		var results = get_world_2d().direct_space_state.intersect_shape(params)
 
 		for result in results:
-			if results[0].collider is TileMapLayer: # Ran into building
+			if result.collider is not TileMapLayer: # Ran into building
 				moving = false
-
 				break
 
 		if len(results) > 0 && moving:
