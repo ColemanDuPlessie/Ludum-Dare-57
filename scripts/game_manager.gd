@@ -4,6 +4,7 @@ signal spawned_drill(player)
 
 @export var world: Node2D
 @export var pathfinding: Node
+@export var walls: Node
 
 var state = "building"
 var current_player: CharacterBody2D = null
@@ -14,16 +15,8 @@ var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemy.tscn")
 
 func _ready():
 	Static.game_manager = self
-
-	Static.increment_gold(15)
-	Static.increment_gems(1)
 	
-	var new_player: CharacterBody2D = player_drill_scene.instantiate()
-	new_player.global_position = Vector2.ONE * 8
-	world.add_child(new_player)
-	current_player = new_player
-
-	spawned_drill.emit(new_player)
+	start_game()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_swap_mode"):
@@ -31,6 +24,25 @@ func _input(event: InputEvent) -> void:
 			begin_combat()
 		else:
 			begin_building()
+
+func start_game():
+	var new_player: CharacterBody2D = player_drill_scene.instantiate()
+	new_player.global_position = Vector2.ONE * 8
+	world.add_child(new_player)
+	current_player = new_player
+
+	spawned_drill.emit(new_player)
+
+	Static.current_gold = 15
+	Static.current_gems = 1
+	Static.health = 3
+
+	walls.generate_start()
+
+func end_game():
+	current_player.queue_free()
+
+	start_game()
 
 func spawn_enemy(scene: PackedScene) -> void:
 	var spawn_location = pathfinding.get_enemy_spawn_location()
@@ -79,4 +91,4 @@ func take_damage():
 	Static.health -= 1
 
 	if Static.health <= 0:
-		print("Game over!")
+		end_game()
