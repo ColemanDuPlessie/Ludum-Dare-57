@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu4c0o3skged"]
+[gd_scene load_steps=14 format=3 uid="uid://cu4c0o3skged"]
 
 [ext_resource type="Script" uid="uid://4uicyijsq4rb" path="res://scripts/tower_upgrade_menu.gd" id="1_8i6jl"]
 [ext_resource type="Texture2D" uid="uid://ct2bqitajgi50" path="res://art/Tower_Context_Menu.png" id="2_buycl"]
 [ext_resource type="Texture2D" uid="uid://cl6favg8bb0cy" path="res://art/TowerTargetingReticule.png" id="3_v0swp"]
-[ext_resource type="Texture2D" uid="uid://3uggvaebhhde" path="res://art/ArcherTower.png" id="4_304wh"]
+[ext_resource type="Texture2D" uid="uid://boy4ifdxjplla" path="res://art/Upgrade_Tower_3.png" id="4_8i6jl"]
 [ext_resource type="Texture2D" uid="uid://cff373mn3lc0b" path="res://art/CannonTower.png" id="5_0e474"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkrlw"]
@@ -48,6 +48,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdhg0"]
 radius = 12.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_buycl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8i6jl")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
 [node name="UpgradeMenu" type="Node2D" node_paths=PackedStringArray("tower_highlight", "upgrade_button")]
 script = ExtResource("1_8i6jl")
 tower_highlight = NodePath("TowerHighlight")
@@ -72,9 +83,10 @@ position = Vector2(20, -6)
 position = Vector2(-20, -20)
 shape = SubResource("CircleShape2D_sdhg0")
 
-[node name="UpgradeIcon" type="Sprite2D" parent="UpgradeTower"]
+[node name="UpgradeIcon" type="AnimatedSprite2D" parent="UpgradeTower"]
 position = Vector2(-20, -20)
-texture = ExtResource("4_304wh")
+sprite_frames = SubResource("SpriteFrames_buycl")
+animation = &"3"
 
 [node name="SellTower" type="Area2D" parent="."]
 position = Vector2(-20, 46)

@@ -78,7 +78,7 @@ func _on_cannon_tower_input_event(viewport: Node, event: InputEvent, shape_idx: 
 		return
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed('mouse_click'):
-			if Static.spend_gold(8):
+			if Static.spend_gold(12):
 				build_cannon_tower()
 			disappear()
 
