@@ -32,12 +32,15 @@ const correctionOffsets = [ Vector2(0, 0), Vector2(0, 1), Vector2(1, 0), Vector2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed('mouse_click'):
-		if Static.in_shop:
-			return
-		var mouse_pos = get_parent().get_local_mouse_position() 
+		if Static.game_manager.state == "building":
+			if Static.in_shop:
+				return
+			var mouse_pos = get_parent().get_local_mouse_position() 
 
-		for correctionOffset in correctionOffsets:
-			var result = check_for_opening_tower_menu(mouse_pos + correctionOffset * 16)
+			for correctionOffset in correctionOffsets:
+				var result = check_for_opening_tower_menu(mouse_pos + correctionOffset * 16)
 
-			if result:
-				break
+				if result:
+					break
+		elif Static.game_manager.state == "combat":
+			pass # Shooting is handled by the player script

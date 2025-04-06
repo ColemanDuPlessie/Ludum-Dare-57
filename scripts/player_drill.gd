@@ -5,7 +5,6 @@ signal moving_to_tile(location)
 var MOVE_SPEED = 4 # TODO we can upgrade this too!
 
 var fuel_remaining = 50
-var MAX_FUEL = 50
 
 var moving = false
 var movement_progress = 0
@@ -100,7 +99,7 @@ func check_movement_direction(delta):
 			moving_to_tile.emit(target_pos)
 
 func update_fuel_gague():
-	Static.fuel_meter.set_height(float(fuel_remaining)/MAX_FUEL)
+	Static.fuel_meter.set_height(float(fuel_remaining)/Static.MAX_FUEL)
 
 func move(delta):
 	movement_progress += delta * MOVE_SPEED

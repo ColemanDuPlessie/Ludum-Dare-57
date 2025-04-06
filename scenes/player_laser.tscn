@@ -1,22 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://baawkn4yhu1a1"]
+[gd_scene load_steps=5 format=3 uid="uid://cju41r8vs34to"]
 
-[ext_resource type="Script" uid="uid://xyy6ux4vwgjn" path="res://scripts/arrow.gd" id="1_23jat"]
+[ext_resource type="Script" uid="uid://dsxm4g3t4yk5b" path="res://scripts/laser.gd" id="1_p3bga"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="1_umosx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23jat"]
 atlas = ExtResource("1_umosx")
-region = Rect2(234, 94, 12, 4)
+region = Rect2(238, 127, 4, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23jat"]
-size = Vector2(10, 2)
+size = Vector2(4, 2)
 
-[node name="arrow" type="StaticBody2D"]
+[node name="laser" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_23jat")
+script = ExtResource("1_p3bga")
 
-[node name="ArrowSprite" type="Sprite2D" parent="."]
+[node name="LaserSprite" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_23jat")
 
 [node name="Collisions" type="CollisionShape2D" parent="."]
+position = Vector2(5.96046e-08, -5.96046e-08)
+scale = Vector2(0.994407, 1.0432)
 shape = SubResource("RectangleShape2D_23jat")

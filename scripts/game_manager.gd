@@ -33,14 +33,17 @@ func _input(event: InputEvent) -> void:
 
 func start_game():
 	var new_player: CharacterBody2D = player_drill_scene.instantiate()
+	state = "building"
 	new_player.global_position = Vector2.ONE * 8
 	world.add_child(new_player)
 	current_player = new_player
 
 	spawned_drill.emit(new_player)
 
-	Static.current_gold = 15
-	Static.current_gems = 1
+	Static.current_gold = 0
+	Static.increment_gold(15)
+	Static.current_gems = 0
+	Static.increment_gems(1)
 	Static.health = 3
 
 	walls.generate_start()

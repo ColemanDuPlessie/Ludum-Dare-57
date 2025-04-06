@@ -22,6 +22,9 @@ var all_enemies = [] # A list of all active enemies TODO garbage collect dead en
 var current_gold = 0
 var current_gems = 0
 
+var MAX_FUEL = 50
+var PLAYER_GUN_LEVEL = 0 # 4 levels: max is level 3
+
 var gold_counter
 var gems_counter
 var UI

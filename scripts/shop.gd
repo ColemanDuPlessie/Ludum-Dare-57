@@ -16,7 +16,7 @@ func _on_fuel_upgrade_pressed() -> void:
 		return
 	if Static.spend_gold(FUEL_UPGRADE_COSTS[current_fuel_level-1]):
 		player_drill.fuel_remaining += FUEL_UPGRADE_VALUES[current_fuel_level-1]
-		player_drill.MAX_FUEL += FUEL_UPGRADE_VALUES[current_fuel_level-1]
+		Static.MAX_FUEL += FUEL_UPGRADE_VALUES[current_fuel_level-1]
 		current_fuel_level += 1
 		player_drill.update_fuel_gague()
 		# TODO change button graphics...
