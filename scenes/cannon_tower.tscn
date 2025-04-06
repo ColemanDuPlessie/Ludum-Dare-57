@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://daaxtmwr2w44x"]
+
+[ext_resource type="Script" uid="uid://chb7j0weron7y" path="res://scripts/cannon_tower.gd" id="1_7635i"]
+[ext_resource type="Texture2D" uid="uid://d1ijh6o7fa55h" path="res://art/archer_tower_base.tres" id="2_rfhbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb3hj"]
+size = Vector2(32, 32)
+
+[node name="cannon" type="StaticBody2D"]
+script = ExtResource("1_7635i")
+
+[node name="CannonSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_rfhbs")
+
+[node name="TowerShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sb3hj")
