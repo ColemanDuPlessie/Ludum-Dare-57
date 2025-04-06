@@ -84,7 +84,7 @@ func check_movement_direction(delta):
 			var fuel_cost = Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]
 
 			if fuel_cost <= fuel_remaining:
-				destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL])
+				destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]) * 2
 
 				if destruction_progress >= 1:
 					destruction_progress = 0
