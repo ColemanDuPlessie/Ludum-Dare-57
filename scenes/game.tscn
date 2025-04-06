@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://c8nse2trtiv55" path="res://scripts/click_manager.gd" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://c7xpwroef7qv1" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://47lkt4e5400r" path="res://scenes/drill_ui.tscn" id="14_ssvqc"]
-[ext_resource type="Texture2D" path="res://scenes/gems.tres" id="15_1kice"]
+[ext_resource type="Texture2D" uid="uid://bmtpt07rta2my" path="res://art/gems.tres" id="15_1kice"]
 [ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="15_5newe"]
 [ext_resource type="Script" uid="uid://paht1rfv3cmy" path="res://scripts/resource_ui.gd" id="15_37s47"]
 
