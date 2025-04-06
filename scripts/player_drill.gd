@@ -2,9 +2,10 @@ extends CharacterBody2D
 
 signal moving_to_tile(location)
 
-var MOVE_SPEED = 4 # TODO we can upgrade this too!
+var MOVE_SPEED = [2.8125, 3.75, 5, 6.25, 8.125]
+const DRILL_SPEED = [2, 2.5, 3, 4, 5.5]
 
-var fuel_remaining = 50
+var fuel_remaining = Static.MAX_FUEL
 
 var moving = false
 var movement_progress = 0
@@ -80,12 +81,12 @@ func check_movement_direction(delta):
 
 			var tile = tile_procgen.get_cell(location.x, location.y)
 
-			destruction_progress += delta * 2 / Static.FUEL_COSTS[tile]
+			destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL])
 
 			if destruction_progress >= 1:
 				destruction_progress = 0
 
-				var fuel_cost = Static.FUEL_COSTS[tile]
+				var fuel_cost = Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]
 				
 				if fuel_cost <= fuel_remaining:
 					fuel_remaining -= fuel_cost
@@ -110,7 +111,7 @@ func update_radar_power():
 	moving_to_tile.emit(global_position)
 
 func move(delta):
-	movement_progress += delta * MOVE_SPEED
+	movement_progress += delta * MOVE_SPEED[Static.PLAYER_DRILL_LEVEL]
 
 	movement_progress = clampf(movement_progress, 0, 1)
 

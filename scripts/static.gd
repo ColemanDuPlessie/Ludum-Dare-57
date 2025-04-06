@@ -1,6 +1,6 @@
 extends Node
 
-const GAME_WIDTH = 10 * 2
+const GAME_WIDTH = 15 * 2
 
 const DIRT_TILE = Vector2i(16, 1)
 const GOLD_TILE = Vector2i(17, 1)
@@ -14,16 +14,16 @@ const HELL_STONE_GOLD = Vector2i(17, 7)
 const HELL_STONE_GEMS = Vector2i(16, 8)
 
 const FUEL_COSTS = {
-	DIRT_TILE : 1,
-	GOLD_TILE : 1,
-	GEMS_TILE : 2,
-	BEDROCK : 999999999,
-	STONE : 4,
-	STONE_GOLD : 4,
-	STONE_GEMS : 6,
-	HELL_STONE : 10,
-	HELL_STONE_GOLD : 10,
-	HELL_STONE_GEMS : 15,
+	DIRT_TILE : [1, 1, 1, 1, 1],
+	GOLD_TILE : [2, 1, 1, 1, 1],
+	GEMS_TILE : [2, 2, 1, 1, 1],
+	BEDROCK : [999999999, 999999999, 999999999, 999999999, 999999999],
+	STONE : [999999999, 3, 2, 2, 1],
+	STONE_GOLD : [999999999, 4, 2, 2, 1],
+	STONE_GEMS : [999999999, 5, 3, 3, 2],
+	HELL_STONE : [999999999, 999999999, 999999999, 7, 3],
+	HELL_STONE_GOLD : [999999999, 999999999, 999999999, 8, 3],
+	HELL_STONE_GEMS : [999999999, 999999999, 999999999, 9, 4],
 }
 
 var all_tower_locations = {} # An dictionary of the form Vector2:tower.
@@ -32,9 +32,10 @@ var all_enemies = [] # A list of all active enemies TODO garbage collect dead en
 var current_gold = 0
 var current_gems = 0
 
-var MAX_FUEL = 50
+var MAX_FUEL = 40
 var PLAYER_GUN_LEVEL = 0 # 4 levels: max is level 3
 var PLAYER_RADAR_LEVEL = 0 # 5 levels: max is level 4
+var PLAYER_DRILL_LEVEL = 0 # 5 levels: max is level 4
 
 var MAX_REVEAL_RANGE = 5 # The player can see sqrt(MAX_REVEAL_RANGE) units away in any direction. We can sell upgrades for this.
 var RADAR_POWERS = [5, 10, 20, 28, 40]
@@ -63,6 +64,8 @@ func increment_gold(amt: int) -> void:
 	
 # Returns true and deducts gold if we can afford it. Otherwise returns false.
 func spend_gold(amt: int) -> bool:
+	print(current_gold)
+	print(amt)
 	if current_gold >= amt:
 		_change_gold(-amt)
 		return true

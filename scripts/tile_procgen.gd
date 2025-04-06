@@ -7,6 +7,11 @@ const BACKGROUND_TILE = Vector2i(19, 3)
 
 const DUPLO_LOC_DELTAS = [Vector2(0, 0), Vector2(-1, 0), Vector2(0, -1), Vector2(-1, -1)]
 
+const STONE_START = 8
+const DIRT_END = 20
+const FIRE_START = 30
+const STONE_END = 42
+
 var rng = RandomNumberGenerator.new()
 var max_generated_depth = -10
 
@@ -50,8 +55,26 @@ func destroy_tile(x: int, y:int) -> Vector2i:
 		Static.increment_gems(1)
 	elif destroyed == Static.DIRT_TILE:
 		$dirt.play()
-	#elif destroyed == Static.STONE_TILE:
-	#	$stone.play()
+	elif destroyed == Static.STONE_GOLD:
+		$stone.play()
+		$gold.play()
+		Static.increment_gold(2)
+	elif destroyed == Static.STONE_GEMS:
+		$stone.play()
+		$gem.play()
+		Static.increment_gems(2)
+	elif destroyed == Static.STONE:
+		$stone.play()
+	elif destroyed == Static.HELL_STONE_GOLD:
+		$stone.play()
+		$gold.play()
+		Static.increment_gold(3)
+	elif destroyed == Static.HELL_STONE_GEMS:
+		$stone.play()
+		$gem.play()
+		Static.increment_gems(3)
+	elif destroyed == Static.HELL_STONE:
+		$stone.play()
 	erase_cell(Vector2i(x, y))
 	return destroyed
 
@@ -67,14 +90,31 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 		elif max_generated_depth <= 0:
 			pass
 		else:
-			if max_generated_depth < 12:
+			var type = "DIRT"
+			if max_generated_depth > STONE_END:
+				type = "FIRE"
+			elif max_generated_depth > FIRE_START:
+				var fire_odds = float(max_generated_depth-FIRE_START)/(STONE_END-FIRE_START)
+				fire_odds += float(2*abs(x_pos))/Static.GAME_WIDTH * 0.2 - 0.1
+				if rng.randf() < fire_odds:
+					type = "FIRE"
+				else:
+					type = "STONE"
+			elif max_generated_depth > DIRT_END:
+				type = "STONE"
+			elif max_generated_depth > STONE_START:
+				var stone_odds = float(max_generated_depth-STONE_START)/(DIRT_END-STONE_START)
+				stone_odds += float(2*abs(x_pos))/Static.GAME_WIDTH * 0.3 - 0.15
+				if rng.randf() < stone_odds:
+					type = "STONE"
+			if type == "DIRT":
 				if rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.GOLD_TILE)
 				elif rng.randi_range(1, 30) == 1:
 					set_cell(tile_pos, 0, Static.GEMS_TILE)
 				else:
 					set_cell(tile_pos, 0, Static.DIRT_TILE)
-			elif max_generated_depth < 20:
+			elif type == "STONE":
 				if rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.STONE_GOLD)
 				elif rng.randi_range(1, 30) == 1:

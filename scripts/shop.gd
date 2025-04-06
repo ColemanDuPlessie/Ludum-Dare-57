@@ -6,7 +6,7 @@ var current_fuel_level = 1
 
 const MAX_FUEL_LEVEL = 5
 const FUEL_UPGRADE_COSTS = [5, 10, 15, 25]
-const FUEL_UPGRADE_VALUES = [10, 20, 40, 60]
+const FUEL_UPGRADE_VALUES = [25, 30, 35, 40]
 
 const MAX_WEAPON_LEVEL = 3
 const WEAPON_UPGRADE_COSTS = [5, 10, 15]
