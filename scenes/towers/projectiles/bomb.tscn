@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://qql0prhwp0f0"]
 
-[ext_resource type="Script" uid="uid://cqaodpbc2lonr" path="res://scripts/bomb.gd" id="1_vpdcx"]
+[ext_resource type="Script" path="res://scripts/bomb.gd" id="1_vpdcx"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_j15uc"]
 [ext_resource type="Texture2D" uid="uid://cp5jwoo5e5p1i" path="res://art/Explosion_Spritesheet.png" id="2_y7snk"]
 

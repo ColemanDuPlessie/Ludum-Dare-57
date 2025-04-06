@@ -15,6 +15,15 @@ const STONE_END = 42
 var rng = RandomNumberGenerator.new()
 var max_generated_depth = -10
 
+var dirt_particle_1_scene: PackedScene = ResourceLoader.load("res://scenes/particles/dirt_particle_1.tscn")
+var dirt_particle_2_scene: PackedScene = ResourceLoader.load("res://scenes/particles/dirt_particle_2.tscn")
+var gold_particle_scene: PackedScene = ResourceLoader.load("res://scenes/particles/gold_particle.tscn")
+var gem_particle_scene: PackedScene = ResourceLoader.load("res://scenes/particles/gem_particle.tscn")
+var stone_particle_1_scene: PackedScene = ResourceLoader.load("res://scenes/particles/stone_particle_1.tscn")
+var stone_particle_2_scene: PackedScene = ResourceLoader.load("res://scenes/particles/stone_particle_2.tscn")
+var hell_stone_particle_1_scene: PackedScene = ResourceLoader.load("res://scenes/particles/hell_stone_particle_1.tscn")
+var hell_stone_particle_2_scene: PackedScene = ResourceLoader.load("res://scenes/particles/hell_stone_particle_2.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
@@ -45,36 +54,94 @@ func check_duplo_exists(loc: Vector2) -> bool:
 func get_cell(x: int, y: int) -> Vector2i:
 	return get_cell_atlas_coords(Vector2i(x, y))
 
+func spawn_particle(scene: PackedScene, x: int, y: int):
+	var particle = scene.instantiate()
+
+	get_parent().add_child(particle)
+
+	particle.global_position = Vector2(x * 16 + 8, y * 16 + 8)
+
 func destroy_tile(x: int, y:int) -> Vector2i:
 	var destroyed = get_cell(x, y)
 	if destroyed == Static.GOLD_TILE:
 		$gold.play()
 		Static.increment_gold(1)
+
+		for i in range(3):
+			spawn_particle(dirt_particle_1_scene, x, y)
+			spawn_particle(dirt_particle_2_scene, x, y)
+			spawn_particle(gold_particle_scene, x, y)
+
 	elif destroyed == Static.GEMS_TILE:
 		$gem.play()
 		Static.increment_gems(1)
+
+		for i in range(3):
+			spawn_particle(dirt_particle_1_scene, x, y)
+			spawn_particle(dirt_particle_2_scene, x, y)
+			spawn_particle(gem_particle_scene, x, y)
+
 	elif destroyed == Static.DIRT_TILE:
 		$dirt.play()
+
+		for i in range(3):
+			spawn_particle(dirt_particle_1_scene, x, y)
+			spawn_particle(dirt_particle_2_scene, x, y)
+			
 	elif destroyed == Static.STONE_GOLD:
 		$stone.play()
 		$gold.play()
 		Static.increment_gold(2)
+
+		for i in range(3):
+			spawn_particle(stone_particle_1_scene, x, y)
+			spawn_particle(stone_particle_2_scene, x, y)
+			spawn_particle(gold_particle_scene, x, y)
+
 	elif destroyed == Static.STONE_GEMS:
 		$stone.play()
 		$gem.play()
 		Static.increment_gems(2)
+
+		for i in range(3):
+			spawn_particle(stone_particle_1_scene, x, y)
+			spawn_particle(stone_particle_2_scene, x, y)
+			spawn_particle(gem_particle_scene, x, y)
+
 	elif destroyed == Static.STONE:
 		$stone.play()
+
+		for i in range(3):
+			spawn_particle(stone_particle_1_scene, x, y)
+			spawn_particle(stone_particle_2_scene, x, y)
+
 	elif destroyed == Static.HELL_STONE_GOLD:
 		$stone.play()
 		$gold.play()
 		Static.increment_gold(4)
+
+		for i in range(3):
+			spawn_particle(hell_stone_particle_1_scene, x, y)
+			spawn_particle(hell_stone_particle_2_scene, x, y)
+			spawn_particle(gold_particle_scene, x, y)
+
 	elif destroyed == Static.HELL_STONE_GEMS:
 		$stone.play()
 		$gem.play()
 		Static.increment_gems(4)
+		
+		for i in range(3):
+			spawn_particle(hell_stone_particle_1_scene, x, y)
+			spawn_particle(hell_stone_particle_2_scene, x, y)
+			spawn_particle(gem_particle_scene, x, y)
+
 	elif destroyed == Static.HELL_STONE:
 		$stone.play()
+
+		for i in range(3):
+			spawn_particle(hell_stone_particle_1_scene, x, y)
+			spawn_particle(hell_stone_particle_2_scene, x, y)
+
 	erase_cell(Vector2i(x, y))
 	return destroyed
 

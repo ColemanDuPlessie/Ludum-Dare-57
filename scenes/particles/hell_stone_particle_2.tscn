@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5p2n2be4srws"]
+
+[ext_resource type="Script" uid="uid://dlfng885vsobg" path="res://scripts/destruction_particle.gd" id="1_wcxjj"]
+[ext_resource type="Texture2D" uid="uid://xgvng1806fp4" path="res://art/particles/hell_stone_particle_2.tres" id="2_wcxjj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1j6l"]
+radius = 2.0
+
+[node name="Particle" type="RigidBody2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 2
+gravity_scale = 0.5
+script = ExtResource("1_wcxjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wcxjj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e1j6l")

@@ -36,13 +36,15 @@ func get_enemy_spawn_location() -> Vector2:
 func move_enemy(loc: Vector2) -> Vector2i:
 	var lookup_idx = get_lookup_corrected_idx(loc.x, loc.y)
 
-	if lookup_idx[0] < 0 or lookup_idx[1] < 0 or lookup_idx[1] > map.max_generated_depth or lookup_idx[0] > Static.GAME_WIDTH or pathing_map[lookup_idx[1]][lookup_idx[0]] == null:
+	if lookup_idx[0] < 0 or lookup_idx[1] < 0 or lookup_idx[1] >= map.max_generated_depth or lookup_idx[0] >= Static.GAME_WIDTH:
 		return Vector2(0, 0) # The enemy is not currently in an open tunnel space...
 	else:
 		var best = null
 		var best_score = null
 		for dir in DIRECTIONS:
 			var new = lookup_idx + dir
+			if new[0] < 0 or new[1] < 0 or new[1] >= map.max_generated_depth or new[0] >= Static.GAME_WIDTH:
+				continue
 			var score = pathing_map[int(new[1])][int(new[0])]
 			if score != null and (best_score == null or score < best_score):
 				best_score = score
