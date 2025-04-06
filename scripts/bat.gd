@@ -56,8 +56,7 @@ func take_damage(dmg: int) -> void:
 		 # TODO health indicator goes here!
 		if hp <= 0:
 			destroy()
-	
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_hitbox_entered(body: Node2D) -> void:
 	if body.has_method("hit"):
 		take_damage(body.hit())

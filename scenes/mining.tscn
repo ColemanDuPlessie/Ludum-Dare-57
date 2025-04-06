@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://cyj2swagf6rdk" path="res://scripts/calc_enemy_paths.gd" id="4_6lh35"]
 [ext_resource type="Script" uid="uid://njroyot21xv6" path="res://scripts/fog_of_war.gd" id="4_pk1v7"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="7_g4nnd"]
-[ext_resource type="PackedScene" uid="uid://ohqdcn8ooec2" path="res://scenes/enemy.tscn" id="9_7c77r"]
+[ext_resource type="PackedScene" uid="uid://ohqdcn8ooec2" path="res://scenes/enemies/bat.tscn" id="9_7c77r"]
 [ext_resource type="PackedScene" uid="uid://cqddiwdc6knkx" path="res://scenes/player_drill.tscn" id="10_pk1v7"]
-[ext_resource type="PackedScene" uid="uid://bpq7qbxrdhe41" path="res://scenes/shop.tscn" id="11_sffdr"]
+[ext_resource type="PackedScene" uid="uid://bsbyuvygjqkk2" path="res://scenes/shop.tscn" id="11_sffdr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k6jil"]
 font = ExtResource("3_k6jil")

@@ -11,7 +11,7 @@ var current_player: CharacterBody2D = null
 
 var player_drill_scene: PackedScene = ResourceLoader.load("res://scenes/player_drill.tscn")
 var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
-var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemy.tscn")
+var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
 
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://qql0prhwp0f0"]
 
-[ext_resource type="Script" uid="uid://cqaodpbc2lonr" path="res://scripts/bomb.gd" id="1_vpdcx"]
+[ext_resource type="Script" path="res://scripts/bomb.gd" id="1_vpdcx"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_j15uc"]
 [ext_resource type="Texture2D" uid="uid://cff373mn3lc0b" path="res://art/CannonTower.png" id="3_j15uc"]
 
@@ -32,8 +32,8 @@ animations = [{
 
 [node name="bomb" type="StaticBody2D"]
 z_index = 800
-collision_layer = 128
-collision_mask = 128
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_vpdcx")
 
 [node name="Collisions" type="CollisionShape2D" parent="."]
