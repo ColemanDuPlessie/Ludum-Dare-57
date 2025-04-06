@@ -2,10 +2,10 @@ extends StaticBody2D
 
 const TYPE = "CANNON"
 
-const ATTACK_DELAY = 1.8 # Seconds/attack
-const ATTACK_DAMAGE = 8
-const BULLET_TIME = 0.9 # Seconds until bullet lands
-const RANGE = 5 # In 16px tiles from center TODO make a targeting guide pop up on click
+const ATTACK_DELAY = [2.1, 1.4] # Seconds/attack
+const ATTACK_DAMAGE = [6, 9]
+const BULLET_TIME = [0.9, 0.9] # Seconds until bullet lands
+const RANGE = [4.5, 5.5] # In 16px tiles from center TODO make a targeting guide pop up on click
 
 const MAX_LEVEL = 1
 var level = 0
@@ -33,14 +33,15 @@ func shoot(tgt: Vector2) -> void:
 	bomb.global_position = global_position
 	bomb.destination = tgt
 	bomb.start_pos = global_position
+	bomb.level = level
 	add_sibling(bomb)
 
 func find_target(): # Returns Vector2 or null
 	var best_target = null
-	var best_dist = RANGE*16
+	var best_dist = RANGE[level]*16
 	
 	for enemy in Static.all_enemies:
-		var pos = enemy.global_position + enemy.movement_direction * enemy.SPEED * BULLET_TIME
+		var pos = enemy.global_position + enemy.movement_direction * enemy.SPEED * BULLET_TIME[level]
 
 		var dist = euclidean_dist_to(pos)
 
@@ -60,7 +61,7 @@ func _process(delta: float) -> void:
 	var target = find_target()
 	if target != null:
 		shoot(target)
-		time_remaining_before_attack = ATTACK_DELAY
+		time_remaining_before_attack = ATTACK_DELAY[level]
 
 func destroy() -> void:
 	queue_free()

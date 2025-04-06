@@ -46,6 +46,7 @@ var UI
 var shop
 var fuel_meter
 var tower_menu
+var tower_upgrade_menu
 
 var health = 3
 var game_manager = null
