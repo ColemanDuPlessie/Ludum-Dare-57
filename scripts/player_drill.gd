@@ -70,30 +70,36 @@ func check_movement_direction(delta):
 
 		var results = get_world_2d().direct_space_state.intersect_shape(params)
 
-		if len(results) > 0:
+		for result in results:
+			if results[0].collider is TileMapLayer: # Ran into building
+				moving = false
+
+				break
+
+		if len(results) > 0 && moving:
 			moving = false
-			
-			if len(results) > 1 or not is_instance_of(results[0].collider, TileMapLayer):
-				return # We are trying to drill through a building :(
 
 			var tile_procgen = results[0].collider
 			var location = floor(global_position / 16 + movement_direction)
-
 			var tile = tile_procgen.get_cell(location.x, location.y)
+			var fuel_cost = Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]
 
-			destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]) * 10
+			if fuel_cost <= fuel_remaining:
+				destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL])
 
-			if destruction_progress >= 1:
-				destruction_progress = 0
+				if destruction_progress >= 1:
+					destruction_progress = 0
 
-				var fuel_cost = Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]
-				
-				if fuel_cost <= fuel_remaining:
 					fuel_remaining -= fuel_cost
+
 					update_fuel_gague()
+					
 					tile_procgen.destroy_tile(location.x, location.y)
+					
 					if Static.tower_menu.size > 0.0 and abs(location.x*16-Static.tower_menu.global_position.x) < 16 and abs(location.y*16-Static.tower_menu.global_position.y) < 16:
 						Static.tower_menu.disappear()
+					
+					Static.camera.shake(0.4)
 		
 	if moving && movement_direction == Vector2.UP && global_position.y == 8:
 		moving = false
