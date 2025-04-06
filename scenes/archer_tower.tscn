@@ -78,6 +78,5 @@ animation = &"Level1"
 shape = SubResource("RectangleShape2D_sb3hj")
 
 [node name="ArcherTurretSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, 0)
 sprite_frames = SubResource("SpriteFrames_kbh8i")
 animation = &"Reloading"

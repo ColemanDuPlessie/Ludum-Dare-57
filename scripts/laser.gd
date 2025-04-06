@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var PIXELS_PER_SEC = [40, 45, 50, 60] # Travel speed
 var LIFETIME = [0.75, 0.8, 0.85, 0.9] # Number of seconds
-var DMG = [0.8, 1.0, 1.3, 1.7]
+var DMG = [1.6, 2.0, 2.6, 3.4]
 
 var time_remaining
 

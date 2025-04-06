@@ -160,6 +160,7 @@ label_settings = SubResource("LabelSettings_1kice")
 horizontal_alignment = 1
 
 [node name="Shop" parent="World" instance=ExtResource("10_kvuet")]
+z_index = 700
 position = Vector2(0, 16)
 
 [node name="Camera2D" type="Camera2D" parent="."]

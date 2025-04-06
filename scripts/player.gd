@@ -13,7 +13,7 @@ var proj: PackedScene = ResourceLoader.load("res://scenes/player_laser.tscn")
 
 var time_remaining_before_attack = 0.0
 
-var ATTACK_DELAYS = [0.15, 0.12, 0.09, 0.06]
+var ATTACK_DELAYS = [0.3, 0.24, 0.18, 0.12]
 
 func euclidean_dist_to(tgt: Vector2) -> float:
 	return sqrt((tgt[0]-global_position[0])**2 + (tgt[1]-global_position[1])**2)
