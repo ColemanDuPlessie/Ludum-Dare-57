@@ -30,10 +30,10 @@ script = ExtResource("3_8qvxx")
 uiOrigin = NodePath("UIOrigin")
 
 [node name="NPC" type="Sprite2D" parent="Researcher"]
-position = Vector2(-116, -8)
+position = Vector2(-116, -9)
 texture = ExtResource("2_ehphy")
 region_enabled = true
-region_rect = Rect2(19, 208, 9, 16)
+region_rect = Rect2(16, 207, 14, 17)
 
 [node name="Area" type="Area2D" parent="Researcher"]
 position = Vector2(-83, -10)
@@ -151,10 +151,10 @@ script = ExtResource("3_8qvxx")
 uiOrigin = NodePath("UIOrigin")
 
 [node name="NPC" type="Sprite2D" parent="Mechanic"]
-position = Vector2(145, -8)
+position = Vector2(145, -9)
 texture = ExtResource("2_ehphy")
 region_enabled = true
-region_rect = Rect2(32, 208, 15, 16)
+region_rect = Rect2(33, 207, 15, 17)
 
 [node name="Area" type="Area2D" parent="Mechanic"]
 position = Vector2(86, -10)
