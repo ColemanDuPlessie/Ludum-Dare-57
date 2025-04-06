@@ -1,9 +1,14 @@
 extends StaticBody2D
 
+const TYPE = "CANNON"
+
 const ATTACK_DELAY = 1.8 # Seconds/attack
 const ATTACK_DAMAGE = 8
 const BULLET_TIME = 0.9 # Seconds until bullet lands
 const RANGE = 5 # In 16px tiles from center TODO make a targeting guide pop up on click
+
+const MAX_LEVEL = 1
+var level = 0
 
 var proj: PackedScene = ResourceLoader.load("res://scenes/bomb.tscn")
 
@@ -16,6 +21,12 @@ func euclidean_dist_to(tgt: Vector2) -> float:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # TODO build animations are always classy imo, even if they're super simple.
+
+func upgrade() -> void:
+	if level < MAX_LEVEL:
+		level += 1
+		if level == 1:
+			pass # TODO base.play("Level2")
 
 func shoot(tgt: Vector2) -> void:
 	var bomb: Node2D = proj.instantiate()

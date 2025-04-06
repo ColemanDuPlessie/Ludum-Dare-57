@@ -1,14 +1,20 @@
 extends StaticBody2D
 
-const ATTACK_DELAY = 0.5 # Seconds/attack
-const ATTACK_DAMAGE = 5
-const BULLET_SPEED = 5 # In 16px tiles/second (i.e. BULLET_SPEED = 1 means 16px/sec)
-const RANGE = 4 # In 16px tiles from center TODO make a targeting guide pop up on click
+const TYPE = "ARCHER"
+
+const ATTACK_DELAY = [0.75, 0.5] # Seconds/attack
+const ATTACK_DAMAGE = [4, 6]
+const BULLET_SPEED = [4.0, 5.5] # In 16px tiles/second (i.e. BULLET_SPEED = 1 means 16px/sec)
+const RANGE = [3.5, 4.5] # In 16px tiles from center TODO make a targeting guide pop up on click
+
+const MAX_LEVEL = 1
+var level = 0
 
 var proj: PackedScene = ResourceLoader.load("res://scenes/arrow.tscn")
 
 @onready var turret = get_node("ArcherTurretSprite")
-const TURRET_PIXEL_OFFSET = 4
+@onready var base = get_node("TowerSprite")
+const TURRET_PIXEL_OFFSET = 0
 
 var time_remaining_before_attack = 0.0
 var all_enemies_in_range = []
@@ -20,6 +26,13 @@ func euclidean_dist_to(tgt: Vector2) -> float:
 func _ready() -> void:
 	pass # TODO build animations are always classy imo, even if they're super simple.
 	turret.play("Ready")
+	base.play("Level1")
+
+func upgrade() -> void:
+	if level < MAX_LEVEL:
+		level += 1
+		if level == 1:
+			base.play("Level2")
 
 func shoot(tgt: Vector2) -> void:
 	var unit_vec = (tgt-global_position) / euclidean_dist_to(tgt)
@@ -28,6 +41,7 @@ func shoot(tgt: Vector2) -> void:
 	turret.play("Reloading")
 	
 	var arrow: Node2D = proj.instantiate()
+	arrow.level = level
 	arrow.global_position = turret.global_position
 	arrow.global_rotation = turret.global_rotation
 	
@@ -35,7 +49,7 @@ func shoot(tgt: Vector2) -> void:
 
 func find_target(): # Returns Vector2 or null
 	var best_target = null
-	var best_dist = RANGE*16
+	var best_dist = RANGE[level]*16
 	
 	for enemy in Static.all_enemies:
 		var dist = euclidean_dist_to(enemy.global_position)
@@ -57,7 +71,7 @@ func _process(delta: float) -> void:
 	var target = find_target()
 	if target != null:
 		shoot(target)
-		time_remaining_before_attack = ATTACK_DELAY
+		time_remaining_before_attack = ATTACK_DELAY[level]
 
 func destroy() -> void:
 	queue_free()

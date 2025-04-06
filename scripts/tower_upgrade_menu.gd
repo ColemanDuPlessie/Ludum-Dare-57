@@ -2,11 +2,13 @@ extends Node2D
 
 const APPEAR_DISAPPEAR_TIME = 0.3
 
-const TOWER_UPGRADE_COSTS = {}
+const TOWER_UPGRADE_COSTS = {"ARCHER" : [3,],
+							"CANNON" : [6,]}
 
 var linked_tower
 
 @export var tower_highlight: AnimatedSprite2D
+@export var upgrade_button: Area2D
 
 var appearing = false
 var disappearing = false
@@ -41,7 +43,11 @@ func open_at(loc: Vector2) -> void:
 	global_position = loc
 	size = 0.0
 	linked_tower = Static.all_tower_locations[loc]
-	print(linked_tower.name)
+	if linked_tower.level >= len(TOWER_UPGRADE_COSTS[linked_tower.TYPE]):
+		upgrade_button.scale = Vector2(0, 0)
+	else:
+		upgrade_button.scale = Vector2(1, 1)
+		
 	appear()
 
 func appear() -> void:
@@ -54,7 +60,7 @@ func disappear() -> void:
 	tower_highlight.scale = Vector2(0, 0)
 
 func upgrade_tower() -> void:
-	pass
+	linked_tower.upgrade()
 
 func _on_close_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and Input.is_action_just_pressed('mouse_click'):
@@ -64,7 +70,15 @@ func _on_close_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 func _on_upgrade_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if appearing or disappearing:
 		return
-	pass
+	if event is InputEventMouseButton:
+		if Input.is_action_just_pressed('mouse_click'):
+			if Static.spend_gold(TOWER_UPGRADE_COSTS[linked_tower.TYPE][linked_tower.level]):
+				upgrade_tower()
+			disappear()
 
 func _on_sell_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
+	if event is InputEventMouseButton:
+		if Input.is_action_just_pressed('mouse_click'):
+			linked_tower.destroy()
+			# TODO maybe get some money back?
+			disappear()

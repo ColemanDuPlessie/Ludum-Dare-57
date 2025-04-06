@@ -48,9 +48,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdhg0"]
 radius = 12.0
 
-[node name="UpgradeMenu" type="Node2D" node_paths=PackedStringArray("tower_highlight")]
+[node name="UpgradeMenu" type="Node2D" node_paths=PackedStringArray("tower_highlight", "upgrade_button")]
 script = ExtResource("1_8i6jl")
 tower_highlight = NodePath("TowerHighlight")
+upgrade_button = NodePath("UpgradeTower")
 
 [node name="MenuRing" type="Sprite2D" parent="."]
 texture = ExtResource("2_buycl")

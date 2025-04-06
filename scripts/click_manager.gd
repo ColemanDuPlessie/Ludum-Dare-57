@@ -14,12 +14,16 @@ func check_for_opening_tower_menu(mouse_pos: Vector2) -> bool:
 	if tower_menu.size == 0 and upgrade_menu.size == 0: # The menu is closed
 		if fog_of_war.check_duplo_revealed(snap): # The place we want to build is not obscured by fog
 			if tiles.check_duplo_exists(snap): # The place we want to build is currently ground tiles
+				var legal_to_open = true
 				for tower_loc in Static.all_tower_locations.keys():
 					if abs(snap[0]-tower_loc[0]) < 16 and abs(snap[1]-tower_loc[1]) < 16:
 						upgrade_menu.open_at(tower_loc)
 						return true
-				tower_menu.open_at(snap)
-				return true
+					elif abs(snap[0]-tower_loc[0]) < 20 and abs(snap[1]-tower_loc[1]) < 20:
+						legal_to_open = false
+				if legal_to_open:
+					tower_menu.open_at(snap)
+					return true
 	else:
 		if abs(tower_menu.global_position[0] - mouse_pos[0]) > 32 or abs(tower_menu.global_position[1] - mouse_pos[1]) > 32:
 			tower_menu.disappear()
