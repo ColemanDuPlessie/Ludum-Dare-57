@@ -234,6 +234,7 @@ fog_of_war = NodePath("../World/FogOfWar")
 tiles = NodePath("../World/WallsResources")
 
 [node name="ContextMenu" parent="." instance=ExtResource("13_kvuet")]
+visible = false
 z_index = 900
 
 [connection signal="spawned_drill" from="GameManager" to="World/WallsResources" method="_on_drill_spawned"]

@@ -18,6 +18,8 @@ func _ready():
 	tower_highlight.scale = Vector2(0, 0)
 	tower_highlight.play("default")
 
+	visible = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if appearing:
