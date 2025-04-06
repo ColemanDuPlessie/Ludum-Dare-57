@@ -81,7 +81,7 @@ func check_movement_direction(delta):
 
 			var tile = tile_procgen.get_cell(location.x, location.y)
 
-			destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL])
+			destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]) * 10
 
 			if destruction_progress >= 1:
 				destruction_progress = 0

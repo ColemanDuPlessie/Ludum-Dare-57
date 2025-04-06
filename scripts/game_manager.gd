@@ -88,7 +88,7 @@ func spawn_enemy(scene: PackedScene) -> void:
 			
 	var enemy: Node2D = enemy_scene.instantiate()
 	enemy.pathfinding = pathfinding
-	enemy.global_position = world_spawn_location
+	enemy.global_position = world_spawn_location + Vector2(randf_range(-4, 4), randf_range(-4, 4))
 	
 	world.add_child(enemy)
 	
