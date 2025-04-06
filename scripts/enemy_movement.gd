@@ -1,6 +1,9 @@
-extends StaticBody2D
+extends Area2D
 
 const MOVE_SPEED = 1 # In tiles/second
+const MAX_HP = 20
+
+var hp = MAX_HP
 
 var pathfinding: Node
 
@@ -38,4 +41,15 @@ func move(delta):
 		if global_position.y <= 8:
 			Static.game_manager.take_damage()
 			
-			queue_free()
+			destroy()
+
+func destroy() -> void:
+	Static.all_enemies.remove_at(Static.all_enemies.find(self))
+	queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method("hit"):
+		hp -= body.hit()
+		 # TODO health indicator goes here!
+		if hp <= 0:
+			destroy()
