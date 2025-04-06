@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dps6kivipvu1h"]
+[gd_scene load_steps=12 format=3 uid="uid://c7xpwroef7qv1"]
 
 [ext_resource type="Script" uid="uid://88cm2vnieiss" path="res://scripts/tower_context_menu.gd" id="1_hkrlw"]
 [ext_resource type="Texture2D" uid="uid://ct2bqitajgi50" path="res://art/Tower_Context_Menu.png" id="1_sdhg0"]
