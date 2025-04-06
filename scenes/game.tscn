@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://bk03q52ki3drb"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
-[ext_resource type="PackedScene" uid="uid://bja8soerass2i" path="res://scenes/camp.tscn" id="2_5newe"]
+[ext_resource type="PackedScene" path="res://scenes/camp.tscn" id="2_5newe"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
 [ext_resource type="AudioStream" uid="uid://clvqelwb6waf2" path="res://sounds/gold.mp3" id="3_rysoc"]
 [ext_resource type="Script" uid="uid://njroyot21xv6" path="res://scripts/fog_of_war.gd" id="3_u5sy4"]

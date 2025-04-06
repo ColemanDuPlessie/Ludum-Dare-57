@@ -2,7 +2,7 @@ extends Node2D
 
 const APPEAR_DISAPPEAR_TIME = 0.3
 
-var archer_scene: PackedScene = ResourceLoader.load("res://scenes/towers/archer_tower.tscn")
+var archer_scene: PackedScene = ResourceLoader.load("res://scenes/towers/wizard_tower.tscn") # TODO
 var cannon_scene: PackedScene = ResourceLoader.load("res://scenes/towers/cannon_tower.tscn")
 
 @export var tower_highlight: AnimatedSprite2D
