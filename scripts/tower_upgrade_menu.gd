@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 			disappearing = false
 
 func open_at(loc: Vector2) -> void:
+	if disappearing and size > 0.95: return
 	global_position = loc
 	size = 0.0
 	linked_tower = Static.all_tower_locations[loc]

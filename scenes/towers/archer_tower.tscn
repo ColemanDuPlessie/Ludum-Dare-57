@@ -72,7 +72,7 @@ script = ExtResource("1_sb3hj")
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ltipw")
-animation = &"Level1"
+animation = &"Level2"
 
 [node name="TowerShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sb3hj")
