@@ -36,6 +36,9 @@ func _physics_process(delta):
 			
 			destroy()
 
+			if Static.health > 0 && len(Static.all_enemies) == 0:
+				Static.game_manager.begin_building()
+
 	move_and_slide()
 
 func destroy() -> void:
@@ -48,6 +51,9 @@ func take_damage(dmg: int) -> void:
 		 # TODO health indicator goes here!
 		if hp <= 0:
 			destroy()
+
+			if len(Static.all_enemies) == 0:
+				Static.game_manager.begin_building()
 
 func _on_hitbox_entered(body: Node2D) -> void:
 	if body.has_method("hit"):
