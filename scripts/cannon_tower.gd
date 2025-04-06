@@ -40,15 +40,10 @@ func find_target(): # Returns Vector2 or null
 	var best_dist = RANGE*16
 	
 	for enemy in Static.all_enemies:
-		var pos = enemy.global_position
-		var travel = BULLET_TIME*enemy.MOVE_SPEED
-		if travel < 1.0 - enemy.movement_progress:
-			pos += travel * 16 * enemy.movement_direction
-		else:
-			pos += (1.0 - enemy.movement_progress) * 16 * enemy.movement_direction
-			travel -= (1.0 - enemy.movement_progress)
-			pos += travel * 16 * enemy.queued_movement_direction
+		var pos = enemy.global_position + enemy.movement_direction * enemy.SPEED * BULLET_TIME
+
 		var dist = euclidean_dist_to(pos)
+
 		if dist < best_dist:
 			best_dist = dist
 			best_target = pos
