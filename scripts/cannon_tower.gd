@@ -10,7 +10,7 @@ const RANGE = 5 # In 16px tiles from center TODO make a targeting guide pop up o
 const MAX_LEVEL = 1
 var level = 0
 
-var proj: PackedScene = ResourceLoader.load("res://scenes/bomb.tscn")
+var proj: PackedScene = ResourceLoader.load("res://scenes/towers/projectiles/bomb.tscn")
 
 var time_remaining_before_attack = 0.0
 var all_enemies_in_range = []

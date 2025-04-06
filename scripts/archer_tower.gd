@@ -10,7 +10,7 @@ const RANGE = [3.5, 4.5] # In 16px tiles from center TODO make a targeting guide
 const MAX_LEVEL = 1
 var level = 0
 
-var proj: PackedScene = ResourceLoader.load("res://scenes/arrow.tscn")
+var proj: PackedScene = ResourceLoader.load("res://scenes/towers/projectiles/arrow.tscn")
 
 @onready var turret = get_node("ArcherTurretSprite")
 @onready var base = get_node("TowerSprite")
