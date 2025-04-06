@@ -30,7 +30,7 @@ func get_enemy_spawn_location() -> Vector2:
 		current += spawn_locations[loc]
 		if current > rand:
 			return loc
-	return Vector2(-1, -1) # THIS SHOULD NEVER OCCUR
+	return Vector2(5, 0) # THIS SHOULD NEVER OCCUR
 
 # Returns the unit vector (in DIRECTIONS) that results in the enemy moving towards the surface.
 func move_enemy(loc: Vector2) -> Vector2i:

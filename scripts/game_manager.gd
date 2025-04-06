@@ -13,6 +13,12 @@ var player_drill_scene: PackedScene = ResourceLoader.load("res://scenes/player_d
 var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
 var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemy.tscn")
 
+var waves = [[enemy_scene, enemy_scene, enemy_scene],
+			[enemy_scene, enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene],
+			[enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene]]
+
+var current_wave = 0
+
 func _ready():
 	Static.game_manager = self
 	
@@ -79,9 +85,14 @@ func begin_combat():
 	current_player = new_player
 
 	pathfinding.calc_pathing()
-
-	if len(pathfinding.spawn_locations) > 0:
-		spawn_enemy(enemy_scene)
+	
+	if current_wave < len(waves):
+		for enemy in waves[current_wave]:
+			spawn_enemy(enemy)
+	else:
+		for i in range(2**(current_wave+1)):
+			spawn_enemy(enemy_scene)
+	current_wave += 1
 
 func begin_building():
 	print("Starting building!")
