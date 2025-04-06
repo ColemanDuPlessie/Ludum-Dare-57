@@ -16,7 +16,7 @@ const RADAR_UPGRADE_COSTS = [3, 7, 12, 18]
 
 func _ready():
 	Static.shop = self
-
+	
 func _on_drill_spawned(player):
 	player_drill = player
 

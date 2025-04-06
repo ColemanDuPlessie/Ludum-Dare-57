@@ -158,6 +158,9 @@ text = "DEPTHS"
 label_settings = SubResource("LabelSettings_1kice")
 horizontal_alignment = 1
 
+[node name="Shop" parent="World" instance=ExtResource("10_kvuet")]
+position = Vector2(0, 16)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
 script = ExtResource("5_0tnpc")
@@ -215,8 +218,6 @@ texture = ExtResource("15_1kice")
 scale = Vector2(1, 0.989618)
 mouse_filter = 2
 
-[node name="Shop" parent="Camera2D/UIOverlay" instance=ExtResource("10_kvuet")]
-
 [node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
 script = ExtResource("6_p57ef")
 map = NodePath("../World/WallsResources")
@@ -239,4 +240,4 @@ z_index = 900
 
 [connection signal="spawned_drill" from="GameManager" to="World/WallsResources" method="_on_drill_spawned"]
 [connection signal="spawned_drill" from="GameManager" to="World/FogOfWar" method="_on_drill_spawned"]
-[connection signal="spawned_drill" from="GameManager" to="Camera2D/UIOverlay/Shop" method="_on_drill_spawned"]
+[connection signal="spawned_drill" from="GameManager" to="World/Shop" method="_on_drill_spawned"]

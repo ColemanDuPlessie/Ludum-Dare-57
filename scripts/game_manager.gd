@@ -27,8 +27,6 @@ func _ready():
 	Static.game_manager = self
 
 	walls.generate_start()
-	
-	# start_game()
 
 func _input(event: InputEvent) -> void:
 	if !Static.game_in_progress && event is InputEventKey:
