@@ -36,20 +36,9 @@ var shop
 var fuel_meter
 var tower_menu
 
-var in_shop = false
-
 var health = 3
 var game_manager = null
-
-func show_shop():
-	if !shop.is_inside_tree():
-		UI.add_child(shop)
-		in_shop = true
-
-func hide_shop():
-	if shop.is_inside_tree():
-		UI.remove_child(shop)
-		in_shop = false
+var game_in_progress = false
 
 func _change_gold(new:int) -> void:
 	current_gold += new
@@ -89,3 +78,6 @@ func spend_gold_and_gems(gold_amt: int, gems_amt: int) -> bool:
 
 func easing(value: float) -> float:
 	return 1 - pow(1 - value, 3)
+
+func fixed_lerp(a, b, decay, delta):
+	return b + (a - b) * exp(-decay * delta)

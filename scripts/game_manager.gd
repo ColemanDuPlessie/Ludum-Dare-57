@@ -13,6 +13,10 @@ var player_drill_scene: PackedScene = ResourceLoader.load("res://scenes/player_d
 var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
 var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemy.tscn")
 
+@onready var start_menu = get_node("../World/StartMenu") 
+@onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
+@onready var resource_menu = get_node("../Camera2D/UIOverlay/ResourceUI") 
+
 var waves = [[enemy_scene, enemy_scene, enemy_scene],
 			[enemy_scene, enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene],
 			[enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene]]
@@ -21,10 +25,15 @@ var current_wave = 0
 
 func _ready():
 	Static.game_manager = self
+
+	walls.generate_start()
 	
-	start_game()
+	# start_game()
 
 func _input(event: InputEvent) -> void:
+	if !Static.game_in_progress && event is InputEventKey:
+		start_game()
+
 	if event.is_action_pressed("debug_swap_mode"):
 		if state == "building":
 			begin_combat()
@@ -46,8 +55,14 @@ func start_game():
 	Static.increment_gems(500)
 	Static.health = 3
 
+	Static.game_in_progress = true
+
 	walls.generate_start()
 	new_player.update_fuel_gague()
+
+	start_menu.fade_out()
+	drill_menu.enable()
+	resource_menu.enable()
 
 func end_game():
 	current_player.queue_free()

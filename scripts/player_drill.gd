@@ -119,10 +119,6 @@ func move(delta):
 	global_position = last_position + movement_dist
 
 	if movement_progress == 1:
-		if global_position.y <= 16:
-			Static.show_shop()
-		else:
-			Static.hide_shop()
 		last_position = global_position
 		moving = false
 		movement_progress = 0

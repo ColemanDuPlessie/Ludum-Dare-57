@@ -12,7 +12,16 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_3bt5l")
 
-[node name="FuelBar" type="Control" parent="."]
+[node name="LeftComponents" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="FuelBar" type="Control" parent="LeftComponents"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -24,7 +33,7 @@ offset_bottom = -7.0
 grow_vertical = 0
 mouse_filter = 1
 
-[node name="Background" type="ColorRect" parent="FuelBar"]
+[node name="Background" type="ColorRect" parent="LeftComponents/FuelBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.305882, 0.345098, 0.290196, 1)
 
-[node name="Fill" type="Control" parent="FuelBar"]
+[node name="Fill" type="Control" parent="LeftComponents/FuelBar"]
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 37.0
@@ -41,7 +50,7 @@ offset_right = 46.0
 offset_bottom = 77.0
 mouse_filter = 1
 
-[node name="Fill" type="ColorRect" parent="FuelBar/Fill"]
+[node name="Fill" type="ColorRect" parent="LeftComponents/FuelBar/Fill"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

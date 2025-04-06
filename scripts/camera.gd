@@ -5,9 +5,12 @@ extends Camera2D
 
 
 func _process(delta: float) -> void:
-	var player = game_manager.current_player
+	if Static.game_in_progress:
+		var player = game_manager.current_player
 
-	if player == null:
-		return
+		if player == null:
+			return
 
-	global_position = player.global_position
+		global_position = Static.fixed_lerp(global_position, player.global_position, 8, delta)
+	else:
+		global_position = Static.fixed_lerp(global_position, Vector2(0, -50), 2, delta)

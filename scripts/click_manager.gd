@@ -33,8 +33,6 @@ const correctionOffsets = [ Vector2(0, 0), Vector2(0, 1), Vector2(1, 0), Vector2
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed('mouse_click'):
 		if Static.game_manager.state == "building":
-			if Static.in_shop:
-				return
 			var mouse_pos = get_parent().get_local_mouse_position() 
 
 			for correctionOffset in correctionOffsets:

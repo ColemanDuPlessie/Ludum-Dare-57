@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bk03q52ki3drb"]
+[gd_scene load_steps=32 format=3 uid="uid://bk03q52ki3drb"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
@@ -10,15 +10,17 @@
 [ext_resource type="AudioStream" uid="uid://def00nm13f1sf" path="res://sounds/stonecrunchy.mp3" id="5_264po"]
 [ext_resource type="AudioStream" uid="uid://cqn12lr7g24l2" path="res://sounds/dirt.mp3" id="6_1kice"]
 [ext_resource type="Script" uid="uid://cyj2swagf6rdk" path="res://scripts/calc_enemy_paths.gd" id="6_p57ef"]
-[ext_resource type="Script" uid="uid://dv0symh1c6oeb" path="res://scripts/ui_init.gd" id="7_kvpfn"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="7_vtaks"]
 [ext_resource type="Texture2D" uid="uid://yc15gb6yrrqt" path="res://art/campfire.png" id="8_264po"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="8_kvpfn"]
-[ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="9_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bpq7qbxrdhe41" path="res://scenes/shops.tscn" id="10_kvuet"]
+[ext_resource type="Script" uid="uid://44ld3hghecsv" path="res://scripts/start_menu.gd" id="11_1kice"]
 [ext_resource type="Script" uid="uid://c8nse2trtiv55" path="res://scripts/click_manager.gd" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dps6kivipvu1h" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://47lkt4e5400r" path="res://scenes/drill_ui.tscn" id="14_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://bmtpt07rta2my" path="res://scenes/gems.tres" id="15_1kice"]
+[ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="15_5newe"]
+[ext_resource type="Script" uid="uid://paht1rfv3cmy" path="res://scripts/resource_ui.gd" id="15_37s47"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kice"]
 atlas = ExtResource("8_264po")
@@ -63,13 +65,20 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
+[sub_resource type="LabelSettings" id="LabelSettings_264po"]
 font = ExtResource("7_vtaks")
 font_size = 8
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
-atlas = ExtResource("8_kvpfn")
-region = Rect2(0, 112, 16, 16)
+[sub_resource type="LabelSettings" id="LabelSettings_5newe"]
+font = ExtResource("7_vtaks")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_1kice"]
+font = ExtResource("7_vtaks")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
+font = ExtResource("7_vtaks")
+font_size = 8
 
 [node name="Game" type="Node2D"]
 
@@ -121,15 +130,54 @@ tile_set = ExtResource("1_iywne")
 collision_enabled = false
 script = ExtResource("3_u5sy4")
 
+[node name="StartMenu" type="Node2D" parent="World"]
+script = ExtResource("11_1kice")
+
+[node name="Label" type="Label" parent="World/StartMenu"]
+offset_left = -32.0
+offset_top = -89.0
+offset_right = 32.0
+offset_bottom = -81.0
+text = "FROM THE"
+label_settings = SubResource("LabelSettings_264po")
+
+[node name="Label3" type="Label" parent="World/StartMenu"]
+modulate = Color(0.776072, 0.776072, 0.776072, 0.792157)
+offset_left = -88.0
+offset_top = -36.0
+offset_right = 88.0
+offset_bottom = -28.0
+text = "Press Any Key to Start"
+label_settings = SubResource("LabelSettings_5newe")
+
+[node name="Depths" type="Label" parent="World/StartMenu"]
+modulate = Color(1, 0.153637, 0.329857, 1)
+offset_left = -48.0
+offset_top = -79.0
+offset_right = 48.0
+offset_bottom = -63.0
+text = "DEPTHS"
+label_settings = SubResource("LabelSettings_1kice")
+horizontal_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
 script = ExtResource("5_0tnpc")
 
 [node name="UIOverlay" type="CanvasLayer" parent="Camera2D"]
 layer = 99
-script = ExtResource("7_kvpfn")
 
-[node name="GoldCounter" type="Label" parent="Camera2D/UIOverlay"]
+[node name="ResourceUI" type="Control" parent="Camera2D/UIOverlay"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("15_37s47")
+
+[node name="GoldCounter" type="Label" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
 custom_minimum_size = Vector2(0, 8)
 offset_left = 25.0
@@ -141,12 +189,12 @@ text = "45"
 label_settings = SubResource("LabelSettings_vtaks")
 vertical_alignment = 1
 
-[node name="GoldNuggetTODO" type="Sprite2D" parent="Camera2D/UIOverlay"]
+[node name="GoldIcon" type="Sprite2D" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
 position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_kvpfn")
+texture = ExtResource("15_5newe")
 
-[node name="GemCounter" type="Label" parent="Camera2D/UIOverlay"]
+[node name="GemCounter" type="Label" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
 custom_minimum_size = Vector2(0, 8)
 offset_left = 25.0
@@ -158,11 +206,10 @@ text = "12"
 label_settings = SubResource("LabelSettings_vtaks")
 vertical_alignment = 1
 
-[node name="GemNuggetTODO" type="Sprite2D" parent="Camera2D/UIOverlay"]
+[node name="GemIcon" type="Sprite2D" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
 position = Vector2(16, 36)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("9_dinhu")
+texture = ExtResource("15_1kice")
 
 [node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
 scale = Vector2(1, 0.989618)
