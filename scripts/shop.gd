@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 var player_drill: CharacterBody2D
 
@@ -13,6 +13,9 @@ const WEAPON_UPGRADE_COSTS = [5, 10, 15]
 
 const MAX_RADAR_LEVEL = 4
 const RADAR_UPGRADE_COSTS = [3, 7, 12, 18]
+
+func _ready():
+	Static.shop = self
 
 func _on_drill_spawned(player):
 	player_drill = player

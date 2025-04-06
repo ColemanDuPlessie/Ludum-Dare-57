@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpq7qbxrdhe41"]
+
+[ext_resource type="Script" uid="uid://dl02fn5p81555" path="res://scripts/shop.gd" id="1_032fp"]
+[ext_resource type="Texture2D" uid="uid://crb5jbv3lraw8" path="res://art/bad_placeholder_art/Placeholder_Shop_Screen.png" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://dfjcqnlmbkv48" path="res://art/bad_placeholder_art/Upgrade_Button_Placeholder.png" id="2_1l46r"]
+[ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_ehphy"]
+[ext_resource type="Texture2D" uid="uid://cbv2bldg6pmrm" path="res://art/bad_placeholder_art/Upgrade_Button_Pressed_Placeholder.png" id="3_032fp"]
+[ext_resource type="Script" uid="uid://damdqhqwx4mpm" path="res://scripts/mechanic_shop.gd" id="3_62jwy"]
+[ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="3_sq172"]
+[ext_resource type="Texture2D" uid="uid://bmpftc3h00xdd" path="res://art/bad_placeholder_art/Upgrade_Button_Hover_Placeholder.png" id="5_2fc2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq172"]
+size = Vector2(112, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_62jwy"]
+font = ExtResource("3_sq172")
+font_size = 8
+font_color = Color(0.94902, 0.941176, 0.898039, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq172"]
+atlas = ExtResource("2_ehphy")
+region = Rect2(67, 180, 9, 8)
+
+[node name="Shops" type="Node2D"]
+script = ExtResource("1_032fp")
+
+[node name="Researcher" type="Node2D" parent="."]
+
+[node name="NPC" type="Sprite2D" parent="Researcher"]
+position = Vector2(-116, -8)
+texture = ExtResource("2_ehphy")
+region_enabled = true
+region_rect = Rect2(19, 208, 9, 16)
+
+[node name="Mechanic" type="Node2D" parent="." node_paths=PackedStringArray("uiOrigin")]
+script = ExtResource("3_62jwy")
+uiOrigin = NodePath("UIOrigin")
+
+[node name="NPC" type="Sprite2D" parent="Mechanic"]
+position = Vector2(145, -8)
+texture = ExtResource("2_ehphy")
+region_enabled = true
+region_rect = Rect2(32, 208, 15, 16)
+
+[node name="Area" type="Area2D" parent="Mechanic"]
+position = Vector2(86, -10)
+collision_layer = 2049
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mechanic/Area"]
+shape = SubResource("RectangleShape2D_sq172")
+
+[node name="UIOrigin" type="Node2D" parent="Mechanic"]
+position = Vector2(143, -18)
+
+[node name="UI" type="Control" parent="Mechanic/UIOrigin"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -113.0
+offset_top = -29.0
+offset_right = 3.0
+offset_bottom = -2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Mechanic/UIOrigin/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ehphy")
+region_rect = Rect2(52, 180, 10, 9)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="FuelTank" type="Control" parent="Mechanic/UIOrigin/UI"]
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 110.0
+offset_bottom = 13.0
+
+[node name="Label" type="Label" parent="Mechanic/UIOrigin/UI/FuelTank"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 9.0
+text = "FUELTANK"
+label_settings = SubResource("LabelSettings_62jwy")
+
+[node name="Price" type="Label" parent="Mechanic/UIOrigin/UI/FuelTank"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 9.0
+text = "10"
+label_settings = SubResource("LabelSettings_62jwy")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Mechanic/UIOrigin/UI/FuelTank"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 1.0
+offset_right = 106.0
+offset_bottom = 9.0
+texture = SubResource("AtlasTexture_sq172")
+
+[node name="Weapon" type="Control" parent="Mechanic/UIOrigin/UI"]
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="Mechanic/UIOrigin/UI/Weapon"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 9.0
+text = "WEAPON"
+label_settings = SubResource("LabelSettings_62jwy")
+
+[node name="Price" type="Label" parent="Mechanic/UIOrigin/UI/Weapon"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 9.0
+text = "20"
+label_settings = SubResource("LabelSettings_62jwy")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Mechanic/UIOrigin/UI/Weapon"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 1.0
+offset_right = 106.0
+offset_bottom = 9.0
+texture = SubResource("AtlasTexture_sq172")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PlaceholderShopScreen" type="TextureRect" parent="CanvasLayer"]
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 144.0
+texture = ExtResource("1_lx5au")
+
+[node name="WeaponUpgrade" type="Button" parent="CanvasLayer"]
+offset_left = 135.0
+offset_top = 88.0
+offset_right = 325.0
+offset_bottom = 119.0
+scale = Vector2(0.5, 0.5)
+text = "Weapon (5/10/15 gems)"
+
+[node name="RadarUpgrade" type="Button" parent="CanvasLayer"]
+offset_left = 136.0
+offset_top = 106.0
+offset_right = 326.0
+offset_bottom = 137.0
+scale = Vector2(0.5, 0.5)
+text = "Radar (3/7/12/18 gems)"
+
+[node name="FuelUpgrade" type="TextureButton" parent="CanvasLayer"]
+offset_left = 65.0
+offset_top = -63.0
+offset_right = 113.0
+offset_bottom = -39.0
+texture_normal = ExtResource("2_1l46r")
+texture_pressed = ExtResource("3_032fp")
+texture_hover = ExtResource("5_2fc2m")
+stretch_mode = 3
+
+[connection signal="body_entered" from="Mechanic/Area" to="Mechanic" method="_player_entered_area"]
+[connection signal="body_exited" from="Mechanic/Area" to="Mechanic" method="_player_exited_area"]
+[connection signal="pressed" from="CanvasLayer/WeaponUpgrade" to="." method="_on_weapon_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/RadarUpgrade" to="." method="_on_radar_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/FuelUpgrade" to="." method="_on_fuel_upgrade_pressed"]

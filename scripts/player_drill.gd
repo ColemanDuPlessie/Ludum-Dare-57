@@ -93,10 +93,13 @@ func check_movement_direction(delta):
 					if Static.tower_menu.size > 0.0 and abs(location.x*16-Static.tower_menu.global_position.x) < 16 and abs(location.y*16-Static.tower_menu.global_position.y) < 16:
 						Static.tower_menu.disappear()
 		
-		if moving == true:
-			var target_pos = global_position + movement_direction * 16
-			
-			moving_to_tile.emit(target_pos)
+	if moving && movement_direction == Vector2.UP && global_position.y == 8:
+		moving = false
+
+	if moving:
+		var target_pos = global_position + movement_direction * 16
+		
+		moving_to_tile.emit(target_pos)
 
 func update_fuel_gague():
 	Static.fuel_meter.set_height(float(fuel_remaining)/Static.MAX_FUEL)
