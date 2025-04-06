@@ -177,7 +177,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("15_37s47")
 
 [node name="GoldCounter" type="Label" parent="Camera2D/UIOverlay/ResourceUI"]
@@ -218,7 +218,6 @@ texture = ExtResource("15_1kice")
 
 [node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
 scale = Vector2(1, 0.989618)
-mouse_filter = 2
 
 [node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
 script = ExtResource("6_p57ef")

@@ -109,6 +109,7 @@ texture = ExtResource("5_ehphy")
 
 [node name="Drill" type="Button" parent="Researcher/UIOrigin/UI"]
 z_index = 700
+layout_mode = 0
 offset_left = 6.0
 offset_top = 14.0
 offset_right = 82.0
