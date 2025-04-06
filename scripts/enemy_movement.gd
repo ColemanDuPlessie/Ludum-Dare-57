@@ -34,3 +34,8 @@ func move(delta):
 		last_position = global_position
 		moving = false
 		movement_progress = 0
+
+		if global_position.y <= 8:
+			Static.game_manager.take_damage()
+			
+			queue_free()
