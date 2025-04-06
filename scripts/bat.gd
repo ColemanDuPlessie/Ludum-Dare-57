@@ -12,7 +12,27 @@ var movement_direction = Vector2.ZERO
 
 var repathfind_timer = 0
 
-func _physics_process(delta):
+var stunned_for = 0.0
+var frozen_velocity = Vector2(0, 0)
+
+func stun(duration: float) -> void:
+	if stunned_for == 0:
+		frozen_velocity = velocity
+		velocity = Vector2(0, 0)
+		get_node("AnimatedSprite2D").pause()
+	stunned_for = max(stunned_for, duration)
+
+func _physics_process(true_delta):
+	var delta = true_delta
+	if stunned_for > 0.0:
+		if stunned_for > true_delta:
+			stunned_for -= true_delta
+			return
+		else:
+			delta -= stunned_for
+			stunned_for = 0
+			velocity = frozen_velocity
+			get_node("AnimatedSprite2D").play()
 	if repathfind_timer <= 0:
 		movement_direction = pathfinding.move_enemy(global_position)
 
