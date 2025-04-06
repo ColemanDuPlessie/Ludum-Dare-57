@@ -55,6 +55,7 @@ var game_in_progress = false
 var camera = null
 
 var round_number = 0
+var deepest = 0
 
 func _change_gold(new:int) -> void:
 	current_gold += new

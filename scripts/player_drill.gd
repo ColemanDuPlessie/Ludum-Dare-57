@@ -131,3 +131,5 @@ func move(delta):
 		last_position = global_position
 		moving = false
 		movement_progress = 0
+
+		Static.deepest = max(floor(global_position.y / 16), Static.deepest)
