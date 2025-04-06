@@ -26,5 +26,4 @@ func _process(delta: float) -> void:
         uiOrigin.scale = Vector2(Static.easing(size), Static.easing(size))
     else:
         uiOrigin.scale = Vector2(Static.easing(size), Static.easing(size))
-        # uiOrigin.scale = Vector2(1 - Static.easing(1 - size), 1 - Static.easing(1 - size))
     

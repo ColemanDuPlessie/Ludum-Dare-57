@@ -187,5 +187,6 @@ tiles = NodePath("../World/WallsResources")
 [node name="ContextMenu" parent="." instance=ExtResource("13_kvuet")]
 z_index = 900
 
+[connection signal="spawned_drill" from="GameManager" to="World/Camp/Shops" method="_on_drill_spawned"]
 [connection signal="spawned_drill" from="GameManager" to="World/WallsResources" method="_on_drill_spawned"]
 [connection signal="spawned_drill" from="GameManager" to="World/FogOfWar" method="_on_drill_spawned"]
