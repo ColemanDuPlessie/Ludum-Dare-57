@@ -8,6 +8,7 @@ var jump: float = 180
 var y_velocity = 0
 
 @onready var sprite: AnimatedSprite2D = get_node("Sprite")
+@onready var head: AnimatedSprite2D = get_node("Head")
 
 var proj: PackedScene = ResourceLoader.load("res://scenes/player_laser.tscn")
 
@@ -43,8 +44,18 @@ func _process(delta: float) -> void:
 			return
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		try_shoot(get_parent().get_local_mouse_position())
+	
+	
+	var tgt = get_parent().get_local_mouse_position()
+	var vec = tgt-global_position
+	var angle = atan2(vec.y, vec.x)
+	if head.flip_h == true:
+		head.set_frame_and_progress(int(-angle*8/(2*PI)+ 4.5 + 8) % 8, 0.0)
+	else:
+		head.set_frame_and_progress(int(angle*8/(2*PI) + 4 + 4.5) % 8, 0.0)
 
 func _physics_process(delta: float) -> void:
+
 	var movement = Input.get_axis("left", "right")
 
 	if is_on_floor():
@@ -71,11 +82,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			sprite.play("fall")
 	elif movement != 0:
-		sprite.play("run")
+		sprite.play("run", 2.0)
 	else:
 		sprite.play("idle")
 
+
+	
+	
 	if movement < 0:
 		sprite.flip_h = true
+		head.flip_h = true
 	elif movement > 0:
 		sprite.flip_h = false
+		head.flip_h = false
