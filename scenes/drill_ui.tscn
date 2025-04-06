@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://duqbmfjesdlge"]
+
+[ext_resource type="Script" uid="uid://8nikv0ku3u6a" path="res://drill_ui.gd" id="1_3bt5l"]
+
+[node name="DrillUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3bt5l")
+
+[node name="FuelBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -44.0
+offset_right = 13.0
+offset_bottom = -7.0
+grow_vertical = 0
+
+[node name="Background" type="ColorRect" parent="FuelBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.305882, 0.345098, 0.290196, 1)
+
+[node name="Fill" type="ColorRect" parent="FuelBar"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+color = Color(0.760784, 0.827451, 0.407843, 1)

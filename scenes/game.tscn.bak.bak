@@ -1,0 +1,159 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e3a8f15a86eeeb83acb8292b69a30a59b3e8c416
+[gd_scene load_steps=20 format=3 uid="uid://bk03q52ki3drb"]
+
+[ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
+[ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
+[ext_resource type="AudioStream" uid="uid://cfb6p18krbrv1" path="res://sounds/gold.wav" id="3_rysoc"]
+[ext_resource type="Script" uid="uid://njroyot21xv6" path="res://scripts/fog_of_war.gd" id="3_u5sy4"]
+[ext_resource type="Script" uid="uid://dd2soerf0pqs3" path="res://scripts/game_manager.gd" id="4_gee14"]
+[ext_resource type="AudioStream" uid="uid://cx33pdqq7rsmu" path="res://sounds/gemshort.wav" id="4_ssvqc"]
+[ext_resource type="Script" uid="uid://8odk8g0qlhui" path="res://scripts/camera.gd" id="5_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://btv4kwbrf8wmb" path="res://sounds/stonecrunchy.wav" id="5_264po"]
+[ext_resource type="AudioStream" uid="uid://b4hcaeuuhk3a3" path="res://sounds/dirt.wav" id="6_1kice"]
+<<<<<<< HEAD
+=======
+=======
+[gd_scene load_steps=21 format=3 uid="uid://bk03q52ki3drb"]
+
+[ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
+[ext_resource type="Script" uid="uid://mxan1omljs3d" path="res://scripts/tile_procgen.gd" id="2_p57ef"]
+[ext_resource type="AudioStream" uid="uid://clvqelwb6waf2" path="res://sounds/gold.mp3" id="3_rysoc"]
+[ext_resource type="Script" uid="uid://njroyot21xv6" path="res://scripts/fog_of_war.gd" id="3_u5sy4"]
+[ext_resource type="Script" uid="uid://dd2soerf0pqs3" path="res://scripts/game_manager.gd" id="4_gee14"]
+[ext_resource type="AudioStream" uid="uid://hfeoawv8mld2" path="res://sounds/gemshort.mp3" id="4_ssvqc"]
+[ext_resource type="Script" uid="uid://8odk8g0qlhui" path="res://scripts/camera.gd" id="5_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://def00nm13f1sf" path="res://sounds/stonecrunchy.mp3" id="5_264po"]
+[ext_resource type="AudioStream" uid="uid://cqn12lr7g24l2" path="res://sounds/dirt.mp3" id="6_1kice"]
+>>>>>>> 0614754caf75a351b0c6e7f860e9bcf0b0e495ce
+>>>>>>> e3a8f15a86eeeb83acb8292b69a30a59b3e8c416
+[ext_resource type="Script" uid="uid://cyj2swagf6rdk" path="res://scripts/calc_enemy_paths.gd" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://dv0symh1c6oeb" path="res://scripts/ui_init.gd" id="7_kvpfn"]
+[ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="7_vtaks"]
+[ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="8_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="9_dinhu"]
+[ext_resource type="PackedScene" uid="uid://bpq7qbxrdhe41" path="res://scenes/shop.tscn" id="10_kvuet"]
+[ext_resource type="Script" uid="uid://c8nse2trtiv55" path="res://scripts/click_manager.gd" id="12_dinhu"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://c7xpwroef7qv1" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
+=======
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://c7xpwroef7qv1" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
+=======
+[ext_resource type="PackedScene" uid="uid://dps6kivipvu1h" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://duqbmfjesdlge" path="res://scenes/drill_ui.tscn" id="14_ssvqc"]
+>>>>>>> 0614754caf75a351b0c6e7f860e9bcf0b0e495ce
+>>>>>>> e3a8f15a86eeeb83acb8292b69a30a59b3e8c416
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
+font = ExtResource("7_vtaks")
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
+atlas = ExtResource("8_kvpfn")
+region = Rect2(0, 112, 16, 16)
+
+[node name="Game" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Background" type="TileMapLayer" parent="World"]
+tile_set = ExtResource("1_iywne")
+collision_enabled = false
+
+[node name="WallsResources" type="TileMapLayer" parent="World" node_paths=PackedStringArray("FOG_OF_WAR", "BACKGROUND")]
+tile_set = ExtResource("1_iywne")
+script = ExtResource("2_p57ef")
+FOG_OF_WAR = NodePath("../FogOfWar")
+BACKGROUND = NodePath("../Background")
+
+[node name="gold" type="AudioStreamPlayer2D" parent="World/WallsResources"]
+stream = ExtResource("3_rysoc")
+
+[node name="gem" type="AudioStreamPlayer2D" parent="World/WallsResources"]
+stream = ExtResource("4_ssvqc")
+
+[node name="stone" type="AudioStreamPlayer2D" parent="World/WallsResources"]
+stream = ExtResource("5_264po")
+
+[node name="dirt" type="AudioStreamPlayer2D" parent="World/WallsResources"]
+stream = ExtResource("6_1kice")
+
+[node name="FogOfWar" type="TileMapLayer" parent="World"]
+tile_set = ExtResource("1_iywne")
+collision_enabled = false
+script = ExtResource("3_u5sy4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_priority = 1
+script = ExtResource("5_0tnpc")
+
+[node name="UIOverlay" type="CanvasLayer" parent="Camera2D"]
+layer = 99
+script = ExtResource("7_kvpfn")
+
+[node name="GoldCounter" type="Label" parent="Camera2D/UIOverlay"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 8)
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 89.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("7_vtaks")
+text = "45"
+label_settings = SubResource("LabelSettings_vtaks")
+vertical_alignment = 1
+
+[node name="GoldNuggetTODO" type="Sprite2D" parent="Camera2D/UIOverlay"]
+texture_filter = 1
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_kvpfn")
+
+[node name="GemCounter" type="Label" parent="Camera2D/UIOverlay"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 8)
+offset_left = 25.0
+offset_top = 32.0
+offset_right = 89.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("7_vtaks")
+text = "12"
+label_settings = SubResource("LabelSettings_vtaks")
+vertical_alignment = 1
+
+[node name="GemNuggetTODO" type="Sprite2D" parent="Camera2D/UIOverlay"]
+texture_filter = 1
+position = Vector2(16, 36)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("9_dinhu")
+
+[node name="Shop" parent="Camera2D/UIOverlay" instance=ExtResource("10_kvuet")]
+offset_left = 364.0
+offset_top = -106.0
+offset_right = 364.0
+offset_bottom = -106.0
+
+[node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
+
+[node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
+script = ExtResource("6_p57ef")
+map = NodePath("../World/WallsResources")
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("world", "pathfinding")]
+script = ExtResource("4_gee14")
+world = NodePath("../World")
+pathfinding = NodePath("../EnemyFloodfillCalc")
+
+[node name="ClickManager" type="Node2D" parent="." node_paths=PackedStringArray("tower_menu", "fog_of_war", "tiles")]
+script = ExtResource("12_dinhu")
+tower_menu = NodePath("../ContextMenu")
+fog_of_war = NodePath("../World/FogOfWar")
+tiles = NodePath("../World/WallsResources")
+
+[node name="ContextMenu" parent="." instance=ExtResource("13_kvuet")]
+
+[connection signal="spawned_drill" from="GameManager" to="World/WallsResources" method="_on_drill_spawned"]
+[connection signal="spawned_drill" from="GameManager" to="World/FogOfWar" method="_on_drill_spawned"]
+[connection signal="spawned_drill" from="GameManager" to="Camera2D/UIOverlay/Shop" method="_on_drill_spawned"]
