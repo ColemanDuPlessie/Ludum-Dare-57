@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://2t8kr67p832t" path="res://icon.svg" id="9_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bpq7qbxrdhe41" path="res://scenes/shop.tscn" id="10_kvuet"]
 [ext_resource type="Script" uid="uid://c8nse2trtiv55" path="res://scripts/click_manager.gd" id="12_dinhu"]
-[ext_resource type="PackedScene" uid="uid://dps6kivipvu1h" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
-[ext_resource type="PackedScene" uid="uid://duqbmfjesdlge" path="res://scenes/drill_ui.tscn" id="14_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://c7xpwroef7qv1" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" path="res://scenes/drill_ui.tscn" id="14_ssvqc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
 font = ExtResource("7_vtaks")
@@ -108,6 +108,7 @@ offset_right = 364.0
 offset_bottom = -106.0
 
 [node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
+visible = false
 
 [node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
 script = ExtResource("6_p57ef")
