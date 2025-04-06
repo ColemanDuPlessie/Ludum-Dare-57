@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bk03q52ki3drb"]
+[gd_scene load_steps=27 format=3 uid="uid://bk03q52ki3drb"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://bja8soerass2i" path="res://scenes/camp.tscn" id="2_5newe"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bmtpt07rta2my" path="res://art/gems.tres" id="15_1kice"]
 [ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="15_5newe"]
 [ext_resource type="Script" uid="uid://paht1rfv3cmy" path="res://scripts/resource_ui.gd" id="15_37s47"]
+[ext_resource type="Texture2D" uid="uid://bluer54g68kfd" path="res://art/heart.tres" id="16_37s47"]
 [ext_resource type="PackedScene" uid="uid://cu4c0o3skged" path="res://scenes/tower_upgrade_menu.tscn" id="22_37s47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_264po"]
@@ -127,10 +128,10 @@ script = ExtResource("15_37s47")
 texture_filter = 1
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 0
-offset_left = 25.0
-offset_top = 12.0
-offset_right = 89.0
-offset_bottom = 20.0
+offset_left = 19.0
+offset_top = 20.0
+offset_right = 83.0
+offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("7_vtaks")
 text = "45"
 label_settings = SubResource("LabelSettings_vtaks")
@@ -138,17 +139,17 @@ vertical_alignment = 1
 
 [node name="GoldIcon" type="Sprite2D" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
-position = Vector2(16, 16)
+position = Vector2(10, 24)
 texture = ExtResource("15_5newe")
 
 [node name="GemCounter" type="Label" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 0
-offset_left = 25.0
-offset_top = 32.0
-offset_right = 89.0
-offset_bottom = 40.0
+offset_left = 19.0
+offset_top = 33.0
+offset_right = 83.0
+offset_bottom = 41.0
 theme_override_fonts/font = ExtResource("7_vtaks")
 text = "12"
 label_settings = SubResource("LabelSettings_vtaks")
@@ -156,8 +157,28 @@ vertical_alignment = 1
 
 [node name="GemIcon" type="Sprite2D" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
-position = Vector2(16, 36)
+position = Vector2(10, 37)
 texture = ExtResource("15_1kice")
+
+[node name="Health" type="HBoxContainer" parent="Camera2D/UIOverlay/ResourceUI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 93.0
+offset_bottom = 15.0
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/UIOverlay/ResourceUI/Health"]
+layout_mode = 2
+texture = ExtResource("16_37s47")
+
+[node name="TextureRect2" type="TextureRect" parent="Camera2D/UIOverlay/ResourceUI/Health"]
+layout_mode = 2
+texture = ExtResource("16_37s47")
+
+[node name="TextureRect3" type="TextureRect" parent="Camera2D/UIOverlay/ResourceUI/Health"]
+layout_mode = 2
+texture = ExtResource("16_37s47")
 
 [node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
 scale = Vector2(1, 0.989618)
