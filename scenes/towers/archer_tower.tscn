@@ -80,3 +80,4 @@ shape = SubResource("RectangleShape2D_sb3hj")
 [node name="ArcherTurretSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kbh8i")
 animation = &"Reloading"
+frame_progress = 0.0717202

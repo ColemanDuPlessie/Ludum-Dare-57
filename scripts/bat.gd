@@ -19,13 +19,15 @@ func _physics_process(delta):
 		repathfind_timer = 0.4
 
 		if movement_direction == Vector2i.RIGHT:
-			velocity = Vector2(30, -70)
+			velocity = Vector2(30, -65)
 		elif movement_direction == Vector2i.LEFT:
-			velocity = Vector2(-30, -70)
+			velocity = Vector2(-30, -65)
 		elif movement_direction == Vector2i.UP:
 			velocity = Vector2(0, -90)
 		elif movement_direction == Vector2i.DOWN:
 			velocity = Vector2(0, -15)
+		
+		velocity += (floor(global_position / 16) * 16 + Vector2.ONE * 8 - global_position).normalized() * 5
 			
 	velocity += Vector2(0, 300) * delta
 
