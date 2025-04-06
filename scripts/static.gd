@@ -86,3 +86,6 @@ func spend_gold_and_gems(gold_amt: int, gems_amt: int) -> bool:
 		_change_gems(-gems_amt)
 		return true
 	return false
+
+func easing(value: float) -> float:
+	return 1 - pow(1 - value, 3)

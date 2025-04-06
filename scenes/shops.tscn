@@ -1,0 +1,231 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpq7qbxrdhe41"]
+
+[ext_resource type="Script" uid="uid://dl02fn5p81555" path="res://scripts/shop.gd" id="1_032fp"]
+[ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_ehphy"]
+[ext_resource type="Script" uid="uid://clhjks2eqkfe2" path="res://scripts/npc_shop.gd" id="3_8qvxx"]
+[ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="3_sq172"]
+[ext_resource type="Script" path="res://scenes/shop_button.gd" id="4_sq172"]
+[ext_resource type="Texture2D" uid="uid://bmtpt07rta2my" path="res://scenes/gems.tres" id="5_ehphy"]
+[ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="5_uc15s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qvxx"]
+size = Vector2(59, 20)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehphy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_62jwy"]
+font = ExtResource("3_sq172")
+font_size = 8
+font_color = Color(0.94902, 0.941176, 0.898039, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq172"]
+size = Vector2(57, 20)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sq172"]
+
+[node name="Shops" type="Node2D"]
+script = ExtResource("1_032fp")
+
+[node name="Researcher" type="Node2D" parent="." node_paths=PackedStringArray("uiOrigin")]
+script = ExtResource("3_8qvxx")
+uiOrigin = NodePath("UIOrigin")
+
+[node name="NPC" type="Sprite2D" parent="Researcher"]
+position = Vector2(-116, -8)
+texture = ExtResource("2_ehphy")
+region_enabled = true
+region_rect = Rect2(19, 208, 9, 16)
+
+[node name="Area" type="Area2D" parent="Researcher"]
+position = Vector2(-83, -10)
+collision_layer = 2049
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Researcher/Area"]
+position = Vector2(-7.5, 0)
+shape = SubResource("RectangleShape2D_8qvxx")
+
+[node name="UIOrigin" type="Node2D" parent="Researcher"]
+position = Vector2(-115, -18)
+
+[node name="UI" type="Control" parent="Researcher/UIOrigin"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 80.0
+offset_bottom = -2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Researcher/UIOrigin/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ehphy")
+region_rect = Rect2(34, 180, 10, 9)
+patch_margin_left = 5
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="Radar" type="Button" parent="Researcher/UIOrigin/UI"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 82.0
+offset_bottom = 13.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ehphy")
+flat = true
+script = ExtResource("4_sq172")
+
+[node name="Label" type="Label" parent="Researcher/UIOrigin/UI/Radar"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "RADAR"
+label_settings = SubResource("LabelSettings_62jwy")
+
+[node name="Price" type="Label" parent="Researcher/UIOrigin/UI/Radar"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 9.0
+text = "10"
+label_settings = SubResource("LabelSettings_62jwy")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Researcher/UIOrigin/UI/Radar"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 1.0
+offset_right = 75.0
+offset_bottom = 9.0
+texture = ExtResource("5_ehphy")
+
+[node name="Mechanic" type="Node2D" parent="." node_paths=PackedStringArray("uiOrigin")]
+script = ExtResource("3_8qvxx")
+uiOrigin = NodePath("UIOrigin")
+
+[node name="NPC" type="Sprite2D" parent="Mechanic"]
+position = Vector2(145, -8)
+texture = ExtResource("2_ehphy")
+region_enabled = true
+region_rect = Rect2(32, 208, 15, 16)
+
+[node name="Area" type="Area2D" parent="Mechanic"]
+position = Vector2(86, -10)
+collision_layer = 2049
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mechanic/Area"]
+position = Vector2(27.5, 0)
+shape = SubResource("RectangleShape2D_sq172")
+
+[node name="UIOrigin" type="Node2D" parent="Mechanic"]
+position = Vector2(143, -18)
+
+[node name="UI" type="Control" parent="Mechanic/UIOrigin"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -113.0
+offset_top = -29.0
+offset_right = 3.0
+offset_bottom = -2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Mechanic/UIOrigin/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ehphy")
+region_rect = Rect2(52, 180, 10, 9)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="FuelTank" type="Button" parent="Mechanic/UIOrigin/UI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 110.0
+offset_bottom = 13.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sq172")
+flat = true
+
+[node name="Label" type="Label" parent="Mechanic/UIOrigin/UI/FuelTank"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 9.0
+text = "FUELTANK"
+label_settings = SubResource("LabelSettings_62jwy")
+
+[node name="Price" type="Label" parent="Mechanic/UIOrigin/UI/FuelTank"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 9.0
+text = "10"
+label_settings = SubResource("LabelSettings_62jwy")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Mechanic/UIOrigin/UI/FuelTank"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 1.0
+offset_right = 106.0
+offset_bottom = 9.0
+texture = ExtResource("5_uc15s")
+
+[node name="Weapon" type="Button" parent="Mechanic/UIOrigin/UI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 24.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sq172")
+flat = true
+
+[node name="Label" type="Label" parent="Mechanic/UIOrigin/UI/Weapon"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 9.0
+text = "WEAPON"
+label_settings = SubResource("LabelSettings_62jwy")
+
+[node name="Price" type="Label" parent="Mechanic/UIOrigin/UI/Weapon"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 9.0
+text = "20"
+label_settings = SubResource("LabelSettings_62jwy")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Mechanic/UIOrigin/UI/Weapon"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 1.0
+offset_right = 106.0
+offset_bottom = 9.0
+texture = ExtResource("5_ehphy")
+
+[connection signal="body_entered" from="Researcher/Area" to="Researcher" method="_player_entered_area"]
+[connection signal="body_exited" from="Researcher/Area" to="Researcher" method="_player_exited_area"]
+[connection signal="button_down" from="Researcher/UIOrigin/UI/Radar" to="." method="_on_radar_upgrade_pressed"]
+[connection signal="body_entered" from="Mechanic/Area" to="Mechanic" method="_player_entered_area"]
+[connection signal="body_exited" from="Mechanic/Area" to="Mechanic" method="_player_exited_area"]
+[connection signal="button_down" from="Mechanic/UIOrigin/UI/FuelTank" to="." method="_on_fuel_upgrade_pressed"]
+[connection signal="button_down" from="Mechanic/UIOrigin/UI/Weapon" to="." method="_on_weapon_upgrade_pressed"]
