@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bk03q52ki3drb"]
+[gd_scene load_steps=30 format=3 uid="uid://bk03q52ki3drb"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://bja8soerass2i" path="res://scenes/camp.tscn" id="2_5newe"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bf1gy7cyapd7e" path="res://scenes/shops.tscn" id="10_kvuet"]
 [ext_resource type="Script" uid="uid://44ld3hghecsv" path="res://scripts/start_menu.gd" id="11_1kice"]
 [ext_resource type="Script" uid="uid://c8nse2trtiv55" path="res://scripts/click_manager.gd" id="12_dinhu"]
+[ext_resource type="Texture2D" uid="uid://cuki5dhsl0smr" path="res://art/cave_decoration.png" id="12_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://c7xpwroef7qv1" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://47lkt4e5400r" path="res://scenes/drill_ui.tscn" id="14_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://bmtpt07rta2my" path="res://art/gems.tres" id="15_1kice"]
@@ -121,6 +122,11 @@ horizontal_alignment = 1
 [node name="Shop" parent="World" instance=ExtResource("10_kvuet")]
 z_index = 700
 position = Vector2(0, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="World"]
+z_index = -50
+position = Vector2(0, -144)
+texture = ExtResource("12_e1j6l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
