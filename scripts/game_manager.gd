@@ -80,6 +80,11 @@ func end_game():
 	start_menu.fade_in()
 	drill_menu.disable()
 	resource_menu.disable()
+	Static.MAX_FUEL = 40
+	Static.PLAYER_DRILL_LEVEL = 0
+	Static.PLAYER_GUN_LEVEL = 0
+	Static.PLAYER_RADAR_LEVEL = 0
+	current_wave = 0
 
 func spawn_enemy(scene: PackedScene) -> void:
 	var spawn_location = pathfinding.get_enemy_spawn_location()
