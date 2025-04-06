@@ -43,7 +43,7 @@ func start_game():
 	Static.current_gold = 0
 	Static.increment_gold(15)
 	Static.current_gems = 0
-	Static.increment_gems(1)
+	Static.increment_gems(500)
 	Static.health = 3
 
 	walls.generate_start()

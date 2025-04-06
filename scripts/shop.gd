@@ -8,6 +8,12 @@ const MAX_FUEL_LEVEL = 5
 const FUEL_UPGRADE_COSTS = [5, 10, 15, 25]
 const FUEL_UPGRADE_VALUES = [10, 20, 40, 60]
 
+const MAX_WEAPON_LEVEL = 3
+const WEAPON_UPGRADE_COSTS = [5, 10, 15]
+
+const MAX_RADAR_LEVEL = 4
+const RADAR_UPGRADE_COSTS = [3, 7, 12, 18]
+
 func _on_drill_spawned(player):
 	player_drill = player
 
@@ -19,4 +25,19 @@ func _on_fuel_upgrade_pressed() -> void:
 		Static.MAX_FUEL += FUEL_UPGRADE_VALUES[current_fuel_level-1]
 		current_fuel_level += 1
 		player_drill.update_fuel_gague()
+		# TODO change button graphics...
+
+func _on_weapon_upgrade_pressed() -> void:
+	if Static.PLAYER_GUN_LEVEL >= MAX_WEAPON_LEVEL:
+		return
+	if Static.spend_gems(WEAPON_UPGRADE_COSTS[Static.PLAYER_GUN_LEVEL]):
+		Static.PLAYER_GUN_LEVEL += 1
+		# TODO change button graphics...
+
+func _on_radar_upgrade_pressed() -> void:
+	if Static.PLAYER_RADAR_LEVEL >= MAX_RADAR_LEVEL:
+		return
+	if Static.spend_gems(RADAR_UPGRADE_COSTS[Static.PLAYER_RADAR_LEVEL]):
+		Static.PLAYER_RADAR_LEVEL += 1
+		player_drill.update_radar_power()
 		# TODO change button graphics...

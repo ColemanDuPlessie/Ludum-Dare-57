@@ -101,6 +101,10 @@ func check_movement_direction(delta):
 func update_fuel_gague():
 	Static.fuel_meter.set_height(float(fuel_remaining)/Static.MAX_FUEL)
 
+func update_radar_power():
+	Static.MAX_REVEAL_RANGE = Static.RADAR_POWERS[Static.PLAYER_RADAR_LEVEL]
+	moving_to_tile.emit(global_position)
+
 func move(delta):
 	movement_progress += delta * MOVE_SPEED
 

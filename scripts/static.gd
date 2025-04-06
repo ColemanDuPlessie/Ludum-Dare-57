@@ -24,6 +24,10 @@ var current_gems = 0
 
 var MAX_FUEL = 50
 var PLAYER_GUN_LEVEL = 0 # 4 levels: max is level 3
+var PLAYER_RADAR_LEVEL = 0 # 5 levels: max is level 4
+
+var MAX_REVEAL_RANGE = 5 # The player can see sqrt(MAX_REVEAL_RANGE) units away in any direction. We can sell upgrades for this.
+var RADAR_POWERS = [5, 10, 20, 28, 40]
 
 var gold_counter
 var gems_counter
