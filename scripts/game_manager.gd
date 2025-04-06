@@ -140,3 +140,5 @@ func take_damage():
 
 	if Static.health <= 0:
 		end_game()
+
+	Static.camera.shake(2)
