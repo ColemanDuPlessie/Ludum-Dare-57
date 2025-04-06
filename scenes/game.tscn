@@ -13,12 +13,12 @@
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="7_vtaks"]
 [ext_resource type="Texture2D" uid="uid://yc15gb6yrrqt" path="res://art/campfire.png" id="8_264po"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="8_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://bpq7qbxrdhe41" path="res://scenes/shops.tscn" id="10_kvuet"]
+[ext_resource type="PackedScene" uid="uid://bf1gy7cyapd7e" path="res://scenes/shops.tscn" id="10_kvuet"]
 [ext_resource type="Script" uid="uid://44ld3hghecsv" path="res://scripts/start_menu.gd" id="11_1kice"]
 [ext_resource type="Script" uid="uid://c8nse2trtiv55" path="res://scripts/click_manager.gd" id="12_dinhu"]
-[ext_resource type="PackedScene" uid="uid://dps6kivipvu1h" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://c7xpwroef7qv1" path="res://scenes/tower_context_menu.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://47lkt4e5400r" path="res://scenes/drill_ui.tscn" id="14_ssvqc"]
-[ext_resource type="Texture2D" uid="uid://bmtpt07rta2my" path="res://scenes/gems.tres" id="15_1kice"]
+[ext_resource type="Texture2D" path="res://scenes/gems.tres" id="15_1kice"]
 [ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="15_5newe"]
 [ext_resource type="Script" uid="uid://paht1rfv3cmy" path="res://scripts/resource_ui.gd" id="15_37s47"]
 
@@ -105,8 +105,6 @@ sprite_frames = SubResource("SpriteFrames_pl11u")
 autoplay = "default"
 frame_progress = 0.243928
 
-[node name="Shops" parent="World/Camp" instance=ExtResource("10_kvuet")]
-
 [node name="WallsResources" type="TileMapLayer" parent="World" node_paths=PackedStringArray("FOG_OF_WAR", "BACKGROUND")]
 tile_set = ExtResource("1_iywne")
 script = ExtResource("2_p57ef")
@@ -180,6 +178,7 @@ script = ExtResource("15_37s47")
 [node name="GoldCounter" type="Label" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
 custom_minimum_size = Vector2(0, 8)
+layout_mode = 0
 offset_left = 25.0
 offset_top = 12.0
 offset_right = 89.0
@@ -197,6 +196,7 @@ texture = ExtResource("15_5newe")
 [node name="GemCounter" type="Label" parent="Camera2D/UIOverlay/ResourceUI"]
 texture_filter = 1
 custom_minimum_size = Vector2(0, 8)
+layout_mode = 0
 offset_left = 25.0
 offset_top = 32.0
 offset_right = 89.0
@@ -214,6 +214,8 @@ texture = ExtResource("15_1kice")
 [node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
 scale = Vector2(1, 0.989618)
 mouse_filter = 2
+
+[node name="Shop" parent="Camera2D/UIOverlay" instance=ExtResource("10_kvuet")]
 
 [node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
 script = ExtResource("6_p57ef")
@@ -234,6 +236,6 @@ tiles = NodePath("../World/WallsResources")
 [node name="ContextMenu" parent="." instance=ExtResource("13_kvuet")]
 z_index = 900
 
-[connection signal="spawned_drill" from="GameManager" to="World/Camp/Shops" method="_on_drill_spawned"]
 [connection signal="spawned_drill" from="GameManager" to="World/WallsResources" method="_on_drill_spawned"]
 [connection signal="spawned_drill" from="GameManager" to="World/FogOfWar" method="_on_drill_spawned"]
+[connection signal="spawned_drill" from="GameManager" to="Camera2D/UIOverlay/Shop" method="_on_drill_spawned"]
