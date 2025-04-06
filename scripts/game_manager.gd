@@ -33,8 +33,8 @@ func start_game():
 
 	spawned_drill.emit(new_player)
 
-	Static.gold_counter = 15
-	Static.gems_counter = 1
+	Static.current_gold = 15
+	Static.current_gems = 1
 	Static.health = 3
 
 	walls.generate_start()
