@@ -46,7 +46,6 @@ func destroy_tile(x: int, y:int) -> Vector2i:
 		Static.increment_gems(1)
 	elif destroyed == Static.DIRT_TILE:
 		$dirt.play()
-		print("hi")
 	#elif destroyed == Static.STONE_TILE:
 	#	$stone.play()
 	erase_cell(Vector2i(x, y))
