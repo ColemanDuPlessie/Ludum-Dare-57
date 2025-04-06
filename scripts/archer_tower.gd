@@ -58,3 +58,6 @@ func _process(delta: float) -> void:
 	if target != null:
 		shoot(target)
 		time_remaining_before_attack = ATTACK_DELAY
+
+func destroy() -> void:
+	queue_free()

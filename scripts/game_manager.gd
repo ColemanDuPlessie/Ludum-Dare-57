@@ -41,6 +41,14 @@ func start_game():
 
 func end_game():
 	current_player.queue_free()
+	print("Game over!")
+	
+	for i in Static.all_enemies.duplicate():
+		i.destroy()
+	Static.all_enemies = []
+	for i in Static.all_tower_locations.values():
+		i.destroy()
+	Static.all_tower_locations = {}
 
 	start_game()
 

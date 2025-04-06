@@ -44,7 +44,8 @@ func move(delta):
 			destroy()
 
 func destroy() -> void:
-	Static.all_enemies.remove_at(Static.all_enemies.find(self))
+	var idx = Static.all_enemies.find(self)
+	if idx > -1: Static.all_enemies.remove_at(idx)
 	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:

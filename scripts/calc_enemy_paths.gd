@@ -33,7 +33,7 @@ func get_enemy_spawn_location() -> Vector2:
 	return Vector2(-1, -1) # THIS SHOULD NEVER OCCUR
 
 # Returns the unit vector (in DIRECTIONS) that results in the enemy moving towards the surface.
-func move_enemy(loc: Vector2) -> Vector2:
+func move_enemy(loc: Vector2) -> Vector2i:
 	var lookup_idx = get_lookup_corrected_idx(loc.x, loc.y)
 
 	if lookup_idx[0] < 0 or lookup_idx[1] < 0 or lookup_idx[1] > map.max_generated_depth or lookup_idx[0] > Static.GAME_WIDTH or pathing_map[lookup_idx[1]][lookup_idx[0]] == null:
@@ -43,7 +43,7 @@ func move_enemy(loc: Vector2) -> Vector2:
 		var best_score = null
 		for dir in DIRECTIONS:
 			var new = lookup_idx + dir
-			var score = pathing_map[new[1]][new[0]]
+			var score = pathing_map[int(new[1])][int(new[0])]
 			if score != null and (best_score == null or score < best_score):
 				best_score = score
 				best = dir
@@ -94,7 +94,7 @@ func calc_pathing() -> void:
 				processing_queue.append(new_loc)
 				
 				pathing_map[new_loc[0]][new_loc[1]] = pathing_map[currently_processing[0]][currently_processing[1]]+1
-			elif dir == DOWN: # If this is a floor tile... DO NOT CHANGE TO VECTOR2.DOWN!
+			elif dir == DOWN and pathing_map[currently_processing[0]][currently_processing[1]] > 0: # If this is a floor tile... DO NOT CHANGE TO VECTOR2.DOWN!
 				spawn_locations[Vector2(currently_processing[1], currently_processing[0])] = SPAWN_SOFTMAX_STRENGTH ** currently_processing[0]
 
 		processing_queue_pointer += 1
