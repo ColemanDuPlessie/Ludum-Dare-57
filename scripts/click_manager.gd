@@ -8,7 +8,7 @@ extends Node
 func _ready() -> void:
 	pass # Replace with function body.
 
-func check_for_opening_tower_menu(mouse_pos: Vector2) -> void:
+func check_for_opening_tower_menu(mouse_pos: Vector2) -> bool:
 	var snap = Vector2(floor(mouse_pos[0]/16+0.5)*16, floor(mouse_pos[1]/16+0.5)*16)
 	if tower_menu.size == 0: # The menu is closed
 		if fog_of_war.check_duplo_revealed(snap): # The place we want to build is not obscured by fog
@@ -21,13 +21,24 @@ func check_for_opening_tower_menu(mouse_pos: Vector2) -> void:
 						break
 				if not overlaps_preexisting_tower:
 					tower_menu.open_at(snap)
+
+					return true
 	elif abs(tower_menu.global_position[0] - mouse_pos[0]) > 32 or abs(tower_menu.global_position[1] - mouse_pos[1]) > 32:
 		tower_menu.disappear()
+
+	return false
+
+const correctionOffsets = [ Vector2(0, 0), Vector2(0, 1), Vector2(1, 0), Vector2(0, -1), Vector2(-1, 0), Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1), Vector2(-1, -1) ]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed('mouse_click'):
 		if Static.in_shop:
 			return
-		var mouse_pos = get_parent().get_local_mouse_position()
-		check_for_opening_tower_menu(mouse_pos)
+		var mouse_pos = get_parent().get_local_mouse_position() 
+
+		for correctionOffset in correctionOffsets:
+			var result = check_for_opening_tower_menu(mouse_pos + correctionOffset * 16)
+
+			if result:
+				break
