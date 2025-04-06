@@ -40,15 +40,28 @@ func move_enemy(loc: Vector2) -> Vector2i:
 		return Vector2(0, 0) # The enemy is not currently in an open tunnel space...
 	else:
 		var best = null
-		var best_score = null
+		var best_score = 10000
 		for dir in DIRECTIONS:
 			var new = lookup_idx + dir
 			if new[0] < 0 or new[1] < 0 or new[1] >= map.max_generated_depth or new[0] >= Static.GAME_WIDTH:
 				continue
 			var score = pathing_map[int(new[1])][int(new[0])]
-			if score != null and (best_score == null or score < best_score):
-				best_score = score
-				best = dir
+			
+			var curdir = dir
+			if score != null:
+				if score < best_score:
+					var temp = best_score
+					best_score = score
+					score = temp
+					
+					curdir = best
+					best = dir
+				var diff = score-best_score
+				if curdir == DIRECTIONS[3]:
+					continue
+				if randf() < pow(0.5, diff):
+					best_score = score
+					best = curdir
 		return best
 
 func sum(arr:Array):
