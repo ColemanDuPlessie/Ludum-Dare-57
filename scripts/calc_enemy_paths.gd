@@ -18,7 +18,7 @@ var rng = RandomNumberGenerator.new();
 func _ready():
 	initial_pathing_map = []
 	null_map = []
-	for i in range(Static.GAME_WIDTH):
+	for i in range(Static.GAME_WIDTH+1):
 		initial_pathing_map.append(0)
 		null_map.append(null)
 	pathing_map = [initial_pathing_map.duplicate(),]
