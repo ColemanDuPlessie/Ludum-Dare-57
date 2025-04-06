@@ -16,6 +16,7 @@ collision_mask = 4
 script = ExtResource("1_p3bga")
 
 [node name="LaserSprite" type="Sprite2D" parent="."]
+z_index = 800
 texture = SubResource("AtlasTexture_23jat")
 
 [node name="Collisions" type="CollisionShape2D" parent="."]
