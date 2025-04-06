@@ -16,7 +16,7 @@ func check_for_opening_tower_menu(mouse_pos: Vector2) -> bool:
 				var overlaps_preexisting_tower = false
 				for tower_loc in Static.all_tower_locations.keys():
 					print("checking your click (at " + str(snap) + ") against tower at " + str(tower_loc))
-					if abs(snap[0]-tower_loc[0]) + abs(snap[1]-tower_loc[1]) < 24:
+					if abs(snap[0]-tower_loc[0]) < 24 and abs(snap[1]-tower_loc[1]) < 24:
 						overlaps_preexisting_tower = true
 						break
 				if not overlaps_preexisting_tower:

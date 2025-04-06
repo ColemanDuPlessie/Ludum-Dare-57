@@ -26,6 +26,7 @@ var gold_counter
 var gems_counter
 var UI
 var shop
+var fuel_meter
 
 var in_shop = false
 

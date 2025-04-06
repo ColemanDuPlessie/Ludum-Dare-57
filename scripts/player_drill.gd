@@ -4,7 +4,7 @@ signal moving_to_tile(location)
 
 var MOVE_SPEED = 4 # TODO we can upgrade this too!
 
-var fuel_remaining = 50 # TODO add a fuel meter to the UIOverlay
+var fuel_remaining = 50
 var MAX_FUEL = 50
 
 var moving = false
@@ -89,6 +89,7 @@ func check_movement_direction(delta):
 				
 				if fuel_cost <= fuel_remaining:
 					fuel_remaining -= fuel_cost
+					Static.fuel_meter.set_height(float(fuel_remaining)/MAX_FUEL)
 					tile_procgen.destroy_tile(location.x, location.y)
 		
 		if moving == true:

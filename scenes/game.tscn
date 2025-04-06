@@ -108,7 +108,7 @@ offset_right = 364.0
 offset_bottom = -106.0
 
 [node name="DrillUI" parent="Camera2D/UIOverlay" instance=ExtResource("14_ssvqc")]
-visible = false
+scale = Vector2(1, 0.989618)
 
 [node name="EnemyFloodfillCalc" type="Node" parent="." node_paths=PackedStringArray("map")]
 script = ExtResource("6_p57ef")
