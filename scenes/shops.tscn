@@ -76,6 +76,7 @@ offset_left = 6.0
 offset_top = 3.0
 offset_right = 82.0
 offset_bottom = 13.0
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ehphy")
 flat = true
 
@@ -156,6 +157,7 @@ offset_left = 3.0
 offset_top = 3.0
 offset_right = 110.0
 offset_bottom = 13.0
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sq172")
 flat = true
 
@@ -191,6 +193,7 @@ offset_left = 3.0
 offset_top = 14.0
 offset_right = 110.0
 offset_bottom = 24.0
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sq172")
 flat = true
 
