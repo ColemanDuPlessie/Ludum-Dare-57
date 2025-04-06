@@ -88,4 +88,4 @@ func spend_gold_and_gems(gold_amt: int, gems_amt: int) -> bool:
 	return false
 
 func easing(value: float) -> float:
-	return log(value * 9 + 1) / log(10)
+	return 1 - pow(1 - value, 3)
