@@ -64,10 +64,10 @@ script = ExtResource("3_nawe8")
 uiOrigin = NodePath("UIOrigin")
 
 [node name="Tent" type="Sprite2D" parent="."]
-position = Vector2(28, -12)
+position = Vector2(28, -13)
 texture = ExtResource("1_7aqh4")
 region_enabled = true
-region_rect = Rect2(48, 120, 56, 24)
+region_rect = Rect2(47, 118, 58, 26)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
