@@ -29,6 +29,9 @@ var shop
 
 var in_shop = false
 
+var health = 3
+var game_manager = null
+
 func show_shop():
 	if !shop.is_inside_tree():
 		UI.add_child(shop)

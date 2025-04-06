@@ -13,6 +13,8 @@ var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
 var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemy.tscn")
 
 func _ready():
+	Static.game_manager = self
+
 	Static.increment_gold(15)
 	Static.increment_gems(1)
 	
@@ -34,9 +36,7 @@ func spawn_enemy(scene: PackedScene) -> void:
 	var spawn_location = pathfinding.get_enemy_spawn_location()
 
 	var world_spawn_location = Vector2(spawn_location.x - Static.GAME_WIDTH / 2.0, spawn_location.y) * 16 + Vector2.ONE * 8
-		
-	print("Spawned at: ", spawn_location)
-	
+			
 	var enemy: Node2D = enemy_scene.instantiate()
 	enemy.pathfinding = pathfinding
 	enemy.global_position = world_spawn_location
@@ -74,3 +74,9 @@ func begin_building():
 	current_player = new_player
 
 	spawned_drill.emit(new_player)
+
+func take_damage():
+	Static.health -= 1
+
+	if Static.health <= 0:
+		print("Game over!")
