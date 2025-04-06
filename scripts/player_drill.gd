@@ -89,13 +89,18 @@ func check_movement_direction(delta):
 				
 				if fuel_cost <= fuel_remaining:
 					fuel_remaining -= fuel_cost
-					Static.fuel_meter.set_height(float(fuel_remaining)/MAX_FUEL)
+					update_fuel_gague()
 					tile_procgen.destroy_tile(location.x, location.y)
+					if Static.tower_menu.size > 0.0 and abs(location.x*16-Static.tower_menu.global_position.x) < 16 and abs(location.y*16-Static.tower_menu.global_position.y) < 16:
+						Static.tower_menu.disappear()
 		
 		if moving == true:
 			var target_pos = global_position + movement_direction * 16
 			
 			moving_to_tile.emit(target_pos)
+
+func update_fuel_gague():
+	Static.fuel_meter.set_height(float(fuel_remaining)/MAX_FUEL)
 
 func move(delta):
 	movement_progress += delta * MOVE_SPEED

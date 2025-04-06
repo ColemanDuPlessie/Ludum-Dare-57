@@ -27,6 +27,7 @@ var gems_counter
 var UI
 var shop
 var fuel_meter
+var tower_menu
 
 var in_shop = false
 

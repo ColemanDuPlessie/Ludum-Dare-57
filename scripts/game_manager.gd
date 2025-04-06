@@ -38,6 +38,7 @@ func start_game():
 	Static.health = 3
 
 	walls.generate_start()
+	new_player.update_fuel_gague()
 
 func end_game():
 	current_player.queue_free()
@@ -94,6 +95,7 @@ func begin_building():
 	current_player = new_player
 
 	spawned_drill.emit(new_player)
+	new_player.update_fuel_gague()
 
 func take_damage():
 	Static.health -= 1

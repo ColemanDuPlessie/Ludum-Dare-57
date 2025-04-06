@@ -12,6 +12,7 @@ var disappearing = false
 var size = 0.0
 
 func _ready():
+	Static.tower_menu = self
 	scale = Vector2(size, size)
 	tower_highlight.scale = Vector2(0, 0)
 	tower_highlight.play("default")
