@@ -14,12 +14,16 @@ var last_position = Vector2.ZERO
 
 var destruction_progress = 0
 
+var move_cooldown = 0.2
+
 @onready var sprite = get_node("Sprite2D")
 
 func _ready():
 	last_position = global_position
 
 func _physics_process(delta):
+	move_cooldown -= delta
+
 	if !moving:
 		check_movement_direction(delta)
 	
@@ -27,6 +31,9 @@ func _physics_process(delta):
 		move(delta)
 
 func check_movement_direction(delta):
+	if move_cooldown > 0:
+		return
+
 	if Input.is_action_pressed("right"):
 		if movement_direction != Vector2.RIGHT:
 			destruction_progress = 0
