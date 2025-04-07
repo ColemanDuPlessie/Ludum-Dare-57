@@ -81,7 +81,10 @@ func increment_gold(amt: int) -> void:
 func spend_gold(amt: int) -> bool:
 	if current_gold >= amt:
 		_change_gold(-amt)
+		game_manager.buy.play()
 		return true
+	game_manager.buy_fail.play()
+	gold_counter.get_parent().gold_flash = 0.5
 	return false
 	
 func increment_gems(amt: int) -> void:
@@ -91,7 +94,10 @@ func increment_gems(amt: int) -> void:
 func spend_gems(amt: int) -> bool:
 	if current_gems >= amt:
 		_change_gems(-amt)
+		game_manager.buy.play()
 		return true
+	game_manager.buy_fail.play()
+	gems_counter.get_parent().gem_flash = 0.5
 	return false
 
 # Returns true and deducts resources if we can afford all aspects. Otherwise returns false.
@@ -99,7 +105,11 @@ func spend_gold_and_gems(gold_amt: int, gems_amt: int) -> bool:
 	if current_gold >= gold_amt and current_gems >= gems_amt:
 		_change_gold(-gold_amt)
 		_change_gems(-gems_amt)
+		game_manager.buy.play()
 		return true
+	game_manager.buy_fail.play()
+	gold_counter.get_parent().gold_flash = 0.5
+	gems_counter.get_parent().gem_flash = 0.5
 	return false
 
 func easing(value: float) -> float:

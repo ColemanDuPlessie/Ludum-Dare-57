@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bk03q52ki3drb"]
+[gd_scene load_steps=37 format=3 uid="uid://bk03q52ki3drb"]
 
 [ext_resource type="TileSet" uid="uid://dsbi0l2ubmynq" path="res://art/tileset.tres" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://ceyypquy68520" path="res://scenes/camp.tscn" id="2_5newe"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://bluer54g68kfd" path="res://art/heart.tres" id="16_37s47"]
 [ext_resource type="Script" path="res://scripts/round_anouncement.gd" id="18_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://cu4c0o3skged" path="res://scenes/tower_upgrade_menu.tscn" id="22_37s47"]
+[ext_resource type="AudioStream" uid="uid://ck7o8r7ihdub2" path="res://sounds/purchase.mp3" id="23_qouja"]
+[ext_resource type="AudioStream" uid="uid://6gxlq1f8hgg1" path="res://sounds/error.mp3" id="24_wljb1"]
 [ext_resource type="Script" uid="uid://c13ao1o6xagd0" path="res://scripts/hints.gd" id="25_pl11u"]
 [ext_resource type="AudioStream" uid="uid://caus5cs5x0wgy" path="res://sounds/mrrrp.mp3" id="26_bhx41"]
 [ext_resource type="Script" uid="uid://doepvyxdnowk4" path="res://scripts/music.gd" id="26_sww3w"]
@@ -255,6 +257,14 @@ script = ExtResource("4_gee14")
 world = NodePath("../World")
 pathfinding = NodePath("../EnemyFloodfillCalc")
 walls = NodePath("../World/WallsResources")
+
+[node name="PurchaseSuccess" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("23_qouja")
+volume_db = -5.0
+
+[node name="PurchaseFail" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("24_wljb1")
+volume_db = -7.0
 
 [node name="ClickManager" type="Node2D" parent="." node_paths=PackedStringArray("tower_menu", "upgrade_menu", "fog_of_war", "tiles")]
 script = ExtResource("12_dinhu")

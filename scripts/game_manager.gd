@@ -25,6 +25,9 @@ var enemies = [bat, bat, bat, bat, goblin, goblin, fire_goblin]
 @onready var round_announcement = get_node("../Camera2D/UIOverlay/RoundAnouncement")
 @onready var tower_range = get_node("../TowerTargeting")
 
+@onready var buy = get_node("PurchaseSuccess")
+@onready var buy_fail = get_node("PurchaseFail")
+
 var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true}
 
 var waves = [[0, [bat]],
