@@ -86,7 +86,7 @@ func start_game():
 	spawned_drill.emit(new_player)
 
 	Static.current_gold = 0
-	Static.increment_gold(15)
+	Static.increment_gold(5)
 	Static.current_gems = 0
 	Static.increment_gems(3)
 	Static.health = 3

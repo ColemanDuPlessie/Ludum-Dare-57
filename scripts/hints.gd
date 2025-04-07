@@ -37,6 +37,8 @@ func _on_player_moving_to_tile(location):
 		advance_to_next_hint()
 
 	if passed_build && location.y <= 8 && Static.fuel_meter.flashing:
+		if not passed_return and get_node("../World/Camp").player_in:
+			get_node("../World/Camp").appearing = true
 		passed_return = true
 
 		advance_to_next_hint()

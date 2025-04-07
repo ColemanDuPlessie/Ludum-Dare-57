@@ -5,14 +5,18 @@ var appearing = false
 
 @export var uiOrigin: Node2D
 
+var player_in = true
+
 func _ready():
 	uiOrigin.scale = Vector2(1, 0)
 
 func _player_entered_area(_body):
-	if Static.currently_displayed_hint != "move" and Static.currently_displayed_hint != "build":
+	player_in = true
+	if Static.currently_displayed_hint != "move" and Static.currently_displayed_hint != "build" and (Static.currently_displayed_hint != "return" or Static.fuel_meter.flashing):
 		appearing = true
 
 func _player_exited_area(_body):
+	player_in = false
 	appearing = false
 
 func _process(delta: float) -> void:
