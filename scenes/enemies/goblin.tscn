@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://057m0nu1xyao"]
+[gd_scene load_steps=23 format=3 uid="uid://057m0nu1xyao"]
 
 [ext_resource type="Script" uid="uid://beg05h30mcvcf" path="res://scripts/goblin.gd" id="1_yeoui"]
 [ext_resource type="Texture2D" uid="uid://c2manqt48qvmf" path="res://art/goblin.png" id="2_fydqd"]
@@ -26,6 +26,34 @@ region = Rect2(16, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0k1hm"]
 atlas = ExtResource("2_fydqd")
 region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec05t"]
+atlas = ExtResource("2_fydqd")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqqlc"]
+atlas = ExtResource("2_fydqd")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_modps"]
+atlas = ExtResource("2_fydqd")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4pbv"]
+atlas = ExtResource("2_fydqd")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yytke"]
+atlas = ExtResource("2_fydqd")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25k1g"]
+atlas = ExtResource("2_fydqd")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c3cl"]
+atlas = ExtResource("2_fydqd")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oth3g"]
 atlas = ExtResource("2_fydqd")
@@ -80,10 +108,31 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 4.0,
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec05t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqqlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_modps")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_f4pbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yytke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25k1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c3cl")
+}, {
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_oth3g")
 }],
-"loop": true,
+"loop": false,
 "name": &"spawn",
 "speed": 8.0
 }, {
@@ -118,9 +167,9 @@ script = ExtResource("1_yeoui")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ss5yy")
-animation = &"right"
+animation = &"spawn"
 autoplay = "spawn"
-frame_progress = 0.0174005
+frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4k4o5")

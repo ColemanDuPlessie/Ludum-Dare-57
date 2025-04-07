@@ -12,7 +12,7 @@ var movement_progress = 0
 var movement_direction = Vector2i.ZERO
 var last_position = Vector2.ZERO
 
-const SPAWN_DURATION = 1.0
+const SPAWN_DURATION = 1.5
 
 var stunned_for = SPAWN_DURATION
 
