@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal moving_to_tile(location)
 
-var MOVE_SPEED = [3.75, 5, 6.25, 8.125, 8.125]
+var MOVE_SPEED = [3.75, 4.75, 6, 7.875, 7.875]
 const DRILL_SPEED = [2.5, 3, 3.75, 4.5, 5.5]
 
 var fuel_remaining = Static.MAX_FUEL
@@ -104,8 +104,6 @@ func check_movement_direction(delta):
 					
 					tile_procgen.destroy_tile(location.x, location.y)
 					
-					print(location)
-					print(Static.tower_menu.global_position)
 					if Static.tower_menu.size > 0.0 and abs(location.x*16-Static.tower_menu.global_position.x) < 16 and abs(location.y*16-Static.tower_menu.global_position.y) < 16:
 						Static.tower_menu.disappear()
 					

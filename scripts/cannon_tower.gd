@@ -10,6 +10,8 @@ const RANGE = [4.5, 5.5] # In 16px tiles from center TODO make a targeting guide
 const MAX_LEVEL = 1
 var level = 0
 
+@onready var base = get_node("CannonSprite")
+
 var proj: PackedScene = ResourceLoader.load("res://scenes/towers/projectiles/bomb.tscn")
 
 var time_remaining_before_attack = 0.0
@@ -30,7 +32,7 @@ func upgrade() -> void:
 	if level < MAX_LEVEL:
 		level += 1
 		if level == 1:
-			pass # TODO base.play("Level2")
+			base.play("2")
 
 func shoot(tgt: Vector2) -> void:
 	var bomb: Node2D = proj.instantiate()

@@ -8,11 +8,11 @@ const BACKGROUND_TILE = Vector2i(19, 3)
 const DUPLO_LOC_DELTAS = [Vector2(0, 0), Vector2(-1, 0), Vector2(0, -1), Vector2(-1, -1)]
 
 const STONE_START = 8
-const DIRT_END = 20
-const FIRE_START = 30
-const STONE_END = 42
-const JADE_START = 54
-const FIRE_END = 60
+const DIRT_END = 18
+const FIRE_START = 26
+const STONE_END = 36
+const JADE_START = 48
+const FIRE_END = 56
 
 var rng = RandomNumberGenerator.new()
 var max_generated_depth = -10
