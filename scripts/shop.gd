@@ -94,3 +94,21 @@ func _on_drill_upgrade_pressed() -> void:
 		else:
 			drill_price.text = str(DRILL_UPGRADE_COSTS[Static.PLAYER_DRILL_LEVEL])
 			# drill_label.text = "DRILL " + str(Static.PLAYER_DRILL_LEVEL+1)
+
+func reset_labels() -> void:
+	var drill_price = get_node("Researcher/UIOrigin/UI/Drill/Price")
+	var drill_label = get_node("Researcher/UIOrigin/UI/Drill/Label")
+	drill_label.text = "DRILL"
+	drill_price.text = str(DRILL_UPGRADE_COSTS[0])
+	var radar_price = get_node("Researcher/UIOrigin/UI/Radar/Price")
+	var radar_label = get_node("Researcher/UIOrigin/UI/Radar/Label")
+	radar_label.text = "RADAR"
+	radar_price.text = str(RADAR_UPGRADE_COSTS[0])
+	var weapon_price = get_node("Mechanic/UIOrigin/UI/Weapon/Price")
+	var weapon_label = get_node("Mechanic/UIOrigin/UI/Weapon/Label")
+	weapon_label.text = "WEAPON"
+	weapon_price.text = str(WEAPON_UPGRADE_COSTS[0])
+	var fuel_price = get_node("Mechanic/UIOrigin/UI/FuelTank/Price")
+	var fuel_label = get_node("Mechanic/UIOrigin/UI/FuelTank/Label")
+	fuel_label.text = "FUELTANK"
+	fuel_price.text = str(FUEL_UPGRADE_COSTS[0])

@@ -90,6 +90,7 @@ func start_game():
 	Static.current_gems = 0
 	Static.increment_gems(3)
 	Static.health = 3
+	Static.shop.reset_labels()
 
 	Static.game_in_progress = true
 
