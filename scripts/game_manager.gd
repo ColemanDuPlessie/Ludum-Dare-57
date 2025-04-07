@@ -11,16 +11,25 @@ var current_player: CharacterBody2D = null
 
 var player_drill_scene: PackedScene = ResourceLoader.load("res://scenes/player_drill.tscn")
 var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
-var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
+var bat_scene: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
+var goblin_scene: PackedScene = ResourceLoader.load("res://scenes/enemies/goblin.tscn")
+
+var enemies = [bat_scene, goblin_scene]
 
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
 @onready var resource_menu = get_node("../Camera2D/UIOverlay/ResourceUI") 
 @onready var round_announcement = get_node("../Camera2D/UIOverlay/RoundAnouncement") 
 
-var waves = [[enemy_scene, enemy_scene, enemy_scene],
-			[enemy_scene, enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene],
-			[enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene]]
+var GRID_ALIGNED = {bat_scene : false, goblin_scene : true}
+
+var waves = [[bat_scene],
+			[bat_scene, bat_scene],
+			[bat_scene, bat_scene, bat_scene, bat_scene],
+			[goblin_scene,],
+			[bat_scene, goblin_scene],
+			[bat_scene, bat_scene, bat_scene, bat_scene, bat_scene, bat_scene, bat_scene, bat_scene],
+			[bat_scene, bat_scene, goblin_scene, bat_scene, bat_scene, goblin_scene]]
 
 func _ready():
 	Static.game_manager = self
@@ -86,14 +95,16 @@ func end_game():
 	Static.PLAYER_GUN_LEVEL = 0
 	Static.PLAYER_RADAR_LEVEL = 0
 
-func spawn_enemy() -> void:
+func spawn_enemy(type) -> void:
 	var spawn_location = pathfinding.get_enemy_spawn_location()
 
 	var world_spawn_location = Vector2(spawn_location.x - Static.GAME_WIDTH / 2.0, spawn_location.y) * 16 + Vector2.ONE * 8
+	if not GRID_ALIGNED[type]:
+		world_spawn_location += Vector2(randf_range(-4, 4), randf_range(-4, 4))
 			
-	var enemy: Node2D = enemy_scene.instantiate()
+	var enemy: Node2D = type.instantiate()
 	enemy.pathfinding = pathfinding
-	enemy.global_position = world_spawn_location + Vector2(randf_range(-4, 4), randf_range(-4, 4))
+	enemy.global_position = world_spawn_location
 	
 	world.add_child(enemy)
 	
@@ -113,8 +124,12 @@ func begin_combat():
 
 	pathfinding.calc_pathing()
 	
-	for i in range(Static.round_number ** 1.5):
-		spawn_enemy()
+	if Static.round_number > len(waves): # Use hand-curated waves if possible, but then switch to an exponentially-escalating endless mode eventually
+		for i in range(Static.round_number ** 1.5):
+			spawn_enemy(enemies.pick_random())
+	else:
+		for enemy in waves[Static.round_number-1]: # TODO spawn enemies over time, not all at once.
+			spawn_enemy(enemy)
 
 	round_announcement.announce()
 
