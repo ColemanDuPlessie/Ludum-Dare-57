@@ -16,12 +16,11 @@ var enemy_scene: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tsc
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
 @onready var resource_menu = get_node("../Camera2D/UIOverlay/ResourceUI") 
+@onready var round_announcement = get_node("../Camera2D/UIOverlay/RoundAnouncement") 
 
 var waves = [[enemy_scene, enemy_scene, enemy_scene],
 			[enemy_scene, enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene],
 			[enemy_scene, enemy_scene, enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene,enemy_scene, enemy_scene]]
-
-var current_wave = 0
 
 func _ready():
 	Static.game_manager = self
@@ -62,6 +61,8 @@ func start_game():
 	drill_menu.enable()
 	resource_menu.enable()
 
+	Static.round_number = 1
+
 func end_game():
 	current_player.queue_free()
 	
@@ -84,9 +85,8 @@ func end_game():
 	Static.PLAYER_DRILL_LEVEL = 0
 	Static.PLAYER_GUN_LEVEL = 0
 	Static.PLAYER_RADAR_LEVEL = 0
-	current_wave = 0
 
-func spawn_enemy(scene: PackedScene) -> void:
+func spawn_enemy() -> void:
 	var spawn_location = pathfinding.get_enemy_spawn_location()
 
 	var world_spawn_location = Vector2(spawn_location.x - Static.GAME_WIDTH / 2.0, spawn_location.y) * 16 + Vector2.ONE * 8
@@ -113,13 +113,10 @@ func begin_combat():
 
 	pathfinding.calc_pathing()
 	
-	if current_wave < len(waves):
-		for enemy in waves[current_wave]:
-			spawn_enemy(enemy)
-	else:
-		for i in range(2**(current_wave+1)):
-			spawn_enemy(enemy_scene)
-	current_wave += 1
+	for i in range(Static.round_number ** 1.5):
+		spawn_enemy()
+
+	round_announcement.announce()
 
 func begin_building():
 	print("Starting building!")
@@ -134,6 +131,8 @@ func begin_building():
 
 	spawned_drill.emit(new_player)
 	new_player.update_fuel_gague()
+
+	Static.round_number += 1
 
 func take_damage():
 	Static.health -= 1
