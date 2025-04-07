@@ -2,8 +2,9 @@ extends Node2D
 
 const APPEAR_DISAPPEAR_TIME = 0.3
 
-var archer_scene: PackedScene = ResourceLoader.load("res://scenes/towers/wizard_tower.tscn") # TODO
+var archer_scene: PackedScene = ResourceLoader.load("res://scenes/towers/archer_tower.tscn")
 var cannon_scene: PackedScene = ResourceLoader.load("res://scenes/towers/cannon_tower.tscn")
+var wizard_scene: PackedScene = ResourceLoader.load("res://scenes/towers/wizard_tower.tscn")
 
 @export var tower_highlight: AnimatedSprite2D
 
@@ -80,6 +81,22 @@ func _on_cannon_tower_input_event(viewport: Node, event: InputEvent, shape_idx: 
 		if Input.is_action_just_pressed('mouse_click'):
 			if Static.spend_gold(12):
 				build_cannon_tower()
+			disappear()
+
+func build_wizard_tower() -> void:
+	print("BUILDING TOWER...")
+	var tower: Node2D = wizard_scene.instantiate()
+	add_sibling(tower)
+	tower.global_position = global_position
+	Static.all_tower_locations[global_position] = tower
+
+func _on_wizard_tower_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if (appearing or disappearing) and size < 0.95:
+		return
+	if event is InputEventMouseButton:
+		if Input.is_action_just_pressed('mouse_click'):
+			if Static.spend_gold(7):
+				build_wizard_tower()
 			disappear()
 
 func _on_close_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
