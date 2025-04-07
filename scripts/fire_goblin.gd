@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const MAX_HP = 75.0
-const SPEED = 18
+const MAX_HP = 125.0
+const SPEED = 24
 
 var hp = MAX_HP
 
@@ -30,7 +30,7 @@ func _physics_process(true_delta):
 	if stunned_for > 0.0:
 		if stunned_for > true_delta:
 			stunned_for -= true_delta
-			return
+			delta = 0.0
 		else:
 			delta -= stunned_for
 			stunned_for = 0
@@ -94,5 +94,6 @@ func take_damage(dmg: int) -> void:
 			get_node("HP").scale = Vector2(hp/MAX_HP, 1)
 
 func _on_hitbox_entered(body: Node2D) -> void:
+	print(body)
 	if body.has_method("hit"):
 		take_damage(body.hit())

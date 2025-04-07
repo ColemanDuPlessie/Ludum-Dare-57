@@ -30,7 +30,7 @@ func _physics_process(true_delta):
 	if stunned_for > 0.0:
 		if stunned_for > true_delta:
 			stunned_for -= true_delta
-			return
+			delta = 0.0
 		else:
 			delta -= stunned_for
 			stunned_for = 0
@@ -63,8 +63,9 @@ func _physics_process(true_delta):
 
 			if Static.health > 0 && len(Static.all_enemies) == 0:
 				Static.game_manager.begin_building()
-
-	move_and_slide()
+				
+	if delta > 0.0:
+		move_and_slide()
 
 func destroy() -> void:
 	var idx = Static.all_enemies.find(self)

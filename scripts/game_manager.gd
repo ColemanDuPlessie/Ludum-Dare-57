@@ -11,25 +11,32 @@ var current_player: CharacterBody2D = null
 
 var player_drill_scene: PackedScene = ResourceLoader.load("res://scenes/player_drill.tscn")
 var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
-var bat_scene: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
-var goblin_scene: PackedScene = ResourceLoader.load("res://scenes/enemies/goblin.tscn")
+var bat: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
+var goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/goblin.tscn")
+var fire_goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/fire_goblin.tscn")
 
-var enemies = [bat_scene, goblin_scene]
+var enemies = [bat, goblin, fire_goblin]
 
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
 @onready var resource_menu = get_node("../Camera2D/UIOverlay/ResourceUI") 
 @onready var round_announcement = get_node("../Camera2D/UIOverlay/RoundAnouncement") 
 
-var GRID_ALIGNED = {bat_scene : false, goblin_scene : true}
+var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true}
 
-var waves = [[bat_scene],
-			[bat_scene, bat_scene],
-			[bat_scene, bat_scene, bat_scene, bat_scene],
-			[goblin_scene,],
-			[bat_scene, goblin_scene],
-			[bat_scene, bat_scene, bat_scene, bat_scene, bat_scene, bat_scene, bat_scene, bat_scene],
-			[bat_scene, bat_scene, goblin_scene, bat_scene, bat_scene, goblin_scene]]
+var waves = [[0, [bat, fire_goblin]],
+			[1.0, [bat, bat]],
+			[5.0, [bat, bat, bat, bat]],
+			[0, [goblin,]],
+			[1.0, [bat, goblin]],
+			[2.0, [bat, bat, bat, bat, bat, bat, bat, bat]],
+			[9.0, [bat, bat, goblin, bat, bat, goblin]],
+			[6.0, [goblin, goblin, goblin, goblin]],
+			[0, [fire_goblin,]],
+			[3.0, [bat, bat, fire_goblin, bat, bat]],
+			[10.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, fire_goblin]]]
+
+var spawn_delayed = []
 
 func _ready():
 	Static.game_manager = self
@@ -138,12 +145,14 @@ func begin_combat():
 		for i in range(Static.round_number ** 1.5):
 			spawn_enemy(enemies.pick_random())
 	else:
-		for enemy in waves[Static.round_number-1]: # TODO spawn enemies over time, not all at once.
+		var duration = waves[Static.round_number-1][0]/len(waves[Static.round_number-1][1])
+		for enemy in waves[Static.round_number-1][1]: # TODO spawn enemies over time, not all at once.
 			spawn_enemy(enemy)
 
 	round_announcement.announce()
 
 func begin_building():
+	if len(spawn_delayed) > 0: return
 	print("Starting building!")
 
 	state = "building"
