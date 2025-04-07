@@ -97,11 +97,16 @@ func _on_sell_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 
 
 func _on_upgrade_tower_mouse_entered() -> void:
+	if size < 0.95:
+		return
+
 	Static.game_manager.show_range_indicator(global_position, linked_tower.RANGE[linked_tower.level+1]*16*2)
 
 
 func _on_upgrade_tower_mouse_exited() -> void:
 	if not disappearing:
+		if size < 0.95:
+			return
 		Static.game_manager.show_range_indicator(global_position, linked_tower.RANGE[linked_tower.level]*16*2)
 	else:
 		Static.game_manager.hide_range_indicator()

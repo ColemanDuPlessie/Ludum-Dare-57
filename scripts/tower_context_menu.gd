@@ -113,12 +113,21 @@ func _on_close_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 
 
 func _on_arrow_tower_mouse_entered() -> void:
+	if size < 0.95:
+		return
+
 	Static.game_manager.show_range_indicator(global_position, 3.5*16*2)
 
 func _on_cannon_tower_mouse_entered() -> void:
+	if size < 0.95:
+		return
+
 	Static.game_manager.show_range_indicator(global_position, 4.5*16*2)
 
 func _on_wizard_tower_mouse_entered() -> void:
+	if size < 0.95:
+		return
+
 	Static.game_manager.show_range_indicator(global_position, 4.0*16*2)
 
 func _on_mouse_exited() -> void:
