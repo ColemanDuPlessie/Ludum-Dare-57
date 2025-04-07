@@ -93,7 +93,7 @@ offset = Vector2(3, 0)
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_njjm0")
 autoplay = "default"
-frame_progress = 0.297328
+frame_progress = 0.74332
 offset = Vector2(3, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -173,6 +173,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_a21nq")
@@ -190,14 +192,17 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -5.0
+offset_left = -101.0
+offset_top = -16.0
 offset_right = -5.0
 offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "CLICK TO BUILD"
+text = "CLICK GROUND
+TO BUILD  "
 label_settings = SubResource("LabelSettings_wta5n")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="ReturnHint" type="Node2D" parent="."]
 z_index = 4
