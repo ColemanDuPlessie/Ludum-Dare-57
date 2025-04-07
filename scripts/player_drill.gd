@@ -55,24 +55,28 @@ func check_movement_direction(delta):
 			destruction_progress = 0
 
 		movement_direction = Vector2.RIGHT
+		sprite.flip_v = false
 		moving = true
 	elif Input.is_action_pressed("left"):
 		if movement_direction != Vector2.LEFT:
 			destruction_progress = 0
 
 		movement_direction = Vector2.LEFT
+		sprite.flip_v = false
 		moving = true
 	elif Input.is_action_pressed("up"):
 		if movement_direction != Vector2.UP:
 			destruction_progress = 0
 
 		movement_direction = Vector2.UP
+		sprite.flip_v = false
 		moving = true
 	elif Input.is_action_pressed("down"):
 		if movement_direction != Vector2.DOWN:
 			destruction_progress = 0
 
 		movement_direction = Vector2.DOWN
+		sprite.flip_v = true
 		moving = true
 	else:
 		destruction_progress = 0

@@ -106,14 +106,14 @@ parameters/looping = true
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a21nq")
 autoplay = "default"
-frame_progress = 0.265628
+frame_progress = 0.439127
 offset = Vector2(3, 0)
 
 [node name="Drill" type="AnimatedSprite2D" parent="Sprite2D"]
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_njjm0")
 autoplay = "default"
-frame_progress = 0.70328
+frame_progress = 0.876743
 offset = Vector2(3, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

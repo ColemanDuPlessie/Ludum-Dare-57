@@ -101,4 +101,7 @@ func _on_upgrade_tower_mouse_entered() -> void:
 
 
 func _on_upgrade_tower_mouse_exited() -> void:
-	Static.game_manager.show_range_indicator(global_position, linked_tower.RANGE[linked_tower.level]*16*2)
+	if not disappearing:
+		Static.game_manager.show_range_indicator(global_position, linked_tower.RANGE[linked_tower.level]*16*2)
+	else:
+		Static.game_manager.hide_range_indicator()
