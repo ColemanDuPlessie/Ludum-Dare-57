@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bja8soerass2i"]
+[gd_scene load_steps=15 format=3 uid="uid://ceyypquy68520"]
 
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="1_7aqh4"]
 [ext_resource type="Texture2D" uid="uid://yc15gb6yrrqt" path="res://art/campfire.png" id="2_crmxo"]
 [ext_resource type="Script" uid="uid://dywwwa6ypwayg" path="res://scripts/camp.gd" id="3_nawe8"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="4_40kdf"]
-[ext_resource type="Script" uid="uid://ck4g1jwp3tx8l" path="res://scripts/button_hover.gd" id="4_tafug"]
+[ext_resource type="Script" path="res://scripts/button_hover.gd" id="4_tafug"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kice"]
 atlas = ExtResource("2_crmxo")
@@ -133,6 +133,7 @@ color = Color(0.83, 0.823775, 0.7885, 1)
 script = ExtResource("4_tafug")
 
 [node name="Label" type="Label" parent="UIOrigin/UI/StartRound"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_top = 1.0
 offset_right = 64.0

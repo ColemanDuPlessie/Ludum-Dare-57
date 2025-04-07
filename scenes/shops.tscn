@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://clhjks2eqkfe2" path="res://scripts/npc_shop.gd" id="3_8qvxx"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="3_sq172"]
 [ext_resource type="Texture2D" uid="uid://bmtpt07rta2my" path="res://art/gems.tres" id="5_ehphy"]
-[ext_resource type="Script" uid="uid://ck4g1jwp3tx8l" path="res://scripts/button_hover.gd" id="5_sq172"]
+[ext_resource type="Script" path="res://scripts/button_hover.gd" id="5_sq172"]
 [ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="5_uc15s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qvxx"]
@@ -103,6 +103,7 @@ color = Color(0.83, 0.823775, 0.7885, 1)
 script = ExtResource("5_sq172")
 
 [node name="Label" type="Label" parent="Researcher/UIOrigin/UI/Radar"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_top = 1.0
 offset_right = 40.0
@@ -111,6 +112,7 @@ text = "RADAR"
 label_settings = SubResource("LabelSettings_62jwy")
 
 [node name="Price" type="Label" parent="Researcher/UIOrigin/UI/Radar"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_left = 39.0
 offset_top = 1.0
@@ -150,6 +152,7 @@ color = Color(0.83, 0.823775, 0.7885, 1)
 script = ExtResource("5_sq172")
 
 [node name="Label" type="Label" parent="Researcher/UIOrigin/UI/Drill"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_top = 1.0
 offset_right = 40.0
@@ -158,6 +161,7 @@ text = "DRILL"
 label_settings = SubResource("LabelSettings_62jwy")
 
 [node name="Price" type="Label" parent="Researcher/UIOrigin/UI/Drill"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_left = 39.0
 offset_top = 1.0
@@ -252,6 +256,7 @@ color = Color(0.83, 0.823775, 0.7885, 1)
 script = ExtResource("5_sq172")
 
 [node name="Label" type="Label" parent="Mechanic/UIOrigin/UI/FuelTank"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_top = 1.0
 offset_right = 64.0
@@ -260,6 +265,7 @@ text = "FUELTANK"
 label_settings = SubResource("LabelSettings_62jwy")
 
 [node name="Price" type="Label" parent="Mechanic/UIOrigin/UI/FuelTank"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_left = 70.0
 offset_top = 1.0
@@ -299,6 +305,7 @@ color = Color(0.83, 0.823775, 0.7885, 1)
 script = ExtResource("5_sq172")
 
 [node name="Label" type="Label" parent="Mechanic/UIOrigin/UI/Weapon"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_top = 1.0
 offset_right = 64.0
@@ -307,6 +314,7 @@ text = "WEAPON"
 label_settings = SubResource("LabelSettings_62jwy")
 
 [node name="Price" type="Label" parent="Mechanic/UIOrigin/UI/Weapon"]
+modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
 offset_left = 70.0
 offset_top = 1.0
