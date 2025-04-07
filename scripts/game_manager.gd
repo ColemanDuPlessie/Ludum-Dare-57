@@ -68,11 +68,11 @@ func _input(event: InputEvent) -> void:
 	if !Static.game_in_progress && event is InputEventKey && time_to_start <= 0:
 		start_game()
 
-	if event.is_action_pressed("debug_swap_mode"):
-		if state == "building":
-			begin_combat()
-		else:
-			begin_building()
+	# if event.is_action_pressed("debug_swap_mode"):
+	# 	if state == "building":
+	# 		begin_combat()
+	# 	else:
+	# 		begin_building()
 
 func start_game():
 	var new_player: CharacterBody2D = player_drill_scene.instantiate()
@@ -101,6 +101,8 @@ func start_game():
 	Static.round_number = 1
 
 func end_game():
+	state = "building"
+
 	current_player.queue_free()
 	
 	for i in Static.all_enemies.duplicate():

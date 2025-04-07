@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/mrrrp.mp3-5cf783a66a5d0185d686c237151e034a.mp
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
