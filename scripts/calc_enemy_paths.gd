@@ -33,7 +33,7 @@ func get_enemy_spawn_location() -> Vector2:
 	return Vector2(5, 0) # THIS SHOULD NEVER OCCUR
 
 # Returns the unit vector (in DIRECTIONS) that results in the enemy moving towards the surface.
-func move_enemy(loc: Vector2) -> Vector2i:
+func move_enemy(loc: Vector2, rand: bool=false) -> Vector2i:
 	var lookup_idx = get_lookup_corrected_idx(loc.x, loc.y)
 
 	if lookup_idx[0] < 0 or lookup_idx[1] < 0 or lookup_idx[1] >= map.max_generated_depth or lookup_idx[0] >= Static.GAME_WIDTH:
@@ -59,7 +59,7 @@ func move_enemy(loc: Vector2) -> Vector2i:
 				var diff = score-best_score
 				if curdir == DIRECTIONS[3]:
 					continue
-				if randf() < pow(0.5, diff):
+				if rand and randf() < pow(0.5, diff):
 					best_score = score
 					best = curdir
 		return best
