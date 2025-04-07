@@ -95,8 +95,6 @@ func check_movement_direction(delta):
 					
 					tile_procgen.destroy_tile(location.x, location.y)
 					
-					print(location)
-					print(Static.tower_menu.global_position)
 					if Static.tower_menu.size > 0.0 and abs(location.x*16-Static.tower_menu.global_position.x) < 16 and abs(location.y*16-Static.tower_menu.global_position.y) < 16:
 						Static.tower_menu.disappear()
 					

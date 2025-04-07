@@ -24,7 +24,7 @@ var enemies = [bat, bat, bat, goblin, goblin, fire_goblin]
 
 var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true}
 
-var waves = [[0, [bat,]],
+var waves = [[3.0, [bat, fire_goblin]],
 			[2.0, [bat, bat]],
 			[5.0, [bat, bat, bat, bat]],
 			[0, [goblin,]],

@@ -35,7 +35,7 @@ func _physics_process(true_delta):
 			delta -= stunned_for
 			stunned_for = 0
 			get_node("AnimatedSprite2D").play()
-	if !moving:
+	if !moving and delta > 0.0:
 		get_movement_direction(delta)
  
 	if moving:

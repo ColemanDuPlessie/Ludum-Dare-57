@@ -12,7 +12,7 @@ var movement_progress = 0
 var movement_direction = Vector2i.ZERO
 var last_position = Vector2.ZERO
 
-const SPAWN_DURATION = 1.0
+const SPAWN_DURATION = 1.5
 
 var stunned_for = SPAWN_DURATION
 
@@ -35,7 +35,7 @@ func _physics_process(true_delta):
 			delta -= stunned_for
 			stunned_for = 0
 			get_node("AnimatedSprite2D").play()
-	if !moving:
+	if !moving and delta > 0.0:
 		get_movement_direction(delta)
  
 	if moving:
@@ -94,6 +94,5 @@ func take_damage(dmg: int) -> void:
 			get_node("HP").scale = Vector2(hp/MAX_HP, 1)
 
 func _on_hitbox_entered(body: Node2D) -> void:
-	print(body)
 	if body.has_method("hit"):
 		take_damage(body.hit())

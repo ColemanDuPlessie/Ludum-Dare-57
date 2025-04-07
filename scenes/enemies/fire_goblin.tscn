@@ -129,7 +129,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l0syf")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_kdtx3")
 }],
 "loop": true,
@@ -169,7 +169,7 @@ script = ExtResource("1_mv7ex")
 sprite_frames = SubResource("SpriteFrames_ss5yy")
 animation = &"spawn"
 autoplay = "spawn"
-frame_progress = 0.786286
+frame_progress = 0.46981
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4k4o5")
