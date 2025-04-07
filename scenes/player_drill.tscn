@@ -93,7 +93,7 @@ offset = Vector2(3, 0)
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_njjm0")
 autoplay = "default"
-frame_progress = 0.694468
+frame_progress = 0.297328
 offset = Vector2(3, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

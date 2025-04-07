@@ -56,7 +56,10 @@ func find_target(): # Returns Vector2 or null
 	var best_dist = RANGE[level]*16
 	
 	for enemy in Static.all_enemies:
-		var dist = euclidean_dist_to(enemy.global_position)
+		var pos = enemy.global_position
+		if enemy.stunned_for <= 0.0:
+			pos += Vector2(enemy.pathfinding.move_enemy(enemy.global_position, false))*enemy.SPEED
+		var dist = euclidean_dist_to(pos)
 		if dist < best_dist:
 			best_dist = dist
 			best_target = enemy.global_position

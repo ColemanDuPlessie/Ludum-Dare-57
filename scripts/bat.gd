@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Bat
 
 const MAX_HP = 20.0
-const SPEED = 6
+const SPEED = 24
 
 var hp = MAX_HP
 
