@@ -177,7 +177,7 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -123.0
+offset_left = -91.0
 offset_top = -12.0
 offset_right = 4.0
 offset_bottom = 2.0
@@ -205,13 +205,13 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -117.0
+offset_left = -93.0
 offset_top = -5.0
 offset_right = -5.0
 offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "START THE ROUND"
+text = "END THE DAY"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="DeepHint" type="Node2D" parent="."]
