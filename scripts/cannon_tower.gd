@@ -15,12 +15,16 @@ var proj: PackedScene = ResourceLoader.load("res://scenes/towers/projectiles/bom
 var time_remaining_before_attack = 0.0
 var all_enemies_in_range = []
 
+var size = 0.0
+var appearing = true
+const APPEAR_TIME = 1.0
+
 func euclidean_dist_to(tgt: Vector2) -> float:
 	return sqrt((tgt[0]-global_position[0])**2 + (tgt[1]-global_position[1])**2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # TODO build animations are always classy imo, even if they're super simple.
+	scale = Vector2(0, 0)
 
 func upgrade() -> void:
 	if level < MAX_LEVEL:
@@ -52,6 +56,13 @@ func find_target(): # Returns Vector2 or null
 	return best_target
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if appearing:
+		size += delta/APPEAR_TIME
+		size = clampf(size, 0, 1)
+		scale = Vector2(log(size*24+1)/log(25), log(size*24+1)/log(25))
+		if size == 1.0:
+			scale = Vector2(1, 1)
+			appearing = false
 	if time_remaining_before_attack > 0:
 		time_remaining_before_attack -= delta
 		time_remaining_before_attack = max(0, time_remaining_before_attack)

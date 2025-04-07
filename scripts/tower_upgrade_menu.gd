@@ -3,7 +3,8 @@ extends Node2D
 const APPEAR_DISAPPEAR_TIME = 0.3
 
 const TOWER_UPGRADE_COSTS = {"ARCHER" : [3,],
-							"CANNON" : [6,]}
+							"CANNON" : [6,],
+							"WIZARD" : [5,]}
 
 var linked_tower
 
@@ -50,6 +51,8 @@ func open_at(loc: Vector2) -> void:
 		upgrade_button.scale = Vector2(1, 1)
 		if TOWER_UPGRADE_COSTS[linked_tower.TYPE][linked_tower.level] == 3:
 			get_node("UpgradeTower/UpgradeIcon").play("3")
+		elif TOWER_UPGRADE_COSTS[linked_tower.TYPE][linked_tower.level] == 5:
+			get_node("UpgradeTower/UpgradeIcon").play("5")
 		elif TOWER_UPGRADE_COSTS[linked_tower.TYPE][linked_tower.level] == 6:
 			get_node("UpgradeTower/UpgradeIcon").play("6")
 		

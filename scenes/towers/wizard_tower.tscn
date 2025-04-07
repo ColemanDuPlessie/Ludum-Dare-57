@@ -3,19 +3,19 @@
 [ext_resource type="Script" uid="uid://bf41kfydwiklj" path="res://scripts/wizard_tower.gd" id="1_pk0ns"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_phnwt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sb3hj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk0ns"]
 atlas = ExtResource("2_phnwt")
-region = Rect2(160, 80, 32, 32)
+region = Rect2(336, 144, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbh8i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_phnwt"]
 atlas = ExtResource("2_phnwt")
-region = Rect2(128, 80, 32, 32)
+region = Rect2(368, 144, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ltipw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sb3hj")
+"texture": SubResource("AtlasTexture_pk0ns")
 }],
 "loop": true,
 "name": &"Level1Idle",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kbh8i")
+"texture": SubResource("AtlasTexture_phnwt")
 }],
 "loop": true,
 "name": &"Level2Idle",
@@ -38,7 +38,7 @@ script = ExtResource("1_pk0ns")
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ltipw")
-animation = &"Level2Idle"
+animation = &"Level1Idle"
 
 [node name="TowerShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sb3hj")

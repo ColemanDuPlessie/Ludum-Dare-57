@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7xpwroef7qv1"]
+[gd_scene load_steps=14 format=3 uid="uid://c7xpwroef7qv1"]
 
 [ext_resource type="Script" uid="uid://88cm2vnieiss" path="res://scripts/tower_context_menu.gd" id="1_hkrlw"]
 [ext_resource type="Texture2D" uid="uid://ct2bqitajgi50" path="res://art/Tower_Context_Menu.png" id="1_sdhg0"]
 [ext_resource type="Texture2D" uid="uid://3uggvaebhhde" path="res://art/ArcherTower.png" id="2_1g10d"]
 [ext_resource type="Texture2D" uid="uid://cl6favg8bb0cy" path="res://art/TowerTargetingReticule.png" id="3_as6kj"]
 [ext_resource type="Texture2D" uid="uid://cff373mn3lc0b" path="res://art/CannonTower.png" id="5_oke6i"]
+[ext_resource type="Texture2D" uid="uid://cr0p5ce8nbima" path="res://art/WizardTower.png" id="6_kfr50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkrlw"]
 size = Vector2(65, 64)
@@ -80,10 +81,21 @@ texture = ExtResource("2_1g10d")
 position = Vector2(20, -20)
 shape = SubResource("CircleShape2D_sdhg0")
 
-[node name="ArrowBuyIcon" type="Sprite2D" parent="CannonTower"]
+[node name="CannonBuyIcon" type="Sprite2D" parent="CannonTower"]
 position = Vector2(20, -20)
 texture = ExtResource("5_oke6i")
+
+[node name="WizardTower" type="Area2D" parent="."]
+
+[node name="ClickyCircle" type="CollisionShape2D" parent="WizardTower"]
+position = Vector2(-21, 20)
+shape = SubResource("CircleShape2D_sdhg0")
+
+[node name="WizardBuyIcon" type="Sprite2D" parent="WizardTower"]
+position = Vector2(-21, 20)
+texture = ExtResource("6_kfr50")
 
 [connection signal="input_event" from="CloseArea" to="." method="_on_close_area_input_event"]
 [connection signal="input_event" from="ArrowTower" to="." method="_on_arrow_tower_input_event"]
 [connection signal="input_event" from="CannonTower" to="." method="_on_cannon_tower_input_event"]
+[connection signal="input_event" from="WizardTower" to="." method="_on_wizard_tower_input_event"]
