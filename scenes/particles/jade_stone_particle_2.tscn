@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq868p3jhenuq"]
+
+[ext_resource type="Script" uid="uid://dlfng885vsobg" path="res://scripts/destruction_particle.gd" id="1_0r224"]
+[ext_resource type="Texture2D" uid="uid://csbr5t8iiktc5" path="res://art/particles/jade_stone_particle_2.tres" id="2_0r224"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1j6l"]
+radius = 2.0
+
+[node name="Particle" type="RigidBody2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 2
+gravity_scale = 0.5
+script = ExtResource("1_0r224")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0r224")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e1j6l")

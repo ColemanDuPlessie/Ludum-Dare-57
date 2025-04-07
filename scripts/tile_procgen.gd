@@ -11,8 +11,8 @@ const STONE_START = 8
 const DIRT_END = 18
 const FIRE_START = 26
 const STONE_END = 36
-const JADE_START = 48
-const FIRE_END = 56
+const JADE_START = 54
+const FIRE_END = 60
 
 var rng = RandomNumberGenerator.new()
 var max_generated_depth = -10
@@ -25,6 +25,9 @@ var stone_particle_1_scene: PackedScene = ResourceLoader.load("res://scenes/part
 var stone_particle_2_scene: PackedScene = ResourceLoader.load("res://scenes/particles/stone_particle_2.tscn")
 var hell_stone_particle_1_scene: PackedScene = ResourceLoader.load("res://scenes/particles/hell_stone_particle_1.tscn")
 var hell_stone_particle_2_scene: PackedScene = ResourceLoader.load("res://scenes/particles/hell_stone_particle_2.tscn")
+var jade_stone_particle_1_scene: PackedScene = ResourceLoader.load("res://scenes/particles/jade_stone_particle_1.tscn")
+var jade_stone_particle_2_scene: PackedScene = ResourceLoader.load("res://scenes/particles/jade_stone_particle_2.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -144,6 +147,33 @@ func destroy_tile(x: int, y:int) -> Vector2i:
 			spawn_particle(hell_stone_particle_1_scene, x, y)
 			spawn_particle(hell_stone_particle_2_scene, x, y)
 
+	elif destroyed == Static.JADE_GOLD:
+		$stone.play()
+		$gold.play()
+		Static.increment_gold(4)
+
+		for i in range(3):
+			spawn_particle(jade_stone_particle_1_scene, x, y)
+			spawn_particle(jade_stone_particle_2_scene, x, y)
+			spawn_particle(gold_particle_scene, x, y)
+
+	elif destroyed == Static.JADE_GEMS:
+		$stone.play()
+		$gem.play()
+		Static.increment_gems(4)
+		
+		for i in range(3):
+			spawn_particle(jade_stone_particle_1_scene, x, y)
+			spawn_particle(jade_stone_particle_2_scene, x, y)
+			spawn_particle(gem_particle_scene, x, y)
+
+	elif destroyed == Static.JADE:
+		$stone.play()
+
+		for i in range(3):
+			spawn_particle(jade_stone_particle_1_scene, x, y)
+			spawn_particle(jade_stone_particle_2_scene, x, y)
+
 	erase_cell(Vector2i(x, y))
 	return destroyed
 
@@ -160,22 +190,28 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 			pass
 		else:
 			var type = "DIRT"
-			if max_generated_depth > STONE_END:
-				type = "FIRE"
-			elif max_generated_depth > FIRE_START:
-				var fire_odds = float(max_generated_depth-FIRE_START)/(STONE_END-FIRE_START)
-				fire_odds += float(2*abs(x_pos))/Static.GAME_WIDTH * 0.2 - 0.1
-				if rng.randf() < fire_odds:
-					type = "FIRE"
-				else:
-					type = "STONE"
-			elif max_generated_depth > DIRT_END:
-				type = "STONE"
-			elif max_generated_depth > STONE_START:
+
+			if max_generated_depth > STONE_START:
 				var stone_odds = float(max_generated_depth-STONE_START)/(DIRT_END-STONE_START)
 				stone_odds += float(2*abs(x_pos))/Static.GAME_WIDTH * 0.3 - 0.15
-				if rng.randf() < stone_odds:
+				
+				if max_generated_depth > DIRT_END || rng.randf() < stone_odds:
 					type = "STONE"
+
+			if max_generated_depth > FIRE_START:
+				var fire_odds = float(max_generated_depth-FIRE_START)/(STONE_END-FIRE_START)
+				fire_odds += float(2*abs(x_pos))/Static.GAME_WIDTH * 0.2 - 0.1
+				
+				if max_generated_depth > STONE_END || rng.randf() < fire_odds:
+					type = "FIRE"
+
+			if max_generated_depth > JADE_START:
+				var jade_odds = float(max_generated_depth-JADE_START)/(FIRE_END-JADE_START)
+				jade_odds += float(2*abs(x_pos))/Static.GAME_WIDTH * 0.2 - 0.1
+				
+				if max_generated_depth > FIRE_END || rng.randf() < jade_odds:
+					type = "JADE"
+			
 			if type == "DIRT":
 				if rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.GOLD_TILE)
@@ -183,20 +219,30 @@ func generate_new() -> void: # TODO this is the barest of placeholders, there ar
 					set_cell(tile_pos, 0, Static.GEMS_TILE)
 				else:
 					set_cell(tile_pos, 0, Static.DIRT_TILE)
-			elif type == "STONE":
+			
+			if type == "STONE":
 				if rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.STONE_GOLD)
 				elif rng.randi_range(1, 20) == 1:
 					set_cell(tile_pos, 0, Static.STONE_GEMS)
 				else:
 					set_cell(tile_pos, 0, Static.STONE)
-			else:
+			
+			if type == "FIRE":
 				if rng.randi_range(1, 25) == 1:
 					set_cell(tile_pos, 0, Static.HELL_STONE_GOLD)
 				elif rng.randi_range(1, 25) == 1:
 					set_cell(tile_pos, 0, Static.HELL_STONE_GEMS)
 				else:
 					set_cell(tile_pos, 0, Static.HELL_STONE)
+
+			if type == "JADE":
+				if rng.randi_range(1, 25) == 1:
+					set_cell(tile_pos, 0, Static.JADE_GOLD)
+				elif rng.randi_range(1, 25) == 1:
+					set_cell(tile_pos, 0, Static.JADE_GEMS)
+				else:
+					set_cell(tile_pos, 0, Static.JADE)
 		
 		if x_pos > -Static.GAME_WIDTH / 2 - 1 && x_pos < Static.GAME_WIDTH / 2 && max_generated_depth > 2:
 			FOG_OF_WAR.set_cell(tile_pos, 0, FOG_TILE)
