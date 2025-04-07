@@ -27,6 +27,7 @@ offset = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_c8hpy")
 
 [node name="MoveHint" type="Node2D" parent="."]
+z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
 hint = "move"
@@ -74,6 +75,7 @@ text = "WASD TO MOVE"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="BuildHint" type="Node2D" parent="."]
+z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
 hint = "build"
@@ -121,6 +123,7 @@ text = "CLICK TO BUILD"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="ReturnHint" type="Node2D" parent="."]
+z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
 hint = "return"
@@ -168,6 +171,7 @@ text = "RETURN TO CAMP"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="StartHint" type="Node2D" parent="."]
+z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
 hint = "start"
@@ -215,6 +219,7 @@ text = "END THE DAY"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="DeepHint" type="Node2D" parent="."]
+z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
 hint = "deep"
