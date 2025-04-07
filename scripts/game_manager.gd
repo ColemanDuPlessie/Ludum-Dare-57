@@ -15,7 +15,7 @@ var bat: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
 var goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/goblin.tscn")
 var fire_goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/fire_goblin.tscn")
 
-var enemies = [bat, goblin, fire_goblin]
+var enemies = [bat, bat, bat, goblin, goblin, fire_goblin]
 
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
@@ -24,8 +24,8 @@ var enemies = [bat, goblin, fire_goblin]
 
 var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true}
 
-var waves = [[0, [bat, fire_goblin]],
-			[1.0, [bat, bat]],
+var waves = [[0, [bat,]],
+			[2.0, [bat, bat]],
 			[5.0, [bat, bat, bat, bat]],
 			[0, [goblin,]],
 			[1.0, [bat, goblin]],
@@ -36,7 +36,7 @@ var waves = [[0, [bat, fire_goblin]],
 			[3.0, [bat, bat, fire_goblin, bat, bat]],
 			[10.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, fire_goblin]]]
 
-var spawn_delayed = []
+var spawn_delayed = [] # Elements are of the form [seconds_until_spawn, unit_to_spawn]
 
 func _ready():
 	Static.game_manager = self
@@ -49,6 +49,15 @@ var time_to_start = START_SCREEN_COOLDOWN_TIME
 func _process(delta):
 	if time_to_start > 0:
 		time_to_start = max(0, time_to_start-delta)
+		
+	var to_remove = []
+	for spawn in spawn_delayed:
+		spawn[0] -= delta
+		if spawn[0] <= 0:
+			to_remove.append(spawn)
+			spawn_enemy(spawn[1])
+	for t in to_remove:
+		spawn_delayed.erase(t)
 
 func _input(event: InputEvent) -> void:
 	if !Static.game_in_progress && event is InputEventKey && time_to_start <= 0:
@@ -142,12 +151,17 @@ func begin_combat():
 	pathfinding.calc_pathing()
 	
 	if Static.round_number > len(waves): # Use hand-curated waves if possible, but then switch to an exponentially-escalating endless mode eventually
+		var duration = float(Static.round_number)/(int(Static.round_number ** 1.5)+1)
+		var num = 0
 		for i in range(Static.round_number ** 1.5):
-			spawn_enemy(enemies.pick_random())
+			spawn_delayed.append([duration*num, enemies.pick_random()])
+			num += 1
 	else:
-		var duration = waves[Static.round_number-1][0]/len(waves[Static.round_number-1][1])
-		for enemy in waves[Static.round_number-1][1]: # TODO spawn enemies over time, not all at once.
-			spawn_enemy(enemy)
+		var duration = waves[Static.round_number-1][0]/max(len(waves[Static.round_number-1][1])-1, 1)
+		var num = 0
+		for enemy in waves[Static.round_number-1][1]:
+			spawn_delayed.append([duration*num, enemy])
+			num += 1
 
 	round_announcement.announce()
 
