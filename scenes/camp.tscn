@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://yc15gb6yrrqt" path="res://art/campfire.png" id="2_crmxo"]
 [ext_resource type="Script" uid="uid://dywwwa6ypwayg" path="res://scripts/camp.gd" id="3_nawe8"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="4_40kdf"]
-[ext_resource type="Script" path="res://scripts/button_hover.gd" id="4_tafug"]
+[ext_resource type="Script" uid="uid://ck4g1jwp3tx8l" path="res://scripts/button_hover.gd" id="4_tafug"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kice"]
 atlas = ExtResource("2_crmxo")

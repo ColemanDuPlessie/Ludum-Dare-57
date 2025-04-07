@@ -14,6 +14,8 @@ var last_position = Vector2.ZERO
 
 var destruction_progress = 0
 
+@onready var sprite = get_node("Sprite2D")
+
 func _ready():
 	last_position = global_position
 
@@ -55,7 +57,14 @@ func check_movement_direction(delta):
 		movement_direction = Vector2.ZERO
 
 	if moving:
-		look_at(global_position + movement_direction)
+		sprite.look_at(sprite.global_position + movement_direction)
+
+		if movement_direction == Vector2.LEFT:
+			sprite.rotation = 0
+
+			sprite.scale = Vector2(-1, 1)
+		else:
+			sprite.scale = Vector2(1, 1)
 
 	if moving:
 		var params = PhysicsShapeQueryParameters2D.new()

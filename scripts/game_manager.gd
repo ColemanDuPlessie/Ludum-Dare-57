@@ -1,6 +1,8 @@
 extends Node2D
 
 signal spawned_drill(player)
+signal spawned_combat(player)
+signal completed_round()
 
 @export var world: Node2D
 @export var pathfinding: Node
@@ -43,8 +45,8 @@ func _ready():
 
 	walls.generate_start()
 
-const START_SCREEN_COOLDOWN_TIME = 3.0
-var time_to_start = START_SCREEN_COOLDOWN_TIME
+const START_SCREEN_COOLDOWN_TIME = 1.0
+var time_to_start = 0
 
 func _process(delta):
 	if time_to_start > 0:
@@ -165,6 +167,8 @@ func begin_combat():
 
 	round_announcement.announce()
 
+	spawned_combat.emit(new_player)
+
 func begin_building():
 	if len(spawn_delayed) > 0: return
 	print("Starting building!")
@@ -183,6 +187,11 @@ func begin_building():
 	new_player.update_fuel_gague()
 
 	Static.round_number += 1
+
+func end_combat():
+	completed_round.emit()
+
+	begin_building()
 
 func take_damage():
 	Static.health -= 1

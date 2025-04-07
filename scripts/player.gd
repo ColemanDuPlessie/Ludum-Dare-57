@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal shot()
+
 var speed: float = 60
 var rise_gravity: float = 400
 var fall_gravity: float = 600
@@ -12,7 +14,7 @@ var y_velocity = 0
 
 var proj: PackedScene = ResourceLoader.load("res://scenes/player_laser.tscn")
 
-var time_remaining_before_attack = 0.0
+var time_remaining_before_attack = 0.5
 
 var ATTACK_DELAYS = [0.35, 0.32, 0.28, 0.25]
 
@@ -32,6 +34,8 @@ func shoot(tgt: Vector2) -> void:
 	add_sibling(laser)
 
 	Static.camera.shake(0.4)
+
+	shot.emit()
 
 func try_shoot(tgt: Vector2) -> void:
 	if time_remaining_before_attack > 0:

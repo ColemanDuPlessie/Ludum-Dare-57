@@ -64,6 +64,8 @@ var camera = null
 var round_number = 0
 var deepest = 0
 
+var currently_displayed_hint = "move"
+
 func _change_gold(new:int) -> void:
 	current_gold += new
 	gold_counter.text = str(current_gold)
@@ -77,8 +79,6 @@ func increment_gold(amt: int) -> void:
 	
 # Returns true and deducts gold if we can afford it. Otherwise returns false.
 func spend_gold(amt: int) -> bool:
-	print(current_gold)
-	print(amt)
 	if current_gold >= amt:
 		_change_gold(-amt)
 		return true

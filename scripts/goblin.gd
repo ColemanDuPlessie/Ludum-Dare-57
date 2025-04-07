@@ -46,7 +46,7 @@ func _physics_process(true_delta):
 		destroy()
 
 		if Static.health > 0 && len(Static.all_enemies) == 0:
-			Static.game_manager.begin_building()
+			Static.game_manager.end_combat()
 
 func get_movement_direction(delta):
 	var prev_movement_direction = movement_direction
@@ -89,7 +89,7 @@ func take_damage(dmg: int) -> void:
 			destroy()
 
 			if len(Static.all_enemies) == 0:
-				Static.game_manager.begin_building()
+				Static.game_manager.end_combat()
 		else:
 			get_node("HP").scale = Vector2(hp/MAX_HP, 1)
 
