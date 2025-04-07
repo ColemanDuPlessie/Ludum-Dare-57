@@ -16,17 +16,19 @@ var level = 0
 @onready var base = get_node("TowerSprite")
 @onready var laser = get_node("Laser")
 
-const TURRET_PIXEL_OFFSET = 0
-
 var time_remaining_before_attack = 0.0
 var all_enemies_in_range = []
+
+var size = 0.0
+var appearing = true
+const APPEAR_TIME = 1.0
 
 func euclidean_dist_to(tgt: Vector2) -> float:
 	return sqrt((tgt[0]-global_position[0])**2 + (tgt[1]-global_position[1])**2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # TODO build animations are always classy imo, even if they're super simple.
+	scale = Vector2(0, 0)
 	base.play("Level1Idle")
 	laser.set_visible(false)
 
@@ -60,6 +62,13 @@ func find_target(): # Returns Vector2 or null
 	return [best_target, best_enemy]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if appearing:
+		size += delta/APPEAR_TIME
+		size = clampf(size, 0, 1)
+		scale = Vector2(log(size*24+1)/log(25), log(size*24+1)/log(25))
+		if size == 1.0:
+			scale = Vector2(1, 1)
+			appearing = false
 	if zap_linger_time > 0:
 		zap_linger_time -= delta
 		if zap_linger_time < 0:
