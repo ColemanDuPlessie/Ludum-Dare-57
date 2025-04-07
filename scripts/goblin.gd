@@ -48,16 +48,17 @@ func _physics_process(true_delta):
 			Static.game_manager.begin_building()
 
 func get_movement_direction(delta):
+	var prev_movement_direction = movement_direction
 	movement_direction = pathfinding.move_enemy(global_position)
-	if movement_direction == Vector2i.UP:
+	if movement_direction == Vector2i.UP and movement_direction != prev_movement_direction:
 			get_node("AnimatedSprite2D").play("up")
-	elif movement_direction == Vector2i.RIGHT:
+	elif movement_direction == Vector2i.RIGHT and movement_direction != prev_movement_direction:
 			get_node("AnimatedSprite2D").play("right")
 			get_node("AnimatedSprite2D").flip_h = false
-	elif movement_direction == Vector2i.LEFT:
+	elif movement_direction == Vector2i.LEFT and movement_direction != prev_movement_direction:
 			get_node("AnimatedSprite2D").play("right")
 			get_node("AnimatedSprite2D").flip_h = true
-	elif movement_direction == Vector2i.DOWN:
+	elif movement_direction == Vector2i.DOWN and movement_direction != prev_movement_direction:
 			get_node("AnimatedSprite2D").play("down")
 			
 		

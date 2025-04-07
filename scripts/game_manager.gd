@@ -36,8 +36,15 @@ func _ready():
 
 	walls.generate_start()
 
+const START_SCREEN_COOLDOWN_TIME = 3.0
+var time_to_start = START_SCREEN_COOLDOWN_TIME
+
+func _process(delta):
+	if time_to_start > 0:
+		time_to_start = max(0, time_to_start-delta)
+
 func _input(event: InputEvent) -> void:
-	if !Static.game_in_progress && event is InputEventKey:
+	if !Static.game_in_progress && event is InputEventKey && time_to_start <= 0:
 		start_game()
 
 	if event.is_action_pressed("debug_swap_mode"):
@@ -56,9 +63,9 @@ func start_game():
 	spawned_drill.emit(new_player)
 
 	Static.current_gold = 0
-	Static.increment_gold(500)
+	Static.increment_gold(5)
 	Static.current_gems = 0
-	Static.increment_gems(500)
+	Static.increment_gems(1)
 	Static.health = 3
 
 	Static.game_in_progress = true
@@ -94,6 +101,7 @@ func end_game():
 	Static.PLAYER_DRILL_LEVEL = 0
 	Static.PLAYER_GUN_LEVEL = 0
 	Static.PLAYER_RADAR_LEVEL = 0
+	time_to_start = START_SCREEN_COOLDOWN_TIME
 
 func spawn_enemy(type) -> void:
 	var spawn_location = pathfinding.get_enemy_spawn_location()
