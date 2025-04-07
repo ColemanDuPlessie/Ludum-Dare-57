@@ -1,7 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://daaxtmwr2w44x"]
+[gd_scene load_steps=7 format=3 uid="uid://daaxtmwr2w44x"]
 
 [ext_resource type="Script" uid="uid://chb7j0weron7y" path="res://scripts/cannon_tower.gd" id="1_7635i"]
-[ext_resource type="Texture2D" uid="uid://d1ijh6o7fa55h" path="res://art/archer_tower_base.tres" id="2_rfhbs"]
+[ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_x5xg5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qwqx"]
+atlas = ExtResource("2_x5xg5")
+region = Rect2(400, 144, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ah25"]
+atlas = ExtResource("2_x5xg5")
+region = Rect2(432, 144, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cmed"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qwqx")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ah25")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sb3hj"]
 size = Vector2(32, 32)
@@ -9,8 +36,10 @@ size = Vector2(32, 32)
 [node name="cannon" type="StaticBody2D"]
 script = ExtResource("1_7635i")
 
-[node name="CannonSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_rfhbs")
+[node name="CannonSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7cmed")
+animation = &"1"
+autoplay = "1"
 
 [node name="TowerShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sb3hj")

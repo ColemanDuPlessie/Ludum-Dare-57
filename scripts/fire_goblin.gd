@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const MAX_HP = 125.0
-const SPEED = 24
+const MAX_HP = 250.0
+const SPEED = 14
 
 var hp = MAX_HP
 

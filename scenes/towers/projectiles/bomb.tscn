@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cp5jwoo5e5p1i" path="res://art/Explosion_Spritesheet.png" id="2_y7snk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23jat"]
-size = Vector2(10, 2)
+size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qho7r"]
 atlas = ExtResource("2_y7snk")
@@ -31,9 +31,9 @@ region = Rect2(96, 0, 24, 24)
 atlas = ExtResource("2_y7snk")
 region = Rect2(120, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_84slv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7snk"]
 atlas = ExtResource("2_j15uc")
-region = Rect2(232, 88, 16, 16)
+region = Rect2(416, 176, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nxi8k"]
 animations = [{
@@ -65,7 +65,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_84slv")
+"texture": SubResource("AtlasTexture_y7snk")
 }],
 "loop": true,
 "name": &"Flying",
@@ -83,6 +83,4 @@ shape = SubResource("RectangleShape2D_23jat")
 
 [node name="BombSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nxi8k")
-animation = &"Exploding"
-frame = 6
-frame_progress = 0.424812
+animation = &"Flying"
