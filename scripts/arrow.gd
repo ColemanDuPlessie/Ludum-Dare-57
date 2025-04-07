@@ -1,7 +1,7 @@
 extends StaticBody2D
 
-const PIXELS_PER_SEC = [64, 88] # Travel speed
-const LIFETIME = [0.875, 4.5/5.5] # Number of seconds
+const PIXELS_PER_SEC = [96, 132] # Travel speed
+const LIFETIME = [1.75/3.0, 4.5/5.5*2.0/3.0] # Number of seconds
 const DMG = [4, 6]
 
 var level = 0

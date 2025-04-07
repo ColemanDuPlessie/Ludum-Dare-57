@@ -36,7 +36,7 @@ func _on_player_moving_to_tile(location):
 
 		advance_to_next_hint()
 
-	if passed_build && location.y <= 8:
+	if passed_build && location.y <= 8 && Static.fuel_meter.flashing:
 		passed_return = true
 
 		advance_to_next_hint()

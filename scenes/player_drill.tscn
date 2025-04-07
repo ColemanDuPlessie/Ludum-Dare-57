@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqddiwdc6knkx"]
+[gd_scene load_steps=18 format=3 uid="uid://cqddiwdc6knkx"]
 
 [ext_resource type="Script" uid="uid://vfex0pr16mcx" path="res://scripts/player_drill.gd" id="1_o55oq"]
 [ext_resource type="Texture2D" uid="uid://bxj83m6cgoi3r" path="res://art/drill.tres" id="2_a21nq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b81vlutqsndat" path="res://scripts/hint.gd" id="3_tvm4f"]
 [ext_resource type="Texture2D" uid="uid://3vl41wp6afjp" path="res://art/drill_2.tres" id="3_wta5n"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="4_tvm4f"]
+[ext_resource type="Script" uid="uid://b4q4hfifwshio" path="res://scripts/lowfuelhint.gd" id="9_s4nw4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a21nq"]
 animations = [{
@@ -92,7 +93,7 @@ offset = Vector2(3, 0)
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_njjm0")
 autoplay = "default"
-frame_progress = 0.807582
+frame_progress = 0.694468
 offset = Vector2(3, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -201,7 +202,7 @@ label_settings = SubResource("LabelSettings_wta5n")
 [node name="ReturnHint" type="Node2D" parent="."]
 z_index = 4
 position = Vector2(-3, 1)
-script = ExtResource("3_tvm4f")
+script = ExtResource("9_s4nw4")
 hint = "return"
 
 [node name="Hint" type="Control" parent="ReturnHint"]

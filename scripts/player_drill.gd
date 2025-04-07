@@ -27,6 +27,8 @@ var time_to_flash = 0.0
 
 func _ready():
 	last_position = global_position
+	drill_noise.volume_linear = 0.0
+	drill_noise_hard.volume_linear = 0.0
 
 func _physics_process(delta):
 	move_cooldown -= delta
