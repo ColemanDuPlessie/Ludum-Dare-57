@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqddiwdc6knkx"]
+[gd_scene load_steps=17 format=3 uid="uid://cqddiwdc6knkx"]
 
 [ext_resource type="Script" uid="uid://vfex0pr16mcx" path="res://scripts/player_drill.gd" id="1_o55oq"]
 [ext_resource type="Texture2D" uid="uid://bxj83m6cgoi3r" path="res://art/drill.tres" id="2_a21nq"]
+[ext_resource type="AudioStream" uid="uid://prwwjuavjui8" path="res://sounds/drill.mp3" id="2_e51gb"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="3_a21nq"]
+[ext_resource type="AudioStream" uid="uid://c8pu02h3a3hb3" path="res://sounds/drillhard.mp3" id="3_njjm0"]
 [ext_resource type="Script" uid="uid://b81vlutqsndat" path="res://scripts/hint.gd" id="3_tvm4f"]
 [ext_resource type="Texture2D" uid="uid://3vl41wp6afjp" path="res://art/drill_2.tres" id="3_wta5n"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="4_tvm4f"]
@@ -21,6 +23,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_njjm0"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(113, 53, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4nw4"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(120, 53, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ug8e"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(127, 53, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgrvp"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(134, 53, 7, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njjm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njjm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4nw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ug8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgrvp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8hpy"]
 size = Vector2(14, 16)
 
@@ -34,10 +72,27 @@ collision_layer = 2049
 collision_mask = 2049
 script = ExtResource("1_o55oq")
 
+[node name="Drill" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e51gb")
+autoplay = true
+parameters/looping = true
+
+[node name="DrillHard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_njjm0")
+autoplay = true
+parameters/looping = true
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a21nq")
 autoplay = "default"
-frame_progress = 0.244163
+frame_progress = 0.990906
+offset = Vector2(3, 0)
+
+[node name="Drill" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(7, 0)
+sprite_frames = SubResource("SpriteFrames_njjm0")
+autoplay = "default"
+frame_progress = 0.177736
 offset = Vector2(3, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -17,12 +17,24 @@ var destruction_progress = 0
 var move_cooldown = 0.2
 
 @onready var sprite = get_node("Sprite2D")
+@onready var drill = get_node("Sprite2D/Drill")
+@onready var drill_noise = get_node("Drill")
+@onready var drill_noise_hard = get_node("DrillHard")
+
+const FLASH_COOLDOWN = 0.25
+var flashing = false
+var time_to_flash = 0.0
 
 func _ready():
 	last_position = global_position
 
 func _physics_process(delta):
 	move_cooldown -= delta
+	
+	drill_noise.volume_linear = 0.0
+	drill_noise_hard.volume_linear = 0.0
+	drill.speed_scale = 0.5
+	drill.modulate = Color(1, 1, 1)
 
 	if !moving:
 		check_movement_direction(delta)
@@ -100,6 +112,11 @@ func check_movement_direction(delta):
 			var fuel_cost = Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]
 
 			if fuel_cost <= fuel_remaining:
+				flashing = false
+				time_to_flash = 0.0
+				drill_noise.volume_linear = 0.3
+				drill.speed_scale = 1.0
+				
 				destruction_progress += delta * DRILL_SPEED[Static.PLAYER_DRILL_LEVEL] / sqrt(Static.FUEL_COSTS[tile][Static.PLAYER_DRILL_LEVEL]) * 2
 
 				if destruction_progress >= 1:
@@ -115,6 +132,19 @@ func check_movement_direction(delta):
 						Static.tower_menu.disappear()
 					
 					Static.camera.shake(0.5)
+			else:
+				drill_noise_hard.volume_linear = 0.5
+				drill.speed_scale = 2.0
+				time_to_flash -= delta
+				if time_to_flash <= 0.0:
+					time_to_flash = FLASH_COOLDOWN
+					flashing = not flashing
+				if flashing:
+					drill.modulate = Color(1, 0.2, 0.2)
+						
+		else:
+			flashing = false
+			time_to_flash = 0.0
 		
 	if moving && movement_direction == Vector2.UP && global_position.y == 8:
 		moving = false

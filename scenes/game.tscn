@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cu4c0o3skged" path="res://scenes/tower_upgrade_menu.tscn" id="22_37s47"]
 [ext_resource type="Script" uid="uid://c13ao1o6xagd0" path="res://scripts/hints.gd" id="25_pl11u"]
 [ext_resource type="AudioStream" uid="uid://caus5cs5x0wgy" path="res://sounds/mrrrp.mp3" id="26_bhx41"]
-[ext_resource type="Script" path="res://scripts/music.gd" id="26_sww3w"]
+[ext_resource type="Script" uid="uid://doepvyxdnowk4" path="res://scripts/music.gd" id="26_sww3w"]
 [ext_resource type="AudioStream" uid="uid://bwhpn5bpnrrh" path="res://sounds/song_2_loop.mp3" id="27_qnb83"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_264po"]
