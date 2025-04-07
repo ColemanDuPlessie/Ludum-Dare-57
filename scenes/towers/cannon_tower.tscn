@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://daaxtmwr2w44x"]
+[gd_scene load_steps=8 format=3 uid="uid://daaxtmwr2w44x"]
 
 [ext_resource type="Script" uid="uid://chb7j0weron7y" path="res://scripts/cannon_tower.gd" id="1_7635i"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_x5xg5"]
+[ext_resource type="AudioStream" uid="uid://byiju50y2ap6m" path="res://sounds/cannon_shoot.mp3" id="3_5qwqx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qwqx"]
 atlas = ExtResource("2_x5xg5")
@@ -43,3 +44,7 @@ autoplay = "1"
 
 [node name="TowerShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sb3hj")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5qwqx")
+volume_db = -5.0

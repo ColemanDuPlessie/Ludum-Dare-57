@@ -4,7 +4,7 @@ const DMG = [6, 9]
 const FLIGHT_TIME = [0.4, 0.45]
 const PIXEL_HEIGHT_PEAK = [35, 45]
 const PIXEL_AOE_RADIUS = 12
-const GRAPHICS_LINGER_DURATION = 0.35
+const GRAPHICS_LINGER_DURATION = 0.5
 
 var time_remaining
 
@@ -16,6 +16,7 @@ var level = 0
 var exploded = false
 
 @onready var sprite = get_node("BombSprite")
+@onready var sound = get_node("HitSound")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,6 +42,7 @@ func _process(delta: float) -> void:
 
 func explode() -> void:
 	sprite.play("Exploding")
+	sound.play()
 	exploded = true
 	for enemy in Static.all_enemies:
 		if global_position.distance_to(enemy.global_position) <= PIXEL_AOE_RADIUS:

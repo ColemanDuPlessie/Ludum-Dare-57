@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://qql0prhwp0f0"]
+[gd_scene load_steps=14 format=3 uid="uid://qql0prhwp0f0"]
 
 [ext_resource type="Script" uid="uid://cqaodpbc2lonr" path="res://scripts/bomb.gd" id="1_vpdcx"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_j15uc"]
 [ext_resource type="Texture2D" uid="uid://cp5jwoo5e5p1i" path="res://art/Explosion_Spritesheet.png" id="2_y7snk"]
+[ext_resource type="AudioStream" uid="uid://ds45vc2lyar60" path="res://sounds/cannon_hit.mp3" id="4_qho7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23jat"]
 size = Vector2(10, 10)
@@ -83,4 +84,8 @@ shape = SubResource("RectangleShape2D_23jat")
 
 [node name="BombSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nxi8k")
-animation = &"Flying"
+animation = &"Exploding"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qho7r")
+volume_db = -10.0

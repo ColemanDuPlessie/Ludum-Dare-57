@@ -11,6 +11,7 @@ const MAX_LEVEL = 1
 var level = 0
 
 @onready var base = get_node("CannonSprite")
+@onready var sound = get_node("ShootSound")
 
 var proj: PackedScene = ResourceLoader.load("res://scenes/towers/projectiles/bomb.tscn")
 
@@ -40,6 +41,7 @@ func shoot(tgt: Vector2) -> void:
 	bomb.destination = tgt
 	bomb.start_pos = global_position
 	bomb.level = level
+	sound.play()
 	add_sibling(bomb)
 
 func find_target(): # Returns Vector2 or null

@@ -14,6 +14,7 @@ const MAX_LEVEL = 1
 var level = 0
 
 @onready var base = get_node("TowerSprite")
+@onready var sound = get_node("ShootSound")
 @onready var laser = get_node("Laser")
 
 var time_remaining_before_attack = 0.0
@@ -43,6 +44,7 @@ func shoot(tgt: Vector2, unit) -> void:
 	laser.rotation = get_angle_to(tgt)
 	laser.scale = Vector2(euclidean_dist_to(tgt), 1)
 	laser.set_visible(true)
+	sound.play()
 	unit.take_damage(DMG[level])
 	unit.stun(STUN_DURATION[level])
 	zap_linger_time = ZAP_LINGER_DURATION[level]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bywbfwi2aok1b"]
+[gd_scene load_steps=8 format=3 uid="uid://bywbfwi2aok1b"]
 
 [ext_resource type="Script" uid="uid://bf41kfydwiklj" path="res://scripts/wizard_tower.gd" id="1_pk0ns"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="2_phnwt"]
+[ext_resource type="AudioStream" uid="uid://bt8liuv48x6l7" path="res://sounds/laser_shoot.mp3" id="3_phnwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pk0ns"]
 atlas = ExtResource("2_phnwt")
@@ -50,3 +51,7 @@ offset_bottom = 1.0
 rotation = -0.735003
 pivot_offset = Vector2(0, 1)
 color = Color(0.498039, 0, 1, 1)
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_phnwt")
+volume_db = -10.0
