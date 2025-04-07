@@ -9,6 +9,7 @@ var passed_return = false
 var passed_start = false
 var passed_shoot = false
 var passed_defend = false
+var passed_upgrade = false
 var passed_deep = false
 
 func _ready() -> void:
@@ -40,9 +41,14 @@ func _on_player_moving_to_tile(location):
 
 		advance_to_next_hint()
 
-	if passed_defend && location.y >= 8 + 16 * 7:
+	if passed_upgrade && location.y >= 8 + 16 * 7:
 		passed_deep = true
 
+		advance_to_next_hint()
+	
+	if passed_defend:
+		passed_upgrade = true
+		
 		advance_to_next_hint()
 
 func _on_built_tower():
@@ -80,6 +86,9 @@ func advance_to_next_hint():
 		Static.currently_displayed_hint = "defend"
 
 	if passed_defend:
+		Static.currently_displayed_hint = "upgrade"
+	
+	if passed_upgrade:
 		Static.currently_displayed_hint = "deep"
 
 	if passed_deep:

@@ -4,7 +4,7 @@ extends Node2D
 
 var size = 0
 
-var delay = 5.0
+var delay = 1.0
 
 func _ready():
 	scale = Vector2(0, 0)
@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 	if Static.currently_displayed_hint == hint:
 		delay -= delta
+		if hint == "move": delay = 0
 
 		if delay > 0:
 			return

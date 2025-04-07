@@ -9,7 +9,8 @@ func _ready():
 	uiOrigin.scale = Vector2(1, 0)
 
 func _player_entered_area(_body):
-	appearing = true
+	if Static.currently_displayed_hint != "move" and Static.currently_displayed_hint != "build":
+		appearing = true
 
 func _player_exited_area(_body):
 	appearing = false

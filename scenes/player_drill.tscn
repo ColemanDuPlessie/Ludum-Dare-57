@@ -65,6 +65,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_a21nq")
@@ -82,16 +83,18 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -101.0
+offset_left = -93.0
 offset_top = -5.0
 offset_right = -5.0
 offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "WASD TO MOVE"
+text = "WASD TO DIG"
 label_settings = SubResource("LabelSettings_wta5n")
+horizontal_alignment = 2
 
 [node name="BuildHint" type="Node2D" parent="."]
+visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
@@ -140,6 +143,7 @@ text = "CLICK TO BUILD"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="ReturnHint" type="Node2D" parent="."]
+visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
@@ -188,6 +192,7 @@ text = "RETURN TO CAMP"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="StartHint" type="Node2D" parent="."]
+visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
@@ -235,7 +240,61 @@ grow_vertical = 2
 text = "END THE DAY"
 label_settings = SubResource("LabelSettings_wta5n")
 
+[node name="UpgradeHint" type="Node2D" parent="."]
+visible = false
+z_index = 4
+position = Vector2(-3, 1)
+script = ExtResource("3_tvm4f")
+hint = "upgrade"
+
+[node name="Hint" type="Control" parent="UpgradeHint"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = -12.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UpgradeHint/Hint"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.634921
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_a21nq")
+region_rect = Rect2(52, 180, 10, 9)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 5
+patch_margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UpgradeHint/Hint"]
+modulate = Color(0.4, 0.74902, 1, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "BUY UPGRADES"
+label_settings = SubResource("LabelSettings_wta5n")
+metadata/_edit_use_anchors_ = true
+
 [node name="DeepHint" type="Node2D" parent="."]
+visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")

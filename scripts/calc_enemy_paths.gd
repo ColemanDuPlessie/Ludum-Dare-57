@@ -125,3 +125,6 @@ func calc_pathing() -> void:
 			if spawn_locations[loc] < spawn_weighting * MIN_SPAWN_CHANCE:
 				spawn_locations.erase(loc)
 				spawn_locations_removed = true
+			if loc[1] <= 2 and abs(loc[0]-Static.GAME_WIDTH/2) <= 5:
+				spawn_locations.erase(loc)
+				spawn_locations_removed = true

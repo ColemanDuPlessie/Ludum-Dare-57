@@ -22,11 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="15_5newe"]
 [ext_resource type="Script" uid="uid://paht1rfv3cmy" path="res://scripts/resource_ui.gd" id="15_37s47"]
 [ext_resource type="Texture2D" uid="uid://bluer54g68kfd" path="res://art/heart.tres" id="16_37s47"]
-[ext_resource type="Script" uid="uid://cnvrvkw6stjqw" path="res://scripts/round_anouncement.gd" id="18_bt5mj"]
+[ext_resource type="Script" path="res://scripts/round_anouncement.gd" id="18_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://cu4c0o3skged" path="res://scenes/tower_upgrade_menu.tscn" id="22_37s47"]
 [ext_resource type="Script" uid="uid://c13ao1o6xagd0" path="res://scripts/hints.gd" id="25_pl11u"]
 [ext_resource type="AudioStream" uid="uid://caus5cs5x0wgy" path="res://sounds/mrrrp.mp3" id="26_bhx41"]
-[ext_resource type="Script" uid="uid://doepvyxdnowk4" path="res://scripts/music.gd" id="26_sww3w"]
+[ext_resource type="Script" path="res://scripts/music.gd" id="26_sww3w"]
 [ext_resource type="AudioStream" uid="uid://bwhpn5bpnrrh" path="res://sounds/song_2_loop.mp3" id="27_qnb83"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_264po"]

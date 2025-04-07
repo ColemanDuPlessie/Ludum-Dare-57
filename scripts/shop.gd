@@ -90,7 +90,7 @@ func _on_drill_upgrade_pressed() -> void:
 			var coin = get_node("Researcher/UIOrigin/UI/Drill/TextureRect")
 			drill_price.visible = false
 			coin.visible = false
-			# drill_label.text = "DRILL MAX"
+			drill_label.text = "DRILL MAX"
 		else:
 			drill_price.text = str(DRILL_UPGRADE_COSTS[Static.PLAYER_DRILL_LEVEL])
-			drill_label.text = "DRILL " + str(Static.PLAYER_DRILL_LEVEL+1)
+			# drill_label.text = "DRILL " + str(Static.PLAYER_DRILL_LEVEL+1)
