@@ -37,6 +37,15 @@ const correctionOffsets = [ Vector2(0, 0), Vector2(0, 1), Vector2(1, 0), Vector2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed('mouse_click'):
+		if !Static.game_in_progress:
+			if tower_menu.size == 1.0:
+				tower_menu.disappear()
+
+			if upgrade_menu.size == 1.0:
+				upgrade_menu.disappear()
+
+			return
+
 		if Static.game_manager.state == "building":
 			var mouse_pos = get_parent().get_local_mouse_position() 
 
