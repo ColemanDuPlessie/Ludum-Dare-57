@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cr0p5ce8nbima" path="res://art/WizardTower.png" id="6_kfr50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkrlw"]
-size = Vector2(65, 64)
+size = Vector2(64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oke6i"]
 atlas = ExtResource("3_as6kj")
@@ -59,13 +59,13 @@ texture = ExtResource("1_sdhg0")
 [node name="CloseArea" type="Area2D" parent="."]
 
 [node name="CloseArea" type="CollisionShape2D" parent="CloseArea"]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_hkrlw")
 
 [node name="TowerHighlight" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5cyqu")
 
 [node name="ArrowTower" type="Area2D" parent="."]
+position = Vector2(20, -8)
 
 [node name="ClickyCircle" type="CollisionShape2D" parent="ArrowTower"]
 position = Vector2(-20, -20)
@@ -76,6 +76,7 @@ position = Vector2(-20, -20)
 texture = ExtResource("2_1g10d")
 
 [node name="CannonTower" type="Area2D" parent="."]
+position = Vector2(5, 34)
 
 [node name="ClickyCircle" type="CollisionShape2D" parent="CannonTower"]
 position = Vector2(20, -20)
@@ -86,6 +87,7 @@ position = Vector2(20, -20)
 texture = ExtResource("5_oke6i")
 
 [node name="WizardTower" type="Area2D" parent="."]
+position = Vector2(-4, -6)
 
 [node name="ClickyCircle" type="CollisionShape2D" parent="WizardTower"]
 position = Vector2(-21, 20)
