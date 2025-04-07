@@ -94,7 +94,6 @@ label_settings = SubResource("LabelSettings_wta5n")
 horizontal_alignment = 2
 
 [node name="BuildHint" type="Node2D" parent="."]
-visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
@@ -143,7 +142,6 @@ text = "CLICK TO BUILD"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="ReturnHint" type="Node2D" parent="."]
-visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
@@ -192,7 +190,6 @@ text = "RETURN TO CAMP"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="StartHint" type="Node2D" parent="."]
-visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
@@ -241,7 +238,6 @@ text = "END THE DAY"
 label_settings = SubResource("LabelSettings_wta5n")
 
 [node name="UpgradeHint" type="Node2D" parent="."]
-visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
@@ -294,7 +290,6 @@ label_settings = SubResource("LabelSettings_wta5n")
 metadata/_edit_use_anchors_ = true
 
 [node name="DeepHint" type="Node2D" parent="."]
-visible = false
 z_index = 4
 position = Vector2(-3, 1)
 script = ExtResource("3_tvm4f")
