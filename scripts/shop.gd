@@ -5,8 +5,8 @@ var player_drill: CharacterBody2D
 var current_fuel_level = 1
 
 const MAX_FUEL_LEVEL = 5
-const FUEL_UPGRADE_COSTS = [5, 10, 15, 25]
-const FUEL_UPGRADE_VALUES = [25, 30, 35, 40]
+const FUEL_UPGRADE_COSTS = [5, 9, 12, 15]
+const FUEL_UPGRADE_VALUES = [20, 30, 35, 45]
 
 const MAX_WEAPON_LEVEL = 3
 const WEAPON_UPGRADE_COSTS = [5, 10, 15]
@@ -41,7 +41,7 @@ func _on_fuel_upgrade_pressed() -> void:
 			fuel_label.text = "FUELTANK MAX"
 		else:
 			fuel_price.text = str(FUEL_UPGRADE_COSTS[current_fuel_level-1])
-			fuel_label.text = "FUELTANK " + str(current_fuel_level)
+			# fuel_label.text = "FUELTANK " + str(current_fuel_level)
 
 func _on_weapon_upgrade_pressed() -> void:
 	if Static.PLAYER_GUN_LEVEL >= MAX_WEAPON_LEVEL:
@@ -58,7 +58,7 @@ func _on_weapon_upgrade_pressed() -> void:
 			weapon_label.text = "WEAPON MAX"
 		else:
 			weapon_price.text = str(WEAPON_UPGRADE_COSTS[Static.PLAYER_GUN_LEVEL])
-			weapon_label.text = "WEAPON " + str(Static.PLAYER_GUN_LEVEL+1)
+			# weapon_label.text = "WEAPON " + str(Static.PLAYER_GUN_LEVEL+1)
 
 func _on_radar_upgrade_pressed() -> void:
 	if Static.PLAYER_RADAR_LEVEL >= MAX_RADAR_LEVEL:
@@ -76,7 +76,7 @@ func _on_radar_upgrade_pressed() -> void:
 			radar_label.text = "RADAR MAX"
 		else:
 			radar_price.text = str(RADAR_UPGRADE_COSTS[Static.PLAYER_RADAR_LEVEL])
-			radar_label.text = "RADAR " + str(Static.PLAYER_RADAR_LEVEL+1)
+			# radar_label.text = "RADAR " + str(Static.PLAYER_RADAR_LEVEL+1)
 
 func _on_drill_upgrade_pressed() -> void:
 	if Static.PLAYER_DRILL_LEVEL >= MAX_DRILL_LEVEL:
@@ -90,7 +90,7 @@ func _on_drill_upgrade_pressed() -> void:
 			var coin = get_node("Researcher/UIOrigin/UI/Drill/TextureRect")
 			drill_price.visible = false
 			coin.visible = false
-			drill_label.text = "DRILL MAX"
+			# drill_label.text = "DRILL MAX"
 		else:
 			drill_price.text = str(DRILL_UPGRADE_COSTS[Static.PLAYER_DRILL_LEVEL])
 			drill_label.text = "DRILL " + str(Static.PLAYER_DRILL_LEVEL+1)

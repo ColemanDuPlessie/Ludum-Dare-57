@@ -101,6 +101,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 32.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -125,7 +126,7 @@ flat = true
 
 [node name="Hover" type="ColorRect" parent="UIOrigin/UI/StartRound"]
 layout_mode = 0
-offset_left = -3.0
+offset_left = 29.0
 offset_right = 99.0
 offset_bottom = 10.0
 mouse_filter = 1
@@ -135,10 +136,11 @@ script = ExtResource("4_tafug")
 [node name="Label" type="Label" parent="UIOrigin/UI/StartRound"]
 modulate = Color(1, 0.870588, 0.329412, 1)
 layout_mode = 0
+offset_left = 32.0
 offset_top = 1.0
-offset_right = 64.0
+offset_right = 96.0
 offset_bottom = 9.0
-text = "START ROUND?"
+text = "END DAY?"
 label_settings = SubResource("LabelSettings_bhx41")
 
 [connection signal="body_entered" from="Area" to="." method="_player_entered_area"]

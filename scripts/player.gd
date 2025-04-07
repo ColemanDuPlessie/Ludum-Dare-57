@@ -31,7 +31,7 @@ func shoot(tgt: Vector2) -> void:
 	
 	add_sibling(laser)
 
-	Static.camera.shake(0.4)
+	# With such a small amount of camera shake, it's more distracting than helpful Static.camera.shake(0.4)
 
 func try_shoot(tgt: Vector2) -> void:
 	if time_remaining_before_attack > 0:

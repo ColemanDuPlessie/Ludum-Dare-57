@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal moving_to_tile(location)
 
-var MOVE_SPEED = [3.75, 5, 6.25, 8.125, 8.125]
+var MOVE_SPEED = [3.75, 4.75, 6, 7.875, 7.875]
 const DRILL_SPEED = [2.5, 3, 3.75, 4.5, 5.5]
 
 var fuel_remaining = Static.MAX_FUEL

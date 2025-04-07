@@ -34,7 +34,10 @@ var waves = [[0, [bat]],
 			[6.0, [goblin, goblin, goblin, goblin]],
 			[0, [fire_goblin,]],
 			[3.0, [bat, bat, fire_goblin, bat, bat]],
-			[10.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, fire_goblin]]]
+			[10.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, fire_goblin]],
+			[15.0, [goblin, fire_goblin, goblin, fire_goblin, goblin, fire_goblin]],
+			[2.0, [fire_goblin, fire_goblin, fire_goblin]],
+			[6.0, [bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin]]]
 
 var spawn_delayed = [] # Elements are of the form [seconds_until_spawn, unit_to_spawn]
 
@@ -79,9 +82,9 @@ func start_game():
 	spawned_drill.emit(new_player)
 
 	Static.current_gold = 0
-	Static.increment_gold(500)
+	Static.increment_gold(5)
 	Static.current_gems = 0
-	Static.increment_gems(100)
+	Static.increment_gems(3)
 	Static.health = 3
 
 	Static.game_in_progress = true
@@ -151,9 +154,9 @@ func begin_combat():
 	pathfinding.calc_pathing()
 	
 	if Static.round_number > len(waves): # Use hand-curated waves if possible, but then switch to an exponentially-escalating endless mode eventually
-		var duration = float(Static.round_number)/(int(Static.round_number ** 1.5)+1)
+		var duration = float(Static.round_number)/(int((Static.round_number-5) ** 1.5)+1)
 		var num = 0
-		for i in range(Static.round_number ** 1.5):
+		for i in range((Static.round_number-5) ** 1.5):
 			spawn_delayed.append([duration*num, enemies.pick_random()])
 			num += 1
 	else:
