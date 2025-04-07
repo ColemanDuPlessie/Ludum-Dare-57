@@ -4,6 +4,8 @@ const PIXELS_PER_SEC = [96, 132] # Travel speed
 const LIFETIME = [1.75/3.0, 4.5/5.5*2.0/3.0] # Number of seconds
 const DMG = [4, 6]
 
+@onready var sound = get_node("HitSound")
+
 var level = 0
 
 var time_remaining
@@ -23,9 +25,14 @@ func _process(delta: float) -> void:
 
 func hit() -> int: # This is duck typing. Any projectile has a hit() method, which will be called by the enemy it hits. It returns how much damage it deals (it can also do splash damage or something if you want)
 	if already_hit: return 0
-	destroy()
+	visible = false
+	get_node("Collisions").disabled = true
+	sound.play()
 	already_hit = true
 	return DMG[level]
 
 func destroy() -> void:
 	queue_free()
+
+func _on_hit_sound_finished() -> void:
+	destroy()

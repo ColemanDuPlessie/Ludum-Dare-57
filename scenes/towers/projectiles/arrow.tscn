@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://baawkn4yhu1a1"]
+[gd_scene load_steps=6 format=3 uid="uid://baawkn4yhu1a1"]
 
 [ext_resource type="Script" uid="uid://xyy6ux4vwgjn" path="res://scripts/arrow.gd" id="1_23jat"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="1_umosx"]
+[ext_resource type="AudioStream" uid="uid://b1jisuyh6g3h0" path="res://sounds/arrow_land.mp3" id="3_2pclo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23jat"]
 atlas = ExtResource("1_umosx")
@@ -21,3 +22,9 @@ texture = SubResource("AtlasTexture_23jat")
 
 [node name="Collisions" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_23jat")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2pclo")
+volume_db = -5.0
+
+[connection signal="finished" from="HitSound" to="." method="_on_hit_sound_finished"]

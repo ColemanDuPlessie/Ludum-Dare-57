@@ -13,6 +13,7 @@ var level = 0
 var proj: PackedScene = ResourceLoader.load("res://scenes/towers/projectiles/arrow.tscn")
 
 @onready var turret = get_node("ArcherTurretSprite")
+@onready var sound = get_node("ShootSound")
 @onready var base = get_node("TowerSprite")
 const TURRET_PIXEL_OFFSET = 0
 
@@ -43,6 +44,7 @@ func shoot(tgt: Vector2) -> void:
 	turret.global_position = global_position + unit_vec * TURRET_PIXEL_OFFSET
 	turret.global_rotation = get_angle_to(tgt)
 	turret.play("Reloading")
+	sound.play()
 	
 	var arrow: Node2D = proj.instantiate()
 	arrow.level = level

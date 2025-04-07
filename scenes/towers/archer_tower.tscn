@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://clg5a6pqt2ago"]
+[gd_scene load_steps=12 format=3 uid="uid://clg5a6pqt2ago"]
 
 [ext_resource type="Script" uid="uid://k6xjouou03h5" path="res://scripts/archer_tower.gd" id="1_sb3hj"]
+[ext_resource type="AudioStream" uid="uid://dlh1a8dsf5eag" path="res://sounds/arrow_shoot.mp3" id="3_10wjk"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="3_o73lx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sb3hj"]
@@ -81,3 +82,7 @@ shape = SubResource("RectangleShape2D_sb3hj")
 sprite_frames = SubResource("SpriteFrames_kbh8i")
 animation = &"Reloading"
 frame_progress = 0.760728
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_10wjk")
+volume_db = 5.0
