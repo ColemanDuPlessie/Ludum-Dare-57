@@ -25,7 +25,6 @@ func _ready():
 
 func stun(duration: float) -> void:
 	if stunned_for == 0:
-		velocity = Vector2(0, 0)
 		get_node("AnimatedSprite2D").pause()
 	stunned_for = max(stunned_for, duration)
 
@@ -34,7 +33,7 @@ func _physics_process(true_delta):
 	if stunned_for > 0.0:
 		if stunned_for > true_delta:
 			stunned_for -= true_delta
-			return
+			delta = 0.0
 		else:
 			delta -= stunned_for
 			stunned_for = 0

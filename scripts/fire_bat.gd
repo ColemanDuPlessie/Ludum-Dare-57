@@ -44,7 +44,7 @@ func _physics_process(true_delta):
 			velocity = frozen_velocity
 			get_node("AnimatedSprite2D").play("default")
 	delta *= 1 + 0.5 * (1 - (hp/MAX_HP))
-	if repathfind_timer <= 0:
+	if repathfind_timer <= 0 and delta > 0.0:
 		movement_direction = pathfinding.move_enemy(global_position, false)
 
 		repathfind_timer = 0.4
@@ -72,8 +72,7 @@ func _physics_process(true_delta):
 			if Static.health > 0 && len(Static.all_enemies) == 0:
 				Static.game_manager.end_combat()
 				
-	if delta > 0.0:
-		move_and_slide()
+	move_and_slide()
 
 func destroy() -> void:
 	var idx = Static.all_enemies.find(self)
