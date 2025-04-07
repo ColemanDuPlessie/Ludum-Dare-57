@@ -1,7 +1,9 @@
 extends CharacterBody2D
+class_name Bat
 
-var MAX_HP = 20.0
-const SPEED = 24
+var MAX_HP = 80.0
+var SPEED = 24.0
+const SPEED_INCREASE = 36.0
 
 var hp = MAX_HP
 
@@ -33,16 +35,17 @@ func stun(duration: float) -> void:
 func _physics_process(true_delta):
 	var delta = true_delta
 	if stunned_for > 0.0:
-		if stunned_for > true_delta:
-			stunned_for -= true_delta
+		if stunned_for > true_delta*2:
+			stunned_for -= true_delta*2
 			delta = 0.0
 		else:
-			delta -= stunned_for
+			delta -= stunned_for/2
 			stunned_for = 0
 			velocity = frozen_velocity
 			get_node("AnimatedSprite2D").play("default")
+	delta *= 1 + 0.5 * (1 - (hp/MAX_HP))
 	if repathfind_timer <= 0:
-		movement_direction = pathfinding.move_enemy(global_position, true)
+		movement_direction = pathfinding.move_enemy(global_position, false)
 
 		repathfind_timer = 0.4
 
@@ -79,6 +82,7 @@ func destroy() -> void:
 
 func take_damage(dmg: int) -> void:
 		hp -= dmg
+		SPEED += SPEED_INCREASE * float(dmg)/MAX_HP
 
 		if hp <= 0:
 			destroy()

@@ -8,13 +8,13 @@
 atlas = ExtResource("2_4k4o5")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6os3"]
-atlas = ExtResource("2_4k4o5")
-region = Rect2(16, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_18mee"]
 atlas = ExtResource("2_4k4o5")
 region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6os3"]
+atlas = ExtResource("2_4k4o5")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jofwc"]
 atlas = ExtResource("2_4k4o5")
@@ -59,10 +59,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_5m14n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i6os3")
+"texture": SubResource("AtlasTexture_18mee")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_18mee")
+"texture": SubResource("AtlasTexture_i6os3")
 }],
 "loop": true,
 "name": &"default",
@@ -120,7 +120,8 @@ script = ExtResource("1_4k4o5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ss5yy")
 autoplay = "spawn"
-frame_progress = 0.101492
+frame = 2
+frame_progress = 0.931295
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4k4o5")

@@ -16,8 +16,9 @@ var player_scene: PackedScene = ResourceLoader.load("res://scenes/player.tscn")
 var bat: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
 var goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/goblin.tscn")
 var fire_goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/fire_goblin.tscn")
+var fire_bat: PackedScene = ResourceLoader.load("res://scenes/enemies/fire_bat.tscn")
 
-var enemies = [bat, bat, bat, bat, goblin, goblin, fire_goblin]
+var enemies = [bat, bat, bat, bat, goblin, goblin, fire_bat, fire_bat, fire_goblin]
 
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
@@ -28,7 +29,7 @@ var enemies = [bat, bat, bat, bat, goblin, goblin, fire_goblin]
 @onready var buy = get_node("PurchaseSuccess")
 @onready var buy_fail = get_node("PurchaseFail")
 
-var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true}
+var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true, fire_bat : false}
 
 var waves = [[0, [bat]],
 			[3.0, [bat, bat, bat]],
@@ -37,10 +38,10 @@ var waves = [[0, [bat]],
 			[12.0, [bat, bat, goblin, bat, bat, goblin]],
 			[9.0, [goblin, goblin, goblin, goblin]],
 			[5.0, [bat, bat, bat, bat, fire_goblin]],
-			[15.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, fire_goblin]],
-			[15.0, [goblin, fire_goblin, goblin, fire_goblin, goblin, fire_goblin]],
+			[15.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, fire_bat, bat, fire_goblin]],
+			[15.0, [goblin, fire_goblin, goblin, fire_goblin, fire_bat, fire_goblin]],
 			[2.0, [fire_goblin, fire_goblin, fire_goblin]],
-			[9.0, [bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin]]]
+			[9.0, [bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, bat, fire_goblin]]]
 
 var spawn_delayed = [] # Elements are of the form [seconds_until_spawn, unit_to_spawn]
 
