@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var MAX_HP = 20.0
+var MAX_HP = 80.0
 const SPEED = 24
 
 var hp = MAX_HP
@@ -86,6 +86,7 @@ func take_damage(dmg: int) -> void:
 			get_node("Collision").disabled = true
 			get_node("Hitbox/CollisionShape2D").disabled = true
 			visible = false
+			stunned_for = 999
 			
 
 			if len(Static.all_enemies) == 0:
