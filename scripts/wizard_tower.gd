@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const TYPE = "ARCHER"
+const TYPE = "WIZARD"
 
 const ATTACK_DELAY = [1.1, 0.9] # Seconds/attack
 const DMG = [3, 5]

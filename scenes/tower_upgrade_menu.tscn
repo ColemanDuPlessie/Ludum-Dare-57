@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu4c0o3skged"]
+[gd_scene load_steps=16 format=3 uid="uid://cu4c0o3skged"]
 
 [ext_resource type="Script" uid="uid://4uicyijsq4rb" path="res://scripts/tower_upgrade_menu.gd" id="1_8i6jl"]
 [ext_resource type="Texture2D" uid="uid://ct2bqitajgi50" path="res://art/Tower_Context_Menu.png" id="2_buycl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://boy4ifdxjplla" path="res://art/Upgrade_Tower_3.png" id="4_8i6jl"]
 [ext_resource type="Texture2D" uid="uid://u6ur565pb65i" path="res://art/Destroy_Tower.png" id="5_8i6jl"]
 [ext_resource type="Texture2D" uid="uid://dlvt57aaprfdt" path="res://art/Upgrade_Tower_6.png" id="5_buycl"]
+[ext_resource type="Texture2D" uid="uid://cototqfj264ja" path="res://art/Upgrade_Tower_5.png" id="5_v0swp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkrlw"]
 size = Vector2(65, 64)
@@ -61,6 +62,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_v0swp")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_buycl")
 }],
 "loop": true,
@@ -95,7 +104,7 @@ shape = SubResource("CircleShape2D_sdhg0")
 [node name="UpgradeIcon" type="AnimatedSprite2D" parent="UpgradeTower"]
 position = Vector2(-20, -20)
 sprite_frames = SubResource("SpriteFrames_buycl")
-animation = &"6"
+animation = &"5"
 
 [node name="SellTower" type="Area2D" parent="."]
 position = Vector2(-20, 46)
