@@ -92,7 +92,7 @@ offset = Vector2(3, 0)
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_njjm0")
 autoplay = "default"
-frame_progress = 0.177736
+frame_progress = 0.807582
 offset = Vector2(3, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -114,6 +114,7 @@ offset_top = -12.0
 offset_right = 4.0
 offset_bottom = 2.0
 grow_horizontal = 0
+mouse_filter = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MoveHint/Hint"]
 layout_mode = 1
@@ -164,6 +165,7 @@ offset_top = -12.0
 offset_right = 4.0
 offset_bottom = 2.0
 grow_horizontal = 0
+mouse_filter = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="BuildHint/Hint"]
 layout_mode = 1
@@ -212,6 +214,7 @@ offset_top = -12.0
 offset_right = 4.0
 offset_bottom = 2.0
 grow_horizontal = 0
+mouse_filter = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ReturnHint/Hint"]
 layout_mode = 1
@@ -260,6 +263,7 @@ offset_top = -12.0
 offset_right = 4.0
 offset_bottom = 2.0
 grow_horizontal = 0
+mouse_filter = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="StartHint/StartHint"]
 layout_mode = 1
@@ -308,6 +312,7 @@ offset_top = -12.0
 offset_right = 4.0
 offset_bottom = 2.0
 grow_horizontal = 0
+mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UpgradeHint/Hint"]
@@ -360,6 +365,7 @@ offset_top = -12.0
 offset_right = 4.0
 offset_bottom = 2.0
 grow_horizontal = 0
+mouse_filter = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="DeepHint/Hint"]
 layout_mode = 1

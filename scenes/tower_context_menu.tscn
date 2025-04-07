@@ -97,5 +97,11 @@ texture = ExtResource("6_kfr50")
 
 [connection signal="input_event" from="CloseArea" to="." method="_on_close_area_input_event"]
 [connection signal="input_event" from="ArrowTower" to="." method="_on_arrow_tower_input_event"]
+[connection signal="mouse_entered" from="ArrowTower" to="." method="_on_arrow_tower_mouse_entered"]
+[connection signal="mouse_exited" from="ArrowTower" to="." method="_on_mouse_exited"]
 [connection signal="input_event" from="CannonTower" to="." method="_on_cannon_tower_input_event"]
+[connection signal="mouse_entered" from="CannonTower" to="." method="_on_cannon_tower_mouse_entered"]
+[connection signal="mouse_exited" from="CannonTower" to="." method="_on_mouse_exited"]
 [connection signal="input_event" from="WizardTower" to="." method="_on_wizard_tower_input_event"]
+[connection signal="mouse_entered" from="WizardTower" to="." method="_on_wizard_tower_mouse_entered"]
+[connection signal="mouse_exited" from="WizardTower" to="." method="_on_mouse_exited"]

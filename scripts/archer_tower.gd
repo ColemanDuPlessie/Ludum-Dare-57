@@ -5,7 +5,7 @@ const TYPE = "ARCHER"
 const ATTACK_DELAY = [0.75, 0.5] # Seconds/attack
 const ATTACK_DAMAGE = [4, 6]
 const BULLET_SPEED = [4.0, 5.5] # In 16px tiles/second (i.e. BULLET_SPEED = 1 means 16px/sec)
-const RANGE = [3.5, 4.5] # In 16px tiles from center TODO make a targeting guide pop up on click
+const RANGE = [3.5, 4.25] # In 16px tiles from center
 
 const MAX_LEVEL = 1
 var level = 0

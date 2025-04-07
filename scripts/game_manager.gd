@@ -22,13 +22,13 @@ var enemies = [bat, bat, bat, goblin, goblin, fire_goblin]
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
 @onready var resource_menu = get_node("../Camera2D/UIOverlay/ResourceUI") 
-@onready var round_announcement = get_node("../Camera2D/UIOverlay/RoundAnouncement") 
+@onready var round_announcement = get_node("../Camera2D/UIOverlay/RoundAnouncement")
+@onready var tower_range = get_node("../TowerTargeting")
 
 var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true}
 
 var waves = [[0, [bat]],
-			[2.0, [bat, bat]],
-			[5.0, [bat, bat, bat, bat]],
+			[3.0, [bat, bat, bat]],
 			[1.0, [bat, goblin]],
 			[2.0, [bat, bat, bat, bat, bat, bat, bat, bat]],
 			[9.0, [bat, bat, goblin, bat, bat, goblin]],
@@ -203,3 +203,11 @@ func take_damage():
 		end_game()
 
 	Static.camera.shake(5)
+
+func show_range_indicator(loc, size):
+	tower_range.global_position = loc
+	tower_range.scale = Vector2(size/tower_range.texture.get_width(), size/tower_range.texture.get_height())
+	tower_range.visible = true
+
+func hide_range_indicator():
+	tower_range.visible = false

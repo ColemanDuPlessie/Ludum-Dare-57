@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 		if size == 1.0:
 			tower_highlight.scale = Vector2(1, 1)
 			appearing = false
+			Static.game_manager.show_range_indicator(global_position, linked_tower.RANGE[linked_tower.level]*16*2)
 	elif disappearing:
 		size -= delta/APPEAR_DISAPPEAR_TIME
 		size = clampf(size, 0, 1)
@@ -66,6 +67,7 @@ func disappear() -> void:
 	appearing = false
 	disappearing = true
 	tower_highlight.scale = Vector2(0, 0)
+	Static.game_manager.hide_range_indicator()
 
 func upgrade_tower() -> void:
 	linked_tower.upgrade()
@@ -92,3 +94,11 @@ func _on_sell_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 			linked_tower.destroy()
 			# TODO maybe get some money back?
 			disappear()
+
+
+func _on_upgrade_tower_mouse_entered() -> void:
+	Static.game_manager.show_range_indicator(global_position, linked_tower.RANGE[linked_tower.level+1]*16*2)
+
+
+func _on_upgrade_tower_mouse_exited() -> void:
+	Static.game_manager.show_range_indicator(global_position, linked_tower.RANGE[linked_tower.level]*16*2)

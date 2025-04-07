@@ -5,7 +5,7 @@ const TYPE = "CANNON"
 const ATTACK_DELAY = [2.1, 1.4] # Seconds/attack
 const ATTACK_DAMAGE = [6, 9]
 const BULLET_TIME = [0.9, 0.9] # Seconds until bullet lands
-const RANGE = [4.5, 5.5] # In 16px tiles from center TODO make a targeting guide pop up on click
+const RANGE = [4.5, 4.75] # In 16px tiles from center
 
 const MAX_LEVEL = 1
 var level = 0
