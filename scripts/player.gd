@@ -20,11 +20,14 @@ func euclidean_dist_to(tgt: Vector2) -> float:
 	return sqrt((tgt[0]-global_position[0])**2 + (tgt[1]-global_position[1])**2)
 
 func shoot(tgt: Vector2) -> void:
-	var unit_vec = (tgt-global_position) / euclidean_dist_to(tgt)
 	
 	var laser: Node2D = proj.instantiate()
-	laser.global_position = global_position
-	laser.global_rotation = get_angle_to(tgt)
+	var laser_cheat = Vector2(4, -2)
+	if sprite.flip_h:
+		laser_cheat = Vector2(-4, -2)
+	var unit_vec = (tgt-global_position) / euclidean_dist_to(tgt)
+	laser.global_position = global_position+laser_cheat+unit_vec*3
+	laser.global_rotation = get_angle_to(tgt-laser_cheat)
 	
 	add_sibling(laser)
 

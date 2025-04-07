@@ -12,8 +12,11 @@ var movement_direction = Vector2.ZERO
 
 var repathfind_timer = 0
 
-var stunned_for = 0.0
 var frozen_velocity = Vector2(0, 0)
+
+const SPAWN_DURATION = 1.0
+
+var stunned_for = SPAWN_DURATION
 
 func stun(duration: float) -> void:
 	if stunned_for == 0:
@@ -32,9 +35,9 @@ func _physics_process(true_delta):
 			delta -= stunned_for
 			stunned_for = 0
 			velocity = frozen_velocity
-			get_node("AnimatedSprite2D").play()
+			get_node("AnimatedSprite2D").play("default")
 	if repathfind_timer <= 0:
-		movement_direction = pathfinding.move_enemy(global_position)
+		movement_direction = pathfinding.move_enemy(global_position, true)
 
 		repathfind_timer = 0.4
 
