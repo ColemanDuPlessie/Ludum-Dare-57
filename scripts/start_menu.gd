@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var highscore_label: Label = get_node("Highscore") 
+@onready var subtitle: Label = get_node("Subtitle") 
 
 var show = true
 
@@ -12,7 +13,8 @@ func fade_out():
 
 func fade_in():
 	show = true
-
+	
+	subtitle.visible = Static.deepest <= 0
 	highscore_label.visible = Static.deepest > 0
 	highscore_label.text = "DEEPEST: " + str(int(Static.deepest)) + "m"
 

@@ -98,9 +98,9 @@ text = "FROM THE"
 label_settings = SubResource("LabelSettings_264po")
 
 [node name="Subtitle" type="Label" parent="World/StartMenu"]
-offset_left = -104.0
+offset_left = -100.0
 offset_top = -53.0
-offset_right = 104.0
+offset_right = 108.0
 offset_bottom = -45.0
 text = "MINING MEETS TOWER DEFENSE"
 label_settings = SubResource("LabelSettings_264po")
