@@ -89,6 +89,8 @@ func take_damage(dmg: int) -> void:
 
 			if len(Static.all_enemies) == 0:
 				Static.game_manager.begin_building()
+		else:
+			get_node("HP").scale = Vector2(hp/MAX_HP, 1)
 
 func _on_hitbox_entered(body: Node2D) -> void:
 	if body.has_method("hit"):

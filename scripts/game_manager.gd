@@ -63,9 +63,9 @@ func start_game():
 	spawned_drill.emit(new_player)
 
 	Static.current_gold = 0
-	Static.increment_gold(5)
+	Static.increment_gold(500)
 	Static.current_gems = 0
-	Static.increment_gems(1)
+	Static.increment_gems(100)
 	Static.health = 3
 
 	Static.game_in_progress = true
@@ -122,6 +122,8 @@ func begin_combat():
 	print("Starting combat!")
 
 	state = "combat"
+	
+	Static.fuel_meter.visible = false
 
 	var new_player: CharacterBody2D = player_scene.instantiate()
 	new_player.global_position = current_player.global_position
@@ -145,6 +147,8 @@ func begin_building():
 	print("Starting building!")
 
 	state = "building"
+	
+	Static.fuel_meter.visible = true
 
 	var new_player: CharacterBody2D = player_drill_scene.instantiate()
 	new_player.global_position = floor(current_player.global_position / 16) * 16 + Vector2.ONE * 8
@@ -163,4 +167,4 @@ func take_damage():
 	if Static.health <= 0:
 		end_game()
 
-	Static.camera.shake(2)
+	Static.camera.shake(5)

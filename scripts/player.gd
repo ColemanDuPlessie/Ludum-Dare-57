@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed: float = 60
 var rise_gravity: float = 400
 var fall_gravity: float = 600
-var jump: float = 180
+var jump: float = 200
 
 var y_velocity = 0
 
@@ -14,7 +14,7 @@ var proj: PackedScene = ResourceLoader.load("res://scenes/player_laser.tscn")
 
 var time_remaining_before_attack = 0.0
 
-var ATTACK_DELAYS = [0.3, 0.24, 0.18, 0.12]
+var ATTACK_DELAYS = [0.35, 0.32, 0.28, 0.25]
 
 func euclidean_dist_to(tgt: Vector2) -> float:
 	return sqrt((tgt[0]-global_position[0])**2 + (tgt[1]-global_position[1])**2)
