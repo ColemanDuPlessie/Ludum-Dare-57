@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MAX_HP = 250.0
+var MAX_HP = 250.0
 const SPEED = 14
 
 var hp = MAX_HP
@@ -18,6 +18,10 @@ var stunned_for = SPAWN_DURATION
 
 func _ready():
 	last_position = global_position
+	if Static.round_number > len(Static.game_manager.waves):
+		var overtime = Static.round_number - len(Static.game_manager.waves)
+		MAX_HP *= 1.15**overtime
+		hp *= 1.15**overtime
 
 func stun(duration: float) -> void:
 	if stunned_for == 0:

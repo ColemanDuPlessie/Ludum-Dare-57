@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Bat
 
-const MAX_HP = 20.0
+var MAX_HP = 20.0
 const SPEED = 24
 
 var hp = MAX_HP
@@ -17,6 +17,12 @@ var frozen_velocity = Vector2(0, 0)
 const SPAWN_DURATION = 1.0
 
 var stunned_for = SPAWN_DURATION
+
+func _ready():
+	if Static.round_number > len(Static.game_manager.waves):
+		var overtime = Static.round_number - len(Static.game_manager.waves)
+		MAX_HP *= 1.15**overtime
+		hp *= 1.15**overtime
 
 func stun(duration: float) -> void:
 	if stunned_for == 0:

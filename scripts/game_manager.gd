@@ -17,7 +17,7 @@ var bat: PackedScene = ResourceLoader.load("res://scenes/enemies/bat.tscn")
 var goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/goblin.tscn")
 var fire_goblin: PackedScene = ResourceLoader.load("res://scenes/enemies/fire_goblin.tscn")
 
-var enemies = [bat, bat, bat, goblin, goblin, fire_goblin]
+var enemies = [bat, bat, bat, bat, goblin, goblin, fire_goblin]
 
 @onready var start_menu = get_node("../World/StartMenu") 
 @onready var drill_menu = get_node("../Camera2D/UIOverlay/DrillUI") 
@@ -31,13 +31,13 @@ var waves = [[0, [bat]],
 			[3.0, [bat, bat, bat]],
 			[1.0, [bat, goblin]],
 			[2.0, [bat, bat, bat, bat, bat, bat, bat, bat]],
-			[9.0, [bat, bat, goblin, bat, bat, goblin]],
-			[6.0, [goblin, goblin, goblin, goblin]],
-			[3.0, [bat, bat, bat, bat, fire_goblin]],
-			[10.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, fire_goblin]],
+			[12.0, [bat, bat, goblin, bat, bat, goblin]],
+			[9.0, [goblin, goblin, goblin, goblin]],
+			[5.0, [bat, bat, bat, bat, fire_goblin]],
+			[15.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, fire_goblin]],
 			[15.0, [goblin, fire_goblin, goblin, fire_goblin, goblin, fire_goblin]],
 			[2.0, [fire_goblin, fire_goblin, fire_goblin]],
-			[6.0, [bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin]]]
+			[9.0, [bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, goblin, bat, bat, fire_goblin]]]
 
 var spawn_delayed = [] # Elements are of the form [seconds_until_spawn, unit_to_spawn]
 
@@ -156,9 +156,9 @@ func begin_combat():
 	pathfinding.calc_pathing()
 	
 	if Static.round_number > len(waves): # Use hand-curated waves if possible, but then switch to an exponentially-escalating endless mode eventually
-		var duration = float(Static.round_number)/(int((Static.round_number-4) ** 1.5)+1)
+		var duration = float(Static.round_number)/(int(1.2 ** (Static.round_number+7))+1)
 		var num = 0
-		for i in range((Static.round_number-4) ** 1.5):
+		for i in range(1.2 ** (Static.round_number+7)):
 			spawn_delayed.append([duration*num, enemies.pick_random()])
 			num += 1
 	else:
