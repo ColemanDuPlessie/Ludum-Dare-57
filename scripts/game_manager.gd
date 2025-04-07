@@ -97,7 +97,7 @@ func end_game():
 	start_menu.fade_in()
 	drill_menu.disable()
 	resource_menu.disable()
-	Static.MAX_FUEL = 40
+	Static.MAX_FUEL = Static.INITIAL_MAX_FUEL
 	Static.PLAYER_DRILL_LEVEL = 0
 	Static.PLAYER_GUN_LEVEL = 0
 	Static.PLAYER_RADAR_LEVEL = 0
