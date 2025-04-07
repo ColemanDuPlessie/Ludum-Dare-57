@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal moving_to_tile(location)
 
-var MOVE_SPEED = [3.75, 4.75, 6, 7.875, 7.875]
+var MOVE_SPEED = [3.75, 4.75, 5.75, 6.75, 7.75]
 const DRILL_SPEED = [2.5, 3, 3.75, 4.5, 5.5]
 
 var fuel_remaining = Static.MAX_FUEL
@@ -35,6 +35,7 @@ func _physics_process(delta):
 	
 	drill_noise.volume_linear = 0.0
 	drill_noise_hard.volume_linear = 0.0
+	sprite.speed_scale = 0.5
 	drill.speed_scale = 0.5
 	drill.modulate = Color(1, 1, 1)
 
@@ -42,6 +43,7 @@ func _physics_process(delta):
 		check_movement_direction(delta)
 	
 	if moving:
+		sprite.speed_scale = MOVE_SPEED[Static.PLAYER_DRILL_LEVEL]/2
 		move(delta)
 
 func check_movement_direction(delta):

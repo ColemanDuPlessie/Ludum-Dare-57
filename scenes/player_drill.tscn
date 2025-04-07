@@ -1,27 +1,47 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqddiwdc6knkx"]
+[gd_scene load_steps=20 format=3 uid="uid://cqddiwdc6knkx"]
 
 [ext_resource type="Script" uid="uid://vfex0pr16mcx" path="res://scripts/player_drill.gd" id="1_o55oq"]
-[ext_resource type="Texture2D" uid="uid://bxj83m6cgoi3r" path="res://art/drill.tres" id="2_a21nq"]
 [ext_resource type="AudioStream" uid="uid://prwwjuavjui8" path="res://sounds/drill.mp3" id="2_e51gb"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="3_a21nq"]
 [ext_resource type="AudioStream" uid="uid://c8pu02h3a3hb3" path="res://sounds/drillhard.mp3" id="3_njjm0"]
 [ext_resource type="Script" uid="uid://b81vlutqsndat" path="res://scripts/hint.gd" id="3_tvm4f"]
-[ext_resource type="Texture2D" uid="uid://3vl41wp6afjp" path="res://art/drill_2.tres" id="3_wta5n"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="4_tvm4f"]
 [ext_resource type="Script" uid="uid://b4q4hfifwshio" path="res://scripts/lowfuelhint.gd" id="9_s4nw4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e51gb"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(110, 28, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yruwo"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(142, 28, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8qrk"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(142, 52, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2638"]
+atlas = ExtResource("3_a21nq")
+region = Rect2(174, 52, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a21nq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_a21nq")
+"texture": SubResource("AtlasTexture_e51gb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_wta5n")
+"texture": SubResource("AtlasTexture_yruwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8qrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2638")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_njjm0"]
@@ -86,14 +106,14 @@ parameters/looping = true
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a21nq")
 autoplay = "default"
-frame_progress = 0.990906
+frame_progress = 0.265628
 offset = Vector2(3, 0)
 
 [node name="Drill" type="AnimatedSprite2D" parent="Sprite2D"]
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_njjm0")
 autoplay = "default"
-frame_progress = 0.74332
+frame_progress = 0.70328
 offset = Vector2(3, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
