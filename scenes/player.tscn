@@ -195,7 +195,7 @@ script = ExtResource("1_g2els")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_3vyb7")
-animation = &"idle"
+animation = &"fall"
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_60mlk")
