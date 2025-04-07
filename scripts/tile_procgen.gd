@@ -11,6 +11,8 @@ const STONE_START = 8
 const DIRT_END = 20
 const FIRE_START = 30
 const STONE_END = 42
+const JADE_START = 54
+const FIRE_END = 60
 
 var rng = RandomNumberGenerator.new()
 var max_generated_depth = -10

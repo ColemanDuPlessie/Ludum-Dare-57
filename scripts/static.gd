@@ -12,6 +12,9 @@ const STONE_GEMS = Vector2i(16, 4)
 const HELL_STONE = Vector2i(16, 7)
 const HELL_STONE_GOLD = Vector2i(17, 7)
 const HELL_STONE_GEMS = Vector2i(16, 8)
+const JADE = Vector2i(16, 9)
+const JADE_GOLD = Vector2i(17, 9)
+const JADE_GEMS = Vector2i(16, 10)
 
 const FUEL_COSTS = {
 	DIRT_TILE : [1, 1, 1, 1, 1],
@@ -24,6 +27,9 @@ const FUEL_COSTS = {
 	HELL_STONE : [999999999, 999999999, 999999999, 14, 6],
 	HELL_STONE_GOLD : [999999999, 999999999, 999999999, 16, 8],
 	HELL_STONE_GEMS : [999999999, 999999999, 999999999, 18, 8],
+	JADE : [999999999, 999999999, 999999999, 14, 6],
+	JADE_GOLD : [999999999, 999999999, 999999999, 32, 16],
+	JADE_GEMS : [999999999, 999999999, 999999999, 36, 16],
 }
 
 var all_tower_locations = {} # An dictionary of the form Vector2:tower.
