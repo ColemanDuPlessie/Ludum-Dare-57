@@ -16,6 +16,8 @@ const SPAWN_DURATION = 1.5
 
 var stunned_for = SPAWN_DURATION
 
+var damage_timer = 0
+
 func _ready():
 	last_position = global_position
 	if Static.round_number > len(Static.game_manager.waves):
@@ -28,6 +30,14 @@ func stun(duration: float) -> void:
 		velocity = Vector2(0, 0)
 		get_node("AnimatedSprite2D").pause()
 	stunned_for = max(stunned_for, duration)
+
+func _process(delta: float) -> void:
+	damage_timer -= delta
+
+	if damage_timer > 0:
+		get_node("AnimatedSprite2D").material = ResourceLoader.load("res://flash_material.tres")
+	else:
+		get_node("AnimatedSprite2D").material = null
 
 func _physics_process(true_delta):
 	var delta = true_delta
@@ -88,6 +98,8 @@ func destroy() -> void:
 
 func take_damage(dmg: int) -> void:
 		hp -= dmg
+
+		damage_timer = 0.15
 
 		if hp <= 0:
 			var idx = Static.all_enemies.find(self)
