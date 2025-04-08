@@ -88,4 +88,4 @@ animation = &"Exploding"
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qho7r")
-volume_db = -10.0
+volume_db = -13.0

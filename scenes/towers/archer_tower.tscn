@@ -85,4 +85,4 @@ frame_progress = 0.760728
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_10wjk")
-volume_db = 5.0
+volume_db = 2.0

@@ -31,7 +31,7 @@ var enemies = [bat, bat, bat, bat, goblin, goblin, fire_bat, fire_bat, fire_gobl
 
 var GRID_ALIGNED = {bat : false, goblin : true, fire_goblin : true, fire_bat : false}
 
-var waves = [[0, [bat]],
+var waves = [[0, [bat, fire_bat, fire_goblin, fire_bat]],
 			[3.0, [bat, bat, bat]],
 			[1.0, [bat, goblin]],
 			[2.0, [bat, bat, bat, bat, bat, bat, bat, bat]],
@@ -86,7 +86,7 @@ func start_game():
 	spawned_drill.emit(new_player)
 
 	Static.current_gold = 0
-	Static.increment_gold(5)
+	Static.increment_gold(500)
 	Static.current_gems = 0
 	Static.increment_gems(3)
 	Static.health = 3

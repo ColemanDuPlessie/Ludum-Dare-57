@@ -47,4 +47,4 @@ shape = SubResource("RectangleShape2D_sb3hj")
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5qwqx")
-volume_db = -5.0
+volume_db = -8.0

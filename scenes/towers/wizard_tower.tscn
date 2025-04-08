@@ -54,4 +54,4 @@ color = Color(0.498039, 0, 1, 1)
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_phnwt")
-volume_db = -10.0
+volume_db = -13.0

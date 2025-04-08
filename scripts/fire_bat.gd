@@ -3,7 +3,7 @@ class_name Bat
 
 var MAX_HP = 80.0
 var SPEED = 24.0
-const SPEED_INCREASE = 36.0
+const SPEED_INCREASE = 12.0
 
 var hp = MAX_HP
 
