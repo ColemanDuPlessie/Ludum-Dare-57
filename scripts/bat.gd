@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var MAX_HP = 80.0
+var MAX_HP = 20.0
 const SPEED = 24
 
 var hp = MAX_HP
@@ -95,7 +95,7 @@ func take_damage(dmg: int) -> void:
 			get_node("HP").scale = Vector2(hp/MAX_HP, 1)
 
 func _on_hitbox_entered(body: Node2D) -> void:
-	if body.has_method("hit"):
+	if visible and body.has_method("hit"):
 		take_damage(body.hit())
 
 

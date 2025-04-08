@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://057m0nu1xyao"]
+[gd_scene load_steps=24 format=3 uid="uid://057m0nu1xyao"]
 
 [ext_resource type="Script" uid="uid://beg05h30mcvcf" path="res://scripts/goblin.gd" id="1_yeoui"]
 [ext_resource type="Texture2D" uid="uid://c2manqt48qvmf" path="res://art/goblin.png" id="2_fydqd"]
+[ext_resource type="AudioStream" uid="uid://eoj4vq06eonb" path="res://sounds/troll_1_death.mp3" id="3_fydqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_en706"]
 atlas = ExtResource("2_fydqd")
@@ -189,5 +190,8 @@ offset_right = 8.0
 offset_bottom = -9.0
 mouse_filter = 2
 color = Color(0.705882, 0.321569, 0.321569, 1)
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fydqd")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_entered"]

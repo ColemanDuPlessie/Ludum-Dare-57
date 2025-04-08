@@ -89,7 +89,13 @@ func take_damage(dmg: int) -> void:
 		hp -= dmg
 
 		if hp <= 0:
-			destroy()
+			var idx = Static.all_enemies.find(self)
+			if idx > -1: Static.all_enemies.remove_at(idx)
+			get_node("Death").play()
+			get_node("Collision").disabled = true
+			get_node("Hitbox/CollisionShape2D").disabled = true
+			visible = false
+			stunned_for = 999
 
 			if len(Static.all_enemies) == 0:
 				Static.game_manager.end_combat()
@@ -97,5 +103,9 @@ func take_damage(dmg: int) -> void:
 			get_node("HP").scale = Vector2(hp/MAX_HP, 1)
 
 func _on_hitbox_entered(body: Node2D) -> void:
-	if body.has_method("hit"):
+	if visible and body.has_method("hit"):
 		take_damage(body.hit())
+		
+		
+func _on_death_finished() -> void:
+	destroy()
