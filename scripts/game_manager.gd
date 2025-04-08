@@ -38,10 +38,10 @@ var waves = [[0, [bat]],
 			[12.0, [bat, bat, goblin, bat, bat, goblin]],
 			[9.0, [goblin, goblin, goblin, goblin]],
 			[5.0, [bat, bat, bat, bat, fire_goblin]],
-			[15.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, bat, bat, goblin, bat, fire_bat, bat, fire_goblin]],
-			[15.0, [goblin, fire_goblin, goblin, fire_goblin, fire_bat, fire_goblin]],
-			[2.0, [fire_goblin, fire_goblin, fire_goblin]],
-			[9.0, [bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, bat, fire_goblin]]]
+			[15.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, fire_bat, bat, goblin, bat, fire_bat, bat, fire_goblin]],
+			[12.0, [goblin, fire_goblin, goblin, fire_goblin, fire_bat, fire_bat, fire_goblin]],
+			[4.0, [fire_goblin, fire_goblin, fire_goblin, fire_bat, fire_bat, fire_bat]],
+			[9.0, [bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, fire_bat, fire_goblin, bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, bat, fire_goblin, bat, bat, goblin, bat, fire_bat, goblin, bat, bat, goblin, bat, fire_bat, fire_goblin]]]
 
 var spawn_delayed = [] # Elements are of the form [seconds_until_spawn, unit_to_spawn]
 
