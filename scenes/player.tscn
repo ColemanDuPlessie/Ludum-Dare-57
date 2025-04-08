@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://dtq5luge7156h"]
+[gd_scene load_steps=33 format=3 uid="uid://dtq5luge7156h"]
 
 [ext_resource type="Script" uid="uid://c5ifnuyv6gh7b" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dwn33k5nlxdn8" path="res://art/head.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://b81vlutqsndat" path="res://scripts/hint.gd" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cc34ebigbes40" path="res://art/sprites.png" id="4_tuyoq"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="5_fjrip"]
+[ext_resource type="AudioStream" uid="uid://lxq4qw0c5cwt" path="res://sounds/player_shoot.mp3" id="6_tuyoq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3vyb7"]
 load_path = "res://.godot/imported/player_fall.png-c35304e1b3cb9c38070978ecf99beb71.ctex"
@@ -301,3 +302,7 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "PROTECT CAMP"
 label_settings = SubResource("LabelSettings_smehm")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tuyoq")
+volume_db = -4.0

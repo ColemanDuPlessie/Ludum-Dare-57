@@ -11,6 +11,7 @@ var y_velocity = 0
 
 @onready var sprite: AnimatedSprite2D = get_node("Sprite")
 @onready var head: AnimatedSprite2D = get_node("Head")
+@onready var sound = get_node("Shoot")
 
 var proj: PackedScene = ResourceLoader.load("res://scenes/player_laser.tscn")
 
@@ -30,6 +31,7 @@ func shoot(tgt: Vector2) -> void:
 	var unit_vec = (tgt-global_position) / euclidean_dist_to(tgt)
 	laser.global_position = global_position+laser_cheat+unit_vec*3
 	laser.global_rotation = get_angle_to(tgt-laser_cheat)
+	sound.play()
 	
 	add_sibling(laser)
 
