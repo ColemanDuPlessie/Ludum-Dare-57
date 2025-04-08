@@ -36,7 +36,6 @@ var waves = [[0, [bat]],
 			[1.0, [bat, goblin]],
 			[2.0, [bat, bat, bat, bat, bat, bat, bat, bat]],
 			[12.0, [bat, bat, goblin, bat, bat, goblin]],
-			[9.0, [goblin, goblin, goblin, goblin]],
 			[5.0, [bat, bat, bat, bat, fire_goblin]],
 			[15.0, [bat, bat, bat, goblin, bat, bat, bat, goblin, bat, fire_bat, bat, goblin, bat, fire_bat, bat, fire_goblin]],
 			[12.0, [goblin, fire_goblin, goblin, fire_goblin, fire_bat, fire_bat, fire_goblin]],
@@ -160,9 +159,9 @@ func begin_combat():
 	pathfinding.calc_pathing()
 	
 	if Static.round_number > len(waves): # Use hand-curated waves if possible, but then switch to an exponentially-escalating endless mode eventually
-		var duration = float(Static.round_number)/(int(1.2 ** (Static.round_number+7))+1)
+		var duration = float(Static.round_number)/(int(1.2 ** (Static.round_number+8))+1)
 		var num = 0
-		for i in range(1.2 ** (Static.round_number+7)):
+		for i in range(1.2 ** (Static.round_number+8)):
 			spawn_delayed.append([duration*num, enemies.pick_random()])
 			num += 1
 	else:
