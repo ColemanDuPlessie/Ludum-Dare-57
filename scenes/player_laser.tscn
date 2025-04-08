@@ -5,10 +5,10 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23jat"]
 atlas = ExtResource("1_umosx")
-region = Rect2(238, 127, 4, 2)
+region = Rect2(235, 125, 8, 7)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_23jat"]
-size = Vector2(4, 2)
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3bga"]
+radius = 4.0225
 
 [node name="laser" type="StaticBody2D"]
 collision_layer = 4
@@ -20,6 +20,5 @@ z_index = 800
 texture = SubResource("AtlasTexture_23jat")
 
 [node name="Collisions" type="CollisionShape2D" parent="."]
-position = Vector2(5.96046e-08, -5.96046e-08)
 scale = Vector2(0.994407, 1.0432)
-shape = SubResource("RectangleShape2D_23jat")
+shape = SubResource("CircleShape2D_p3bga")
