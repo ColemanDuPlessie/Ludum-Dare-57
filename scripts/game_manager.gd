@@ -51,7 +51,7 @@ func _ready():
 	walls.generate_start()
 
 const START_SCREEN_COOLDOWN_TIME = 1.0
-var time_to_start = 0
+var time_to_start = 1.0
 
 func _process(delta):
 	if time_to_start > 0:
