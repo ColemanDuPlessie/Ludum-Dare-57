@@ -70,11 +70,12 @@ func _input(event: InputEvent) -> void:
 	if !Static.game_in_progress && event is InputEventKey && time_to_start <= 0:
 		start_game()
 
-	# if event.is_action_pressed("debug_swap_mode"):
-	# 	if state == "building":
-	# 		begin_combat()
-	# 	else:
-	# 		begin_building()
+	if event.is_action_pressed("debug_swap_mode"):
+		take_damage()
+		# if state == "building":
+		# 	begin_combat()
+		# else:
+		# 	begin_building()
 
 func start_game():
 	var new_player: CharacterBody2D = player_drill_scene.instantiate()
@@ -148,8 +149,6 @@ func begin_combat():
 	print("Starting combat!")
 
 	state = "combat"
-	
-	Static.fuel_meter.visible = false
 
 	var new_player: CharacterBody2D = player_scene.instantiate()
 	new_player.global_position = current_player.global_position
@@ -177,13 +176,13 @@ func begin_combat():
 
 	spawned_combat.emit(new_player)
 
+	drill_menu.disable()
+
 func begin_building():
 	if len(spawn_delayed) > 0: return
 	print("Starting building!")
 
 	state = "building"
-	
-	Static.fuel_meter.visible = true
 
 	var new_player: CharacterBody2D = player_drill_scene.instantiate()
 	new_player.global_position = floor(current_player.global_position / 16) * 16 + Vector2.ONE * 8
@@ -195,6 +194,8 @@ func begin_building():
 	new_player.update_fuel_gague()
 
 	Static.round_number += 1
+
+	drill_menu.enable()
 
 func end_combat():
 	completed_round.emit()
