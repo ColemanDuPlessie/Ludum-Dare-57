@@ -143,7 +143,7 @@ func check_movement_direction(delta):
 					
 					Static.camera.shake(0.5)
 			else:
-				drill_noise_hard.volume_linear = 0.5
+				drill_noise_hard.volume_linear = 0.3
 				drill.speed_scale = 2.0
 				time_to_flash -= delta
 				if time_to_flash <= 0.0:
