@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c8pu02h3a3hb3" path="res://sounds/drillhard.mp3" id="3_njjm0"]
 [ext_resource type="Script" uid="uid://b81vlutqsndat" path="res://scripts/hint.gd" id="3_tvm4f"]
 [ext_resource type="FontFile" uid="uid://ds3387fh4y7fs" path="res://art/CONCHARS.png" id="4_tvm4f"]
-[ext_resource type="Script" uid="uid://b4q4hfifwshio" path="res://scripts/lowfuelhint.gd" id="9_s4nw4"]
+[ext_resource type="Script" path="res://scripts/lowfuelhint.gd" id="9_s4nw4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e51gb"]
 atlas = ExtResource("3_a21nq")

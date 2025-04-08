@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://1o34ef7mnpit" path="res://art/gold.tres" id="15_5newe"]
 [ext_resource type="Script" uid="uid://paht1rfv3cmy" path="res://scripts/resource_ui.gd" id="15_37s47"]
 [ext_resource type="Texture2D" uid="uid://bluer54g68kfd" path="res://art/heart.tres" id="16_37s47"]
-[ext_resource type="Script" path="res://scripts/round_anouncement.gd" id="18_bt5mj"]
+[ext_resource type="Script" uid="uid://cnvrvkw6stjqw" path="res://scripts/round_anouncement.gd" id="18_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://cu4c0o3skged" path="res://scenes/tower_upgrade_menu.tscn" id="22_37s47"]
 [ext_resource type="AudioStream" uid="uid://ck7o8r7ihdub2" path="res://sounds/purchase.mp3" id="23_qouja"]
 [ext_resource type="AudioStream" uid="uid://6gxlq1f8hgg1" path="res://sounds/error.mp3" id="24_wljb1"]

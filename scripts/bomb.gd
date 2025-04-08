@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-const DMG = [6, 9]
+const DMG = [18, 27]
 const FLIGHT_TIME = [0.4, 0.45]
 const PIXEL_HEIGHT_PEAK = [35, 45]
-const PIXEL_AOE_RADIUS = 12
+const PIXEL_AOE_RADIUS = 24
 const GRAPHICS_LINGER_DURATION = 0.5
 
 var time_remaining
@@ -44,6 +44,7 @@ func explode() -> void:
 	sprite.play("Exploding")
 	sound.play()
 	exploded = true
+
 	for enemy in Static.all_enemies:
 		if global_position.distance_to(enemy.global_position) <= PIXEL_AOE_RADIUS:
 			enemy.take_damage(DMG[level])
